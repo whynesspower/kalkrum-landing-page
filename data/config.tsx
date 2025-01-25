@@ -42,7 +42,9 @@ const siteConfig = {
     copyright: (
       <>
         Built by{" "}
-        <Link href="https://twitter.com/whynesspower">whynesspower</Link>
+        <Link target="_blank" href="https://twitter.com/whynesspower">
+          whynesspower
+        </Link>
       </>
     ),
     links: [
