@@ -60,6 +60,7 @@ import {
   HighlightsItem,
   HighlightsTestimonialItem,
 } from "components/highlights";
+import Waitlist from "components/waitlist/waitlist";
 
 const Home: NextPage = () => {
   return (
@@ -73,10 +74,10 @@ const Home: NextPage = () => {
         {/* <FeaturesSection /> */}
 
         <TestimonialsSection />
-
+        <Waitlist />
         {/* <PricingSection /> */}
 
-        <FaqSection />
+        {/* <FaqSection /> */}
       </Box>
     </Box>
   );
@@ -114,12 +115,7 @@ const HeroSection: React.FC = () => {
               </HStack>
 
               <ButtonGroup spacing={4} alignItems="center">
-                <ButtonLink
-                  colorScheme="primary"
-                  size="lg"
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSeBOfXMilwtbDavfuqd1GmTTbTXuklbx8-i5BSW_aYzPfMRYA/viewform?usp=dialog"
-                  formTarget="_blank"
-                >
+                <ButtonLink colorScheme="primary" size="lg" href="#waitlist">
                   Join Waitlist
                 </ButtonLink>
                 {/* <ButtonLink
@@ -420,6 +416,37 @@ const FeaturesSection = () => {
 };
 
 const TestimonialsSection = () => {
+  const columns = React.useMemo(() => {
+    return testimonials.items.reduce<Array<typeof testimonials.items>>(
+      (columns, t, i) => {
+        columns[i % 3].push(t);
+
+        return columns;
+      },
+      [[], [], []]
+    );
+  }, []);
+
+  return (
+    <Testimonials
+      title={testimonials.title}
+      columns={[1, 2, 3]}
+      innerWidth="container.xl"
+    >
+      <>
+        {columns.map((column, i) => (
+          <Stack key={i} spacing="8">
+            {column.map((t, i) => (
+              <Testimonial key={i} {...t} />
+            ))}
+          </Stack>
+        ))}
+      </>
+    </Testimonials>
+  );
+};
+
+const FinalWaitlist = () => {
   const columns = React.useMemo(() => {
     return testimonials.items.reduce<Array<typeof testimonials.items>>(
       (columns, t, i) => {
