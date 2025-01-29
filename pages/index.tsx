@@ -77,6 +77,7 @@ const Home: NextPage = () => {
         {/* <PricingSection /> */}
 
         {/* <FaqSection /> */}
+        <WaitlistSection />
       </Box>
     </Box>
   );
@@ -102,11 +103,13 @@ const HeroSection: React.FC = () => {
             }
             description={
               <FallInPlace delay={0.4} fontWeight="medium">
-                KalKrum (कालक्रम) is an <Em> AI Agent for Time Tracking</Em>
-                <Br /> It gives you observability over your own self. Works on
+                KalKrum (कालक्रम) is an <Em> AI Agent for Time Tracking! </Em>
+                <Br /> It gives you observability over your own self.
+                {/* Works on
                 the paradigm that if you clock <Em> Ten Thousand Hours</Em>{" "}
                 doing a particular art form,the universe bends and paves the way
-                for you. <Br /> Don't work on estimates, track your grind today.
+                for you.  */}
+                &nbsp; Don't work on estimates, track your grind today.
               </FallInPlace>
             }
           >
@@ -437,7 +440,7 @@ const TestimonialsSection = () => {
     >
       <>
         {columns.map((column, i) => (
-          <Stack key={i} spacing="8">
+          <Stack key={i} spacing="8" height="100%">
             {column.map((t, i) => (
               <Testimonial key={i} {...t} />
             ))}
@@ -482,6 +485,7 @@ const WaitlistSection: React.FC = () => {
           direction="column"
           align="center"
           p={4}
+          my={0}
           borderRadius="lg"
           boxShadow="lg"
         >
@@ -502,7 +506,7 @@ const WaitlistSection: React.FC = () => {
             />
             <Button
               type="submit"
-              colorScheme="pink"
+              colorScheme="primary"
               size="lg"
               width="100%"
               rightIcon={<FiArrowRight />}
