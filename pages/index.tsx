@@ -16,6 +16,7 @@ import {
   useClipboard,
   IconButton,
   VStack,
+  Input,
   Flex,
 } from "@chakra-ui/react";
 import { SEO } from "components/seo/seo";
@@ -47,7 +48,7 @@ import { Features } from "components/features";
 import { BackgroundGradient } from "components/gradients/background-gradient";
 import { Faq } from "components/faq";
 import { Pricing } from "components/pricing/pricing";
-
+import { Section } from "components/section";
 import { ButtonLink } from "components/button-link/button-link";
 import { Testimonial, Testimonials } from "components/testimonials";
 
@@ -60,7 +61,6 @@ import {
   HighlightsItem,
   HighlightsTestimonialItem,
 } from "components/highlights";
-import Waitlist from "components/waitlist/waitlist";
 
 const Home: NextPage = () => {
   return (
@@ -74,7 +74,6 @@ const Home: NextPage = () => {
         {/* <FeaturesSection /> */}
 
         <TestimonialsSection />
-        <Waitlist />
         {/* <PricingSection /> */}
 
         {/* <FaqSection /> */}
@@ -112,7 +111,6 @@ const HeroSection: React.FC = () => {
             }
           >
             <FallInPlace delay={0.8}>
-              <Waitlist />
               <HStack pt="4" pb="12" spacing="8">
                 {/* <NextjsLogo height="28px" /> <ChakraLogo height="20px" /> */}
               </HStack>
@@ -141,6 +139,7 @@ const HeroSection: React.FC = () => {
                   View demo
                 </ButtonLink> */}
               </ButtonGroup>
+              <WaitlistSection />
             </FallInPlace>
           </Hero>
           <Box
@@ -449,36 +448,75 @@ const TestimonialsSection = () => {
   );
 };
 
-const FinalWaitlist = () => {
-  const columns = React.useMemo(() => {
-    return testimonials.items.reduce<Array<typeof testimonials.items>>(
-      (columns, t, i) => {
-        columns[i % 3].push(t);
+// Waitlist Section - Integrated directly into the index file
+const WaitlistSection: React.FC = () => {
+  const [email, setEmail] = React.useState("");
 
-        return columns;
-      },
-      [[], [], []]
-    );
-  }, []);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const formData = new URLSearchParams();
+    formData.append("entry.1115472667", email);
+
+    try {
+      await fetch(
+        "https://docs.google.com/forms/u/0/d/e/1FAIpQLSeBOfXMilwtbDavfuqd1GmTTbTXuklbx8-i5BSW_aYzPfMRYA/formResponse",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: formData.toString(),
+        }
+      );
+      alert("Thank you for signing up!");
+    } catch (error) {
+      alert("Thank you for signing up!");
+    }
+  };
 
   return (
-    <Testimonials
-      title={testimonials.title}
-      columns={[1, 2, 3]}
-      innerWidth="container.xl"
-    >
-      <>
-        {columns.map((column, i) => (
-          <Stack key={i} spacing="8">
-            {column.map((t, i) => (
-              <Testimonial key={i} {...t} />
-            ))}
-          </Stack>
-        ))}
-      </>
-    </Testimonials>
+    <Section id="waitlist" py={0} px={0} display="flex" justifyContent="center">
+      <Container maxW="container.md">
+        <Flex
+          direction="column"
+          align="center"
+          p={4}
+          borderRadius="lg"
+          boxShadow="lg"
+        >
+          <Text fontSize="2xl" mb={4} textAlign="center">
+            ✨ Join the waitlist to get early access to <strong>KalKram</strong>
+            !
+          </Text>
+          <form onSubmit={handleSubmit} style={{ width: "100%" }}>
+            <Input
+              type="email"
+              placeholder="Enter your email..."
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              mb={4}
+              size="lg"
+              borderColor="pink.300"
+              _focus={{ borderColor: "pink.500" }}
+            />
+            <Button
+              type="submit"
+              colorScheme="pink"
+              size="lg"
+              width="100%"
+              rightIcon={<FiArrowRight />}
+            >
+              Join Waitlist
+            </Button>
+          </form>
+        </Flex>
+      </Container>
+    </Section>
   );
 };
+
+
 
 const PricingSection = () => {
   return (
@@ -493,7 +531,6 @@ const PricingSection = () => {
 const FaqSection = () => {
   return <Faq {...faq} />;
 };
-
 export default Home;
 
 export async function getStaticProps() {
