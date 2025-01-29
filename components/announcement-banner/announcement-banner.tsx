@@ -9,6 +9,7 @@ import {
   LinkOverlay,
   useColorModeValue,
   Button,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import {
   Banner,
@@ -35,11 +36,19 @@ export const AnnouncementBanner: React.FC<AnnouncementBannerProps> = (
     return null;
   }
 
+  const isMobile = useBreakpointValue({ base: true, md: false });
+
   return (
-    <Flex position="absolute" zIndex="10" top="100px" width="100%">
+    <Flex
+      position="absolute"
+      zIndex="10"
+      top="100px"
+      width="100%"
+      display={isMobile ? "none" : "flex"} // Hide on mobile screens
+    >
       <Container maxW="container.2xl" px="8">
         <FallInPlace delay={1.4} translateY="-100px">
-          <NextLink href={href} legacyBehavior>
+          <NextLink href={href} target={"_blank"}>
             <Banner
               display="flex"
               bg="white"

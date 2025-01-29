@@ -95,8 +95,10 @@ const HeroSection: React.FC = () => {
             px="0"
             title={
               <FallInPlace>
-                10,000 hours
-                <Br /> is all you need!
+                <Text fontSize={{ base: "4xl", lg: "5xl" }}>
+                  10,000 hours
+                  <Br /> is all you need!
+                </Text>
               </FallInPlace>
             }
             description={
@@ -110,14 +112,15 @@ const HeroSection: React.FC = () => {
             }
           >
             <FallInPlace delay={0.8}>
+              <Waitlist />
               <HStack pt="4" pb="12" spacing="8">
                 {/* <NextjsLogo height="28px" /> <ChakraLogo height="20px" /> */}
               </HStack>
 
               <ButtonGroup spacing={4} alignItems="center">
-                <ButtonLink colorScheme="primary" size="lg" href="#waitlist">
+                {/* <ButtonLink colorScheme="primary" size="lg" href="#waitlist">
                   Join Waitlist
-                </ButtonLink>
+                </ButtonLink> */}
                 {/* <ButtonLink
                   size="lg"
                   href="https://demo.saas-ui.dev"
@@ -404,8 +407,8 @@ const FeaturesSection = () => {
           description: (
             <>
               All code is available as packages in a high-performance{" "}
-              <Link href="https://turborepo.com">Turborepo</Link>, you have full
-              control to modify and adjust it to your workflow.
+              <Link href="#">Turborepo</Link>, you have full control to modify
+              and adjust it to your workflow.
             </>
           ),
           variant: "inline",
