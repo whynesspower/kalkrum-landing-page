@@ -7,7 +7,8 @@ import {
   Stack,
   Flex,
   HStack,
-} from "@chakra-ui/react";
+  Divider,
+} from "@chakra-ui/react"; // Import Divider
 import Link from "next/link";
 import Image from "next/image"; // Importing Image from next/image
 
@@ -20,19 +21,27 @@ export interface FooterProps extends BoxProps {
 export const Footer: React.FC<FooterProps> = (props) => {
   const { columns = 2, ...rest } = props;
   return (
-    <Box bg="white" _dark={{ bg: "gray.900" }} {...rest}>
+    <Box bg="white" mt="8" _dark={{ bg: "gray.900" }} {...rest}>
+      {/* Divider added here */}
+      <Divider borderColor="gray.200" my="8" />
       <Container maxW="container.2xl" px="8" py="8">
         <SimpleGrid columns={columns}>
           <Stack spacing="8">
             <Stack alignItems="flex-start">
-              <Flex>
-                {/* Fixing the Image component with src */}
+              <Flex align="center">
+                {" "}
+                {/* Aligning "KalKram" vertically */}
                 <Image
                   src="/static/screenshots/kalkram.png"
                   alt="Footer Logo"
                   width={48} // Specify a width
                   height={48} // Specify a height
                 />
+                <Text ml="2" fontSize="xl" fontWeight="bold">
+                  {" "}
+                  {/* Adding margin to the left */}
+                  KalKram
+                </Text>
               </Flex>
               <Text fontSize="md" color="muted">
                 {siteConfig.seo.description}

@@ -1,23 +1,25 @@
 export default {
-  title: 'Loved by busy professionals',
+  title: "Easiest way to get  yourself to become an over-achiever",
   items: [
     {
-      name: 'James Anderson',
-      description: 'Product Manager',
+      name: "Ayush Yadav",
+      description: "Software Engineer",
       avatar:
-        'https://pbs.twimg.com/profile_images/1470742164024008706/k-eXHtu0_normal.jpg',
+        "https://pbs.twimg.com/profile_images/1758522739135025152/81ZPrudr_400x400.jpg",
       children: (
         <>
-          “This AI-powered time tracker has completely transformed how I manage
-          my day. It accurately tracks my time across tasks and helps me focus
-          on what really matters. Highly recommended!”
+          “Ever since I started time tracking 2 years ago, I have just gamified
+          my whole process of grindset. I didn't even realise how effortlessly
+          it was for me to work for hours on end. The only regret I have is why
+          the hell did I not start tracking time earlier"
         </>
       ),
     },
     {
-      name: 'Sophia Ramirez',
-      description: 'Freelance Designer',
-      avatar: '/static/images/avatar2.jpg',
+      name: "Devanshu Agarwal",
+      description: "6 Figure, Freelancer ",
+      avatar:
+        "https://pbs.twimg.com/profile_images/1834681271034798080/xEPLQ7Xd_400x400.jpg",
       children: (
         <>
           “As a freelancer, tracking my time efficiently is essential. This
@@ -27,9 +29,9 @@ export default {
       ),
     },
     {
-      name: 'Liam Chen',
-      description: 'Software Engineer',
-      avatar: '/static/images/avatar3.jpg',
+      name: "Liam Chen",
+      description: "Software Engineer",
+      avatar: "/static/images/avatar3.jpg",
       children: (
         <>
           “This tool made time tracking effortless for me. The ability to
@@ -39,4 +41,4 @@ export default {
       ),
     },
   ],
-}
+};

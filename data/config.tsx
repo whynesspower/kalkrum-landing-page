@@ -1,7 +1,7 @@
 import { Button } from "@chakra-ui/react";
 import { Link } from "@saas-ui/react";
 import { NextSeoProps } from "next-seo";
-import { FaGithub, FaTwitter } from "react-icons/fa";
+import { FaGithub, FaSquareXTwitter } from "react-icons/fa6";
 import { FiCheck } from "react-icons/fi";
 import { Logo } from "./logo";
 
@@ -53,8 +53,8 @@ const siteConfig = {
         label: "Contact",
       },
       {
-        href: "https://twitter.com/whynesspower",
-        label: <FaTwitter size="14" />,
+        href: "https://x.com/whynesspower",
+        label: <FaSquareXTwitter size="14" />,
       },
       {
         href: "https://github.com/whynesspower",

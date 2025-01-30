@@ -221,16 +221,22 @@ const HighlightsSection = () => {
 
   return (
     <Highlights>
-      <HighlightsItem colSpan={[1, null, 2]} title="Core components">
+      <HighlightsItem
+        colSpan={[1, null, 2]}
+        title="The magic number of true expertise"
+      >
         <VStack alignItems="flex-start" spacing="8">
           <Text color="muted" fontSize="xl">
-            Get started for free with <Em>30+ open source components</Em>.
-            Including authentication screens with Clerk, Supabase and Magic.
-            Fully functional forms with React Hook Form. Data tables with React
-            Table.
+            Practice isn't the thing you do once and you're good . It's the
+            thing you do that makes you good. Researchers have settled on what
+            they believe is the magic number of true expertise: 10,000 hours.
+            Surprisingly the vast majority of your problems will be solved if
+            you simply put in more amount of hours developing the art. It is as
+            simple as that. Put in the work, and then probablity will happen.
+            <Em></Em>
           </Text>
 
-          <Flex
+          {/* <Flex
             rounded="full"
             borderWidth="1px"
             flexDirection="row"
@@ -258,53 +264,49 @@ const HighlightsSection = () => {
               isRound
               color="white"
             />
-          </Flex>
+          </Flex> */}
         </VStack>
       </HighlightsItem>
-      <HighlightsItem title="Solid foundations">
+      <HighlightsItem title="It is as easy as that">
         <Text color="muted" fontSize="lg">
-          We don&apos;t like to re-invent the wheel, neither should you. We
-          selected the most productive and established tools in the scene and
-          build Saas UI on top of it.
+          Most of us don't have observability over our life. We are clueless
+          zombies who can't even remember what we had for breakfast yesterday
+          morning. The art of improving the game is as easy as gamifying the
+          process of grind. Personalised AI to overlook your progress
         </Text>
       </HighlightsItem>
       <HighlightsTestimonialItem
-        name="Renata Alink"
+        name="Yashraj Shukla"
         description="Founder"
-        avatar="/static/images/avatar.jpg"
+        avatar="/static/images/avatar.png"
         gradient={["pink.200", "purple.500"]}
       >
-        “Saas UI helped us set up a beautiful modern UI in no time. It saved us
-        hundreds of hours in development time and allowed us to focus on
-        business logic for our specific use-case from the start.”
+        “Much of my success can be attributed to my habit of tracking the number
+        of hours I used to study. I really wanted to cross that mark of 10,000
+        hours and That's why I started clocking those hours. And now I know the
+        exact number of hours I have programmed in my life  ~6,332 hours!"
       </HighlightsTestimonialItem>
       <HighlightsItem
         colSpan={[1, null, 2]}
-        title="Start your next idea two steps ahead"
+        title="You can't improve what you can't measure"
       >
         <Text color="muted" fontSize="lg">
-          We took care of all your basic frontend needs, so you can start
-          building functionality that makes your product unique.
+          When you first start tracking your time, you get a reality check that
+          you don't actually get that much work done as much you think you do.
+          Tracked time is the ultimate source of truth. It tells you if you were
+          more productive this week or the previous one, things which went
+          correct or downright wrong
         </Text>
         <Wrap mt="8">
           {[
-            "authentication",
-            "navigation",
-            "crud",
-            "settings",
-            "multi-tenancy",
-            "layouts",
-            "billing",
-            "a11y testing",
-            "server-side rendering",
-            "documentation",
-            "onboarding",
-            "storybooks",
-            "theming",
-            "upselling",
-            "unit testing",
-            "feature flags",
-            "responsiveness",
+            "tracks your grind",
+            "final source of truth",
+            "personal accountability",
+            "10x better than pomodoro timers",
+            "proven productivity methodology",
+            "AI reports and analysis",
+            "Weekly & Monthly summary",
+            "Newsletter summaries for introspection",
           ].map((value) => (
             <Tag
               key={value}
