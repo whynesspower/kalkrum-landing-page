@@ -41,7 +41,11 @@ export const Pricing: React.FC<PricingProps> = (props) => {
       <Box zIndex="2" pos="relative">
         <SectionTitle title={title} description={description}></SectionTitle>
 
-        <SimpleGrid columns={[1, null, 3]} spacing={4}>
+        <SimpleGrid
+          columns={[1, null, 2]} // Change this to two columns for larger screens
+          spacing={8} // Adjust spacing between columns
+          alignItems="center" // Ensure both columns are aligned to the center
+        >
           {plans?.map((plan) => (
             <PricingBox
               key={plan.id}
@@ -70,7 +74,7 @@ export const Pricing: React.FC<PricingProps> = (props) => {
                 )}
               </PricingFeatures>
               <ButtonLink colorScheme="primary" {...plan.action}>
-                {plan.action.label || "Sign Up"}
+                {plan.action.label || "Join waitlist"}
               </ButtonLink>
             </PricingBox>
           ))}
@@ -138,6 +142,7 @@ const PricingBox: React.FC<PricingBoxProps> = (props) => {
         borderColor: "gray.800",
       }}
       {...rest}
+      boxShadow="lg" // Optional: Adding some shadow for better visual separation
     >
       <Heading as="h3" size="md" fontWeight="bold" fontSize="lg" mb="2">
         {title}

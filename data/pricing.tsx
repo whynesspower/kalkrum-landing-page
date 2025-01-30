@@ -1,114 +1,71 @@
-import { HStack, Text } from '@chakra-ui/react'
+import { HStack, Text } from "@chakra-ui/react";
 
 export default {
-  title: 'Pricing for every stage',
+  title: "Pricing for KalKram",
   description:
-    'Pay once and get life-time access to our high quality components.',
+    "For a limited period of time: Unlimited free AI evaluations and monthly recape reports!",
   plans: [
     {
-      id: 'oss',
-      title: 'Open Source',
-      description: 'Basic compoents, perfect to get started.',
-      price: 'Free',
+      id: "oss",
+      title: "Free Tier",
+      description: "Basic time tracker, with simple reports and graphs",
+      price: "Free",
       features: [
         {
-          title: 'MIT License',
+          title: "Set unlimited timers",
         },
         {
-          title: 'Authentication (Clerk/Supabase/Magic)',
+          title: "Add past entries",
         },
         {
-          title: 'Form (react-hook-form)',
+          title: "In depth reports",
         },
         {
-          title: 'Modals manager',
+          title: "Visual graphs",
         },
         {
-          title: 'Hotkeys',
+          title: "Hotkeys",
         },
         {
-          title: 'Web3 components',
-        },
-        {
-          title: 'And much more...',
+          title: "Basic analystics without AI aid or coach",
         },
       ],
       action: {
-        href: '#',
+        href: "#waitlist",
       },
     },
     {
-      id: 'bootstrap',
-      title: 'Bootstrap',
-      description: 'Complete frontend stack for bootstrappers and small teams.',
-      price: 'Free',
+      id: "bootstrap",
+      title: "Premium Tier",
+      description:
+        "Complete AI Agent capabilities to coach you and give indepth analysis.",
+      price: "Free",
       isRecommended: true,
       features: [
         {
-          title: 'One project',
+          title: "Everything in the free tier",
         },
         {
-          title: 'One developer',
+          title: "AI Reports and summaries",
         },
         {
-          title: 'Advanced components',
+          title: "Email newsletter for retrospection",
         },
         {
-          title: 'Multiple themes',
+          title: "Advanced time tracking to keep you on track towards your goal",
         },
         {
-          title: 'Next.js and Electron boilerplates',
-        },
-        {
-          title: 'Private discord community',
-        },
-        {
-          title: '1 year of updates',
+          title: "Multiple themes",
         },
         null,
         {
-          title: 'Private beta access',
-          iconColor: 'green.500',
+          title: "Private beta access",
+          iconColor: "green.500",
         },
       ],
       action: {
-        href: 'https://appulse.gumroad.com/l/saas-ui-pro-pre-order?variant=Single%20license',
-      },
-    },
-    {
-      id: 'startup',
-      title: 'Startup',
-      description: 'Unlimited license for growing teams.',
-      price: (
-        <HStack>
-          <Text textDecoration="line-through" fontSize="sm" color="gray.400">
-            €999,-
-          </Text>
-          <Text>€499,-</Text>
-        </HStack>
-      ),
-      features: [
-        {
-          title: 'Unlimited projects',
-        },
-        {
-          title: 'Unlimited developers',
-        },
-        {
-          title: '1 year of updates',
-        },
-        {
-          title: 'Everything from Bootstrap',
-        },
-        null,
-        {
-          title: 'Private beta access',
-          iconColor: 'green.500',
-        },
-      ],
-      action: {
-        href: 'https://appulse.gumroad.com/l/saas-ui-pro-pre-order?variant=Unlimited%20license',
+        href: "#waitlist",
       },
     },
   ],
-}
+};

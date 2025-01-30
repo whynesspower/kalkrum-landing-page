@@ -69,12 +69,12 @@ const Home: NextPage = () => {
       <Box>
         <HeroSection />
 
-        {/* <HighlightsSection /> */}
+        <HighlightsSection />
 
         {/* <FeaturesSection /> */}
 
         <TestimonialsSection />
-        {/* <PricingSection /> */}
+        <PricingSection />
 
         {/* <FaqSection /> */}
         <WaitlistSection />
@@ -142,8 +142,8 @@ const HeroSection: React.FC = () => {
                   View demo
                 </ButtonLink> */}
               </ButtonGroup>
-              <WaitlistSection />
             </FallInPlace>
+            <WaitlistSection />
           </Hero>
           <Box
             height="600px"
@@ -179,31 +179,33 @@ const HeroSection: React.FC = () => {
         pt="20"
         features={[
           {
-            title: "Personal Productivity",
+            title: "Ultimate Productivity Tool",
             icon: FiSmile,
-            description: "Track every minute of when you work",
+            description:
+              "You can't improve what you can't measure, Track every minute of when you effort. Follow the principal of 10,000 hours to mastery",
             iconPosition: "left",
             delay: 0.6,
           },
           {
-            title: "Artificial Intelligence",
+            title: "AI Agentic Time Tracking",
             icon: FiSliders,
             description:
-              "Get personalised AI to analyse if you have been improving",
+              "An aggregation on all of your pomodoro timers, get ground reality if your really shipped anything substancial this week or not",
             iconPosition: "left",
             delay: 0.8,
           },
           {
-            title: "AI Agentic",
+            title: "Personalised AI coach",
             icon: FiGrid,
             description:
-              "Compose tasks together to get future insights and past trends.",
+              "Tell the coach about your personal goals and then the coach personally train you to achieve that goal via personalised updates every day ",
             delay: 1,
           },
           {
             title: "Newsletter Summaries",
             icon: FiThumbsUp,
-            description: "Get weekly and monthly summaries of your grind",
+            description:
+              "Get weekly and monthly summaries of your grind, what are the things which were correct this week, where did you mess up. Restrospect",
             iconPosition: "left",
             delay: 1.1,
           },
@@ -479,7 +481,7 @@ const WaitlistSection: React.FC = () => {
   };
 
   return (
-    <Section id="waitlist" py={0} px={0} display="flex" justifyContent="center">
+    <Section py={0} px={0} display="flex" justifyContent="center">
       <Container maxW="container.md">
         <Flex
           direction="column"
@@ -501,8 +503,8 @@ const WaitlistSection: React.FC = () => {
               onChange={(e) => setEmail(e.target.value)}
               mb={4}
               size="lg"
-              borderColor="pink.300"
-              _focus={{ borderColor: "pink.500" }}
+              borderColor="primary.300"
+              _focus={{ borderColor: "primary" }}
             />
             <Button
               type="submit"
@@ -520,14 +522,10 @@ const WaitlistSection: React.FC = () => {
   );
 };
 
-
-
 const PricingSection = () => {
   return (
     <Pricing {...pricing}>
-      <Text p="8" textAlign="center" color="muted">
-        VAT may be applicable depending on your location.
-      </Text>
+      <Text p="8" textAlign="center" color="muted"></Text>
     </Pricing>
   );
 };
