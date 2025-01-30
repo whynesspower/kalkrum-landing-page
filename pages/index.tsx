@@ -220,7 +220,7 @@ const HighlightsSection = () => {
   const { value, onCopy, hasCopied } = useClipboard("yarn add @saas-ui/react");
 
   return (
-    <Highlights>
+    <Highlights id="highlights">
       <HighlightsItem
         colSpan={[1, null, 2]}
         title="The magic number of true expertise"
@@ -284,7 +284,7 @@ const HighlightsSection = () => {
         “Much of my success can be attributed to my habit of tracking the number
         of hours I used to study. I really wanted to cross that mark of 10,000
         hours and That's why I started clocking those hours. And now I know the
-        exact number of hours I have programmed in my life  ~6,332 hours!"
+        exact number of hours I have programmed in my life ~6,332 hours!"
       </HighlightsTestimonialItem>
       <HighlightsItem
         colSpan={[1, null, 2]}
@@ -438,6 +438,7 @@ const TestimonialsSection = () => {
 
   return (
     <Testimonials
+      id="testimonials"
       title={testimonials.title}
       columns={[1, 2, 3]}
       innerWidth="container.xl"
@@ -483,7 +484,7 @@ const WaitlistSection: React.FC = () => {
   };
 
   return (
-    <Section py={0} px={0} display="flex" justifyContent="center">
+    <Section id="waitlist" py={0} px={0} display="flex" justifyContent="center">
       <Container maxW="container.md">
         <Flex
           direction="column"
@@ -526,7 +527,7 @@ const WaitlistSection: React.FC = () => {
 
 const PricingSection = () => {
   return (
-    <Pricing {...pricing}>
+    <Pricing id="pricing" {...pricing}>
       <Text p="8" textAlign="center" color="muted"></Text>
     </Pricing>
   );

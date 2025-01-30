@@ -16,7 +16,7 @@ const siteConfig = {
   header: {
     links: [
       {
-        id: "features",
+        id: "highlights",
         label: "Features",
       },
       {
@@ -24,18 +24,14 @@ const siteConfig = {
         label: "Pricing",
       },
       {
-        id: "faq",
-        label: "FAQ",
+        label: "Join Waitlist",
+        id: "waitlist",
       },
-      {
-        label: "Login",
-        href: "/login",
-      },
-      {
-        label: "Sign Up",
-        href: "/signup",
-        variant: "primary",
-      },
+      // {
+      //   label: "Sign Up",
+      //   href: "/signup",
+      //   variant: "primary",
+      // },
     ],
   },
   footer: {
