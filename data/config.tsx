@@ -26,6 +26,7 @@ const siteConfig = {
       {
         label: "Join Waitlist",
         id: "waitlist",
+        href: "",
       },
       // {
       //   label: "Sign Up",
