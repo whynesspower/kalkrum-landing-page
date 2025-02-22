@@ -119,18 +119,20 @@ const HeroSection: React.FC = () => {
           </Hero>
           <Box
             position={{ base: "relative", lg: "absolute" }}
-            display="block"
             left={{ lg: "60%", xl: "55%" }}
             width={{ base: "100%", lg: "400px" }}
-            height="600px"
+            height={{ base: "480px", lg: "480px" }}
             margin="0 auto"
+            borderRadius="2xl"
+            overflow="hidden"
           >
             <FallInPlace delay={1}>
               <Box
                 position="relative"
-                width="400px"
-                height="600px"
+                width="100%"
+                height="100%"
                 overflow="hidden"
+                borderRadius="2xl"
               >
                 <Box
                   style={{
@@ -138,52 +140,68 @@ const HeroSection: React.FC = () => {
                       scrollPosition < 200
                         ? "0px"
                         : scrollPosition < 400
-                        ? "-480px" // Height of one screen
-                        : "-960px" // Height of two screens
+                        ? "-480px"
+                        : "-960px"
                     })`,
                     transition: "transform 0.5s ease-in-out",
-                    height: "1440px", // Total height = 480px * 3 screens
+                    height: "1440px",
                   }}
                 >
                   {/* Screen 1 */}
-                  <Box position="relative" width="360px" height="480px">
+                  <Box
+                    position="relative"
+                    width="100%"
+                    height="480px"
+                    borderRadius="2xl"
+                    overflow="hidden"
+                  >
                     <Image
                       src="/static/screenshots/screen1.png"
                       alt="Screen 1"
-                      layout="fixed"
-                      width={360}
-                      height={600}
+                      layout="fill"
+                      objectFit="contain"
                       quality={75}
                       priority
                     />
                   </Box>
+
                   {/* Screen 2 */}
-                  <Box position="relative" width="360px" height="480px">
+                  <Box
+                    position="relative"
+                    width="100%"
+                    height="480px"
+                    borderRadius="2xl"
+                    overflow="hidden"
+                  >
                     <Image
                       src="/static/screenshots/screen2.png"
                       alt="Screen 2"
-                      layout="fixed"
-                      width={360}
-                      height={480}
+                      layout="fill"
+                      objectFit="contain"
                       quality={75}
                       priority
                     />
                   </Box>
+
                   {/* Screen 3 */}
-                  <Box position="relative" width="360px" height="480px">
+                  <Box
+                    position="relative"
+                    width="100%"
+                    height="480px"
+                    borderRadius="2xl"
+                    overflow="hidden"
+                  >
                     <Image
                       src="/static/screenshots/screen3.png"
                       alt="Screen 3"
-                      layout="fixed"
-                      width={360}
-                      height={480}
+                      layout="fill"
+                      objectFit="contain"
                       quality={75}
                       priority
                     />
                   </Box>
                 </Box>
               </Box>
-              {/* </Box> */}
             </FallInPlace>
           </Box>
         </Stack>
