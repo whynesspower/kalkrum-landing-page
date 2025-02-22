@@ -73,30 +73,43 @@ const Home: NextPage = () => {
 
 const HeroSection: React.FC = () => {
   const [scrollPosition, setScrollPosition] = React.useState(0);
+  const phoneRef = React.useRef<HTMLDivElement>(null);
 
   // Handle scroll effect
   React.useEffect(() => {
     const handleScroll = () => {
       const position = window.scrollY;
       setScrollPosition(position);
+
+      // Prevent page scrolling until we reach the end of our sequence
+      if (position < 600 && phoneRef.current) {
+        window.scrollTo(0, position);
+      }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Determine which screen to show based on scroll position
+  const getCurrentScreen = () => {
+    if (scrollPosition < 200) return "/static/screenshots/screen1.png";
+    if (scrollPosition < 400) return "/static/screenshots/screen2.png";
+    return "/static/screenshots/screen3.png";
+  };
 
   return (
     <Box position="relative" overflow="hidden" minHeight="100vh">
       <BackgroundGradient height="100%" zIndex="-1" />
       <Container maxW="container.xl" pt={{ base: 40, lg: 60 }} pb="40">
-        <Stack direction={{ base: 'column', lg: 'row' }} alignItems="center">
+        <Stack direction={{ base: "column", lg: "row" }} alignItems="center">
           <Hero
             id="home"
             justifyContent="flex-start"
             px="0"
             title={
               <FallInPlace>
-                <Text fontSize={{ base: '4xl', lg: '5xl' }}>
+                <Text fontSize={{ base: "4xl", lg: "5xl" }}>
                   Stay Informed.
                   <Br />
                   Updates about your organisation in 60 words!
@@ -118,89 +131,75 @@ const HeroSection: React.FC = () => {
             </FallInPlace>
           </Hero>
           <Box
-            position={{ base: 'relative', lg: 'absolute' }}
-            display="block"
-            left={{ lg: '60%', xl: '55%' }}
-            width={{ base: '100%', lg: '400px' }}
             height="600px"
+            position="absolute"
+            display={{ base: "none", lg: "block" }}
+            left={{ lg: "60%", xl: "55%" }}
+            width="80vw"
+            maxW="1100px"
             margin="0 auto"
           >
             <FallInPlace delay={1}>
-              <Box position="relative" width="400px" height="600px" overflow="hidden">
-                {/* iPhone Mockup */}
+              <Box overflow="hidden" height="100%">
                 <Image
-                  src="/static/screenshots/iphone.png"
-                  alt="iPhone Mockup"
+                  src="/static/screenshots/list.png"
                   layout="fixed"
-                  width={400}
-                  height={600}
-                  quality={75}
+                  width={200}
+                  height={200}
+                  alt="Screenshot of a ListPage in Saas UI Pro"
+                  quality="75"
                   priority
-                  style={{ zIndex: 2 }}
                 />
-                {/* Screen Content Container */}
-                <Box
-                  position="absolute"
-                  top="60px" // Adjusted for typical iPhone screen placement
-                  left="20px"
-                  width="360px" // Adjusted to fit within mockup
-                  height="480px" // Adjusted to fit within mockup
-                  overflow="hidden"
-                  zIndex={1}
-                >
-                  <Box
-                    style={{
-                      transform: `translateY(${
-                        scrollPosition < 200
-                          ? '0px'
-                          : scrollPosition < 400
-                          ? '-480px' // Height of one screen
-                          : '-960px' // Height of two screens
-                      })`,
-                      transition: 'transform 0.5s ease-in-out',
-                      height: '1440px', // Total height = 480px * 3 screens
-                    }}
-                  >
-                    {/* Screen 1 */}
-                    <Box position="relative" width="360px" height="480px">
-                      <Image
-                        src="/static/screenshots/screen1.png"
-                        alt="Screen 1"
-                        layout="fixed"
-                        width={360}
-                        height={480}
-                        quality={75}
-                        priority
-                      />
-                    </Box>
-                    {/* Screen 2 */}
-                    <Box position="relative" width="360px" height="480px">
-                      <Image
-                        src="/static/screenshots/screen2.png"
-                        alt="Screen 2"
-                        layout="fixed"
-                        width={360}
-                        height={480}
-                        quality={75}
-                        priority
-                      />
-                    </Box>
-                    {/* Screen 3 */}
-                    <Box position="relative" width="360px" height="480px">
-                      <Image
-                        src="/static/screenshots/screen3.png"
-                        alt="Screen 3"
-                        layout="fixed"
-                        width={360}
-                        height={480}
-                        quality={75}
-                        priority
-                      />
-                    </Box>
-                  </Box>
-                </Box>
               </Box>
             </FallInPlace>
+          </Box>
+          <Box
+            position={{ base: "relative", lg: "absolute" }}
+            display="block"
+            left={{ lg: "60%", xl: "55%" }}
+            width={{ base: "100%", lg: "auto" }}
+            maxW="400px"
+            margin="0 auto"
+            ref={phoneRef}
+          >
+            <Box position="relative" width="100%" height="600px">
+              {/* iPhone Mockup */}
+              <Image
+                src="/public/static/screenshots/list.png"
+                alt="iPhone Mockup"
+                layout="fill"
+                objectFit="contain"
+                style={{ zIndex: 2, position: "absolute" }}
+              />
+              {/* Screen Content with Animation */}
+              <Box
+                position="absolute"
+                top="10%"
+                left="10%"
+                width="80%"
+                height="80%"
+                overflow="hidden"
+                zIndex={1}
+                transition="all 0.3s ease-in-out"
+              >
+                <Image
+                  src={getCurrentScreen()}
+                  alt="Screen Content"
+                  layout="fill"
+                  objectFit="cover"
+                  style={{
+                    transform: `translateY(${
+                      scrollPosition < 200
+                        ? "0"
+                        : scrollPosition < 400
+                        ? "-100%"
+                        : "-200%"
+                    }%)`,
+                    transition: "transform 0.5s ease-in-out",
+                  }}
+                />
+              </Box>
+            </Box>
           </Box>
         </Stack>
       </Container>

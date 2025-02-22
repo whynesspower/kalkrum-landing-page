@@ -15,19 +15,15 @@ const siteConfig = {
   privacyUrl: "#",
   header: {
     links: [
-      {
-        id: "highlights",
-        label: "Features",
-      },
-      {
-        id: "pricing",
-        label: "Pricing",
-      },
-      {
-        label: "Join Waitlist",
-        id: "waitlist",
-        href: "",
-      },
+      // {
+      //   id: "highlights",
+      //   label: "How it works",
+      // },
+      // {
+      //   label: "Join Waitlist",
+      //   id: "waitlist",
+      //   href: "",
+      // },
       // {
       //   label: "Sign Up",
       //   href: "/signup",

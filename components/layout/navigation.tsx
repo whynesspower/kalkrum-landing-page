@@ -35,7 +35,7 @@ const Navigation: React.FC = () => {
 
   return (
     <HStack spacing="2" flexShrink={0}>
-      {siteConfig.header.links.map(({ href, id, ...props }, i) => {
+      {siteConfig.header.links.map(({ href, id}, i) => {
         return (
           <NavLink
             display={["none", null, "block"]}
@@ -47,14 +47,14 @@ const Navigation: React.FC = () => {
                 (href && !!router.asPath.match(new RegExp(href)))
               )
             }
-            {...props}
+
           >
-            {props.label}
+            {/* {props.label} */}
           </NavLink>
         );
       })}
 
-      <ThemeToggle />
+      {/* <ThemeToggle /> */}
 
       <MobileNavButton
         ref={mobileNavBtnRef}
