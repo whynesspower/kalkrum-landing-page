@@ -81,22 +81,22 @@ const HeroSection: React.FC = () => {
       setScrollPosition(position);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <Box position="relative" overflow="hidden" minHeight="100vh">
       <BackgroundGradient height="100%" zIndex="-1" />
       <Container maxW="container.xl" pt={{ base: 40, lg: 60 }} pb="40">
-        <Stack direction={{ base: 'column', lg: 'row' }} alignItems="center">
+        <Stack direction={{ base: "column", lg: "row" }} alignItems="center">
           <Hero
             id="home"
             justifyContent="flex-start"
             px="0"
             title={
               <FallInPlace>
-                <Text fontSize={{ base: '4xl', lg: '5xl' }}>
+                <Text fontSize={{ base: "4xl", lg: "5xl" }}>
                   Stay Informed.
                   <Br />
                   Updates about your organisation in 60 words!
@@ -118,26 +118,21 @@ const HeroSection: React.FC = () => {
             </FallInPlace>
           </Hero>
           <Box
-            position={{ base: 'relative', lg: 'absolute' }}
+            position={{ base: "relative", lg: "absolute" }}
             display="block"
-            left={{ lg: '60%', xl: '55%' }}
-            width={{ base: '100%', lg: '400px' }}
+            left={{ lg: "60%", xl: "55%" }}
+            width={{ base: "100%", lg: "400px" }}
             height="600px"
             margin="0 auto"
           >
             <FallInPlace delay={1}>
-              <Box position="relative" width="400px" height="600px" overflow="hidden">
+              <Box
+                position="relative"
+                width="400px"
+                height="600px"
+                overflow="hidden"
+              >
                 {/* iPhone Mockup */}
-                <Image
-                  src="/static/screenshots/iphone.png"
-                  alt="iPhone Mockup"
-                  layout="fixed"
-                  width={400}
-                  height={600}
-                  quality={75}
-                  priority
-                  style={{ zIndex: 2 }}
-                />
                 {/* Screen Content Container */}
                 <Box
                   position="absolute"
@@ -152,13 +147,13 @@ const HeroSection: React.FC = () => {
                     style={{
                       transform: `translateY(${
                         scrollPosition < 200
-                          ? '0px'
+                          ? "0px"
                           : scrollPosition < 400
-                          ? '-480px' // Height of one screen
-                          : '-960px' // Height of two screens
+                          ? "-480px" // Height of one screen
+                          : "-960px" // Height of two screens
                       })`,
-                      transition: 'transform 0.5s ease-in-out',
-                      height: '1440px', // Total height = 480px * 3 screens
+                      transition: "transform 0.5s ease-in-out",
+                      height: "1440px", // Total height = 480px * 3 screens
                     }}
                   >
                     {/* Screen 1 */}
