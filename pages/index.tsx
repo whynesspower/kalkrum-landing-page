@@ -132,69 +132,58 @@ const HeroSection: React.FC = () => {
                 height="600px"
                 overflow="hidden"
               >
-                {/* iPhone Mockup */}
-                {/* Screen Content Container */}
                 <Box
-                  position="absolute"
-                  top="60px" // Adjusted for typical iPhone screen placement
-                  left="20px"
-                  width="360px" // Adjusted to fit within mockup
-                  height="480px" // Adjusted to fit within mockup
-                  overflow="hidden"
-                  zIndex={1}
+                  style={{
+                    transform: `translateY(${
+                      scrollPosition < 200
+                        ? "0px"
+                        : scrollPosition < 400
+                        ? "-480px" // Height of one screen
+                        : "-960px" // Height of two screens
+                    })`,
+                    transition: "transform 0.5s ease-in-out",
+                    height: "1440px", // Total height = 480px * 3 screens
+                  }}
                 >
-                  <Box
-                    style={{
-                      transform: `translateY(${
-                        scrollPosition < 200
-                          ? "0px"
-                          : scrollPosition < 400
-                          ? "-480px" // Height of one screen
-                          : "-960px" // Height of two screens
-                      })`,
-                      transition: "transform 0.5s ease-in-out",
-                      height: "1440px", // Total height = 480px * 3 screens
-                    }}
-                  >
-                    {/* Screen 1 */}
-                    <Box position="relative" width="360px" height="480px">
-                      <Image
-                        src="/static/screenshots/screen1.png"
-                        alt="Screen 1"
-                        layout="fixed"
-                        width={360}
-                        height={480}
-                        quality={75}
-                        priority
-                      />
-                    </Box>
-                    {/* Screen 2 */}
-                    <Box position="relative" width="360px" height="480px">
-                      <Image
-                        src="/static/screenshots/screen2.png"
-                        alt="Screen 2"
-                        layout="fixed"
-                        width={360}
-                        height={480}
-                        quality={75}
-                        priority
-                      />
-                    </Box>
-                    {/* Screen 3 */}
-                    <Box position="relative" width="360px" height="480px">
-                      <Image
-                        src="/static/screenshots/screen3.png"
-                        alt="Screen 3"
-                        layout="fixed"
-                        width={360}
-                        height={480}
-                        quality={75}
-                        priority
-                      />
-                    </Box>
+                  {/* Screen 1 */}
+                  <Box position="relative" width="360px" height="480px">
+                    <Image
+                      src="/static/screenshots/screen1.png"
+                      alt="Screen 1"
+                      layout="fixed"
+                      width={360}
+                      height={600}
+                      quality={75}
+                      priority
+                    />
+                  </Box>
+                  {/* Screen 2 */}
+                  <Box position="relative" width="360px" height="480px">
+                    <Image
+                      src="/static/screenshots/screen2.png"
+                      alt="Screen 2"
+                      layout="fixed"
+                      width={360}
+                      height={480}
+                      quality={75}
+                      priority
+                    />
+                  </Box>
+                  {/* Screen 3 */}
+                  <Box position="relative" width="360px" height="480px">
+                    <Image
+                      src="/static/screenshots/screen3.png"
+                      alt="Screen 3"
+                      layout="fixed"
+                      width={360}
+                      height={480}
+                      quality={75}
+                      priority
+                    />
                   </Box>
                 </Box>
               </Box>
+              {/* </Box> */}
             </FallInPlace>
           </Box>
         </Stack>
