@@ -1,7 +1,7 @@
 import { Button } from "@chakra-ui/react";
 import { Link } from "@saas-ui/react";
 import { NextSeoProps } from "next-seo";
-import { FaGithub, FaSquareXTwitter } from "react-icons/fa6";
+import { FaGithub, FaSquareXTwitter, FaLinkedin } from "react-icons/fa6";
 import { FiCheck } from "react-icons/fi";
 import { Logo } from "./logo";
 
@@ -9,20 +9,20 @@ const siteConfig = {
   logo: Logo,
   seo: {
     title: "KalKram",
-    description: "AI Agentic Time Tracking Tool",
+    description: "Helping engineering teams get AI summaries of projects and teams",
   } as NextSeoProps,
   termsUrl: "#",
   privacyUrl: "#",
   header: {
     links: [
-      {
-        id: "highlights",
-        label: "Features",
-      },
-      {
-        id: "pricing",
-        label: "Pricing",
-      },
+      // {
+      //   id: "highlights",
+      //   label: "Features",
+      // },
+      // {
+      //   id: "pricing",
+      //   label: "Pricing",
+      // },
       {
         label: "Join Waitlist",
         id: "waitlist",
@@ -36,27 +36,27 @@ const siteConfig = {
     ],
   },
   footer: {
-    copyright: (
-      <>
-        Built by{" "}
-        <Link target="_blank" href="https://twitter.com/whynesspower">
-          whynesspower
-        </Link>
-      </>
-    ),
+    // copyright: (
+    //   <>
+    //     Built by{" "}
+    //     <Link target="_blank" href="https://twitter.com/whynesspower">
+    //       whynesspower
+    //     </Link>
+    //   </>
+    // ),
     links: [
       {
         href: "mailto:yashrajshukla48@gmail.com",
         label: "Contact",
       },
       {
-        href: "https://x.com/whynesspower",
-        label: <FaSquareXTwitter size="14" />,
+        href: "https://www.linkedin.com/company/kalkram",
+        label: <FaLinkedin size="14" />,
       },
-      {
-        href: "https://github.com/whynesspower",
-        label: <FaGithub size="14" />,
-      },
+      // {
+      //   href: "https://github.com/whynesspower",
+      //   label: <FaGithub size="14" />,
+      // },
     ],
   },
   signup: {

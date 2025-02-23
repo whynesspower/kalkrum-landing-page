@@ -69,12 +69,12 @@ const Home: NextPage = () => {
       <Box>
         <HeroSection />
 
-        <HighlightsSection />
+        {/* <HighlightsSection /> */}
 
         {/* <FeaturesSection /> */}
 
-        <TestimonialsSection />
-        <PricingSection />
+        {/* <TestimonialsSection /> */}
+        {/* <PricingSection /> */}
 
         {/* <FaqSection /> */}
         <WaitlistSection />
@@ -96,20 +96,16 @@ const HeroSection: React.FC = () => {
             title={
               <FallInPlace>
                 <Text fontSize={{ base: "4xl", lg: "5xl" }}>
-                  10,000 hours
-                  <Br /> is all you need!
+                  Stay Informed.
+                  <Br />
+                  Updates about your organisation in 60 words!
                 </Text>
               </FallInPlace>
             }
             description={
               <FallInPlace delay={0.4} fontWeight="medium">
-                KalKrum (कालक्रम) is an <Em> AI Agent for Time Tracking! </Em>
-                <Br /> It gives you observability over your own self.
-                {/* Works on
-                the paradigm that if you clock <Em> Ten Thousand Hours</Em>{" "}
-                doing a particular art form,the universe bends and paves the way
-                for you.  */}
-                &nbsp; Don't work on estimates, track your grind today.
+                KalKram helps engineering leaders get<Em> AI summaries </Em>
+                of ongoing projects & team
               </FallInPlace>
             }
           >
@@ -143,7 +139,7 @@ const HeroSection: React.FC = () => {
                 </ButtonLink> */}
               </ButtonGroup>
             </FallInPlace>
-            <WaitlistSection />
+            {/* <WaitlistSection /> */}
           </Hero>
           <Box
             height="600px"
@@ -155,7 +151,12 @@ const HeroSection: React.FC = () => {
             margin="0 auto"
           >
             <FallInPlace delay={1}>
-              <Box overflow="hidden" height="100%">
+              <Box
+                overflow="hidden"
+                height="100%"
+                borderRadius="20px"
+                boxShadow="0 4px 8px rgba(0, 0, 0, 0.5)"
+              >
                 <Image
                   src="/static/screenshots/list.png"
                   layout="fixed"
@@ -164,6 +165,7 @@ const HeroSection: React.FC = () => {
                   alt="Screenshot of a ListPage in Saas UI Pro"
                   quality="75"
                   priority
+                  style={{ borderRadius: "20px" }}
                 />
               </Box>
             </FallInPlace>
@@ -171,7 +173,7 @@ const HeroSection: React.FC = () => {
         </Stack>
       </Container>
 
-      <Features
+      {/* <Features
         id="benefits"
         columns={[1, 2, 4]}
         iconSize={4}
@@ -211,7 +213,7 @@ const HeroSection: React.FC = () => {
           },
         ]}
         reveal={FallInPlace}
-      />
+      /> */}
     </Box>
   );
 };
@@ -495,8 +497,7 @@ const WaitlistSection: React.FC = () => {
           boxShadow="lg"
         >
           <Text fontSize="2xl" mb={4} textAlign="center">
-            ✨ Join the waitlist to get early access to <strong>KalKram</strong>
-            !
+            ✨ Early access waitlist <strong>KalKram</strong>!
           </Text>
           <form onSubmit={handleSubmit} style={{ width: "100%" }}>
             <Input
@@ -538,15 +539,15 @@ const FaqSection = () => {
 };
 export default Home;
 
-export async function getStaticProps() {
-  return {
-    props: {
-      announcement: {
-        title: "Build with sprit by whynesspower.com 🚀 ",
-        description: '<img src="" />',
-        href: "https://x.com/whynesspower",
-        action: false,
-      },
-    },
-  };
-}
+// export async function getStaticProps() {
+//   return {
+//     props: {
+//       announcement: {
+//         title: "Build with sprit by whynesspower.com 🚀 ",
+//         description: '<img src="" />',
+//         href: "https://x.com/whynesspower",
+//         action: false,
+//       },
+//     },
+//   };
+// }
