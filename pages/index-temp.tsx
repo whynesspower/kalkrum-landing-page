@@ -62,7 +62,10 @@ import {
 const Home: NextPage = () => {
   return (
     <Box>
-      <SEO title="KalKram" description="AI Agentic Time Tracking Tool" />
+      <SEO
+        title="KalKram"
+        description="KalKram helps engineering leaders get AI summaries of ongoing projects & team"
+      />
       <Box>
         <HeroSection />
         <WaitlistSection />

@@ -9,7 +9,8 @@ const siteConfig = {
   logo: Logo,
   seo: {
     title: "KalKram",
-    description: "AI Agentic Time Tracking Tool",
+    description:
+      "KalKram helps engineering leaders get AI summaries of ongoing projects & team",
   } as NextSeoProps,
   termsUrl: "#",
   privacyUrl: "#",
@@ -34,10 +35,10 @@ const siteConfig = {
   footer: {
     copyright: (
       <>
-        Built by{" "}
+        {/* Built by{" "}
         <Link target="_blank" href="https://twitter.com/whynesspower">
           whynesspower
-        </Link>
+        </Link> */}
       </>
     ),
     links: [
@@ -45,14 +46,14 @@ const siteConfig = {
         href: "mailto:yashrajshukla48@gmail.com",
         label: "Contact",
       },
-      {
-        href: "https://x.com/whynesspower",
-        label: <FaSquareXTwitter size="14" />,
-      },
-      {
-        href: "https://github.com/whynesspower",
-        label: <FaGithub size="14" />,
-      },
+      // {
+      //   href: "https://x.com/whynesspower",
+      //   label: <FaSquareXTwitter size="14" />,
+      // },
+      // {
+      //   href: "https://github.com/whynesspower",
+      //   label: <FaGithub size="14" />,
+      // },
     ],
   },
   signup: {
