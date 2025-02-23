@@ -15,35 +15,16 @@ const siteConfig = {
   privacyUrl: "#",
   header: {
     links: [
-      // {
-      //   id: "highlights",
-      //   label: "Features",
-      // },
-      // {
-      //   id: "pricing",
-      //   label: "Pricing",
-      // },
       {
         label: "Join Waitlist",
         id: "waitlist",
         href: "",
       },
-      // {
-      //   label: "Sign Up",
-      //   href: "/signup",
-      //   variant: "primary",
-      // },
+
     ],
   },
   footer: {
-    // copyright: (
-    //   <>
-    //     Built by{" "}
-    //     <Link target="_blank" href="https://twitter.com/whynesspower">
-    //       whynesspower
-    //     </Link>
-    //   </>
-    // ),
+
     links: [
       {
         href: "mailto:yashrajshukla48@gmail.com",
@@ -60,29 +41,29 @@ const siteConfig = {
     ],
   },
   signup: {
-    title: "Start Tracking time with KalKram",
+    title: "KalKram - AI Agent to give you summaries of the tasks your team is working on",
     features: [
       {
         icon: FiCheck,
         title: "Personal Productivity",
-        description: "Track every minute of when you work",
+        description: "AI Project and Team level summaries",
       },
       {
         icon: FiCheck,
         title: "Artificial Intelligence",
         description:
-          "Get personalised AI to analyse if you have been improving",
+          "Find exactly what did the team get done this week?",
       },
       {
         icon: FiCheck,
         title: "AI Agentic",
         description:
-          "Compose tasks together to get future insights and past trends.",
+          "Helping engineering teams get AI summaries of projects and teams",
       },
       {
         icon: FiCheck,
         title: "Newsletter Summaries",
-        description: "Get weekly and monthly summaries of your grind",
+        description: "Get weekly and monthly summaries of your orngaisation"
       },
     ],
   },

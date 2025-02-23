@@ -37,7 +37,7 @@ import { Testimonial, Testimonials } from "components/testimonials";
 const Home: NextPage = () => {
   return (
     <Box>
-      <SEO title="KalKram" description="AI Agentic Time Tracking Tool" />
+      <SEO title="KalKram" description="Helping engineering teams get AI summaries of projects and teams" />
       <Box>
         <HeroSection />
         <Box display={{ base: "block", md: "none" }}>
