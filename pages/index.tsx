@@ -25,25 +25,7 @@ import { FallInPlace } from "components/motion/fall-in-place";
 import { Hero } from "components/hero";
 import { Link, Br } from "@saas-ui/react";
 import { Em } from "components/typography";
-import { NextjsLogo, ChakraLogo } from "components/logos";
-import {
-  FiArrowRight,
-  FiBox,
-  FiCheck,
-  FiCode,
-  FiCopy,
-  FiFlag,
-  FiGrid,
-  FiLock,
-  FiSearch,
-  FiSliders,
-  FiSmile,
-  FiTerminal,
-  FiThumbsUp,
-  FiToggleLeft,
-  FiTrendingUp,
-  FiUserPlus,
-} from "react-icons/fi";
+import { FiArrowRight } from "react-icons/fi";
 import { Features } from "components/features";
 import { BackgroundGradient } from "components/gradients/background-gradient";
 import { Faq } from "components/faq";
@@ -52,32 +34,15 @@ import { Section } from "components/section";
 import { ButtonLink } from "components/button-link/button-link";
 import { Testimonial, Testimonials } from "components/testimonials";
 
-import faq from "data/faq";
-import testimonials from "data/testimonials";
-import pricing from "data/pricing";
-
-import {
-  Highlights,
-  HighlightsItem,
-  HighlightsTestimonialItem,
-} from "components/highlights";
-
 const Home: NextPage = () => {
   return (
     <Box>
       <SEO title="KalKram" description="AI Agentic Time Tracking Tool" />
       <Box>
         <HeroSection />
-
-        {/* <HighlightsSection /> */}
-
-        {/* <FeaturesSection /> */}
-
-        {/* <TestimonialsSection /> */}
-        {/* <PricingSection /> */}
-
-        {/* <FaqSection /> */}
-        <WaitlistSection />
+        <Box display={{ base: "block", md: "none" }}>
+          <WaitlistSection />
+        </Box>
       </Box>
     </Box>
   );
@@ -87,7 +52,11 @@ const HeroSection: React.FC = () => {
   return (
     <Box position="relative" overflow="hidden">
       <BackgroundGradient height="100%" zIndex="-1" />
-      <Container maxW="container.xl" pt={{ base: 40, lg: 60 }} pb="40">
+      <Container
+        maxW="container.xl"
+        pt={{ base: 20, lg: 60 }} // Reduced padding-top on mobile from 40 to 20
+        pb={{ base: 8, lg: 40 }} // Reduced padding-bottom on mobile from 40 to 8
+      >
         <Stack direction={{ base: "column", lg: "row" }} alignItems="center">
           <Hero
             id="home"
@@ -109,37 +78,9 @@ const HeroSection: React.FC = () => {
               </FallInPlace>
             }
           >
-            <FallInPlace delay={0.8}>
-              <HStack pt="4" pb="12" spacing="8">
-                {/* <NextjsLogo height="28px" /> <ChakraLogo height="20px" /> */}
-              </HStack>
-
-              <ButtonGroup spacing={4} alignItems="center">
-                {/* <ButtonLink colorScheme="primary" size="lg" href="#waitlist">
-                  Join Waitlist
-                </ButtonLink> */}
-                {/* <ButtonLink
-                  size="lg"
-                  href="https://demo.saas-ui.dev"
-                  variant="outline"
-                  rightIcon={
-                    <Icon
-                      as={FiArrowRight}
-                      sx={{
-                        transitionProperty: "common",
-                        transitionDuration: "normal",
-                        ".chakra-button:hover &": {
-                          transform: "translate(5px)",
-                        },
-                      }}
-                    />
-                  }
-                >
-                  View demo
-                </ButtonLink> */}
-              </ButtonGroup>
-            </FallInPlace>
-            {/* <WaitlistSection /> */}
+            <Box display={{ base: "none", md: "block" }} pt={20}>
+              <WaitlistSection />
+            </Box>
           </Hero>
           <Box
             height="600px"
@@ -172,289 +113,7 @@ const HeroSection: React.FC = () => {
           </Box>
         </Stack>
       </Container>
-
-      {/* <Features
-        id="benefits"
-        columns={[1, 2, 4]}
-        iconSize={4}
-        innerWidth="container.xl"
-        pt="20"
-        features={[
-          {
-            title: "Ultimate Productivity Tool",
-            icon: FiSmile,
-            description:
-              "You can't improve what you can't measure, Track every minute of when you effort. Follow the principal of 10,000 hours to mastery",
-            iconPosition: "left",
-            delay: 0.6,
-          },
-          {
-            title: "AI Agentic Time Tracking",
-            icon: FiSliders,
-            description:
-              "An aggregation on all of your pomodoro timers, get ground reality if your really shipped anything substancial this week or not",
-            iconPosition: "left",
-            delay: 0.8,
-          },
-          {
-            title: "Personalised AI coach",
-            icon: FiGrid,
-            description:
-              "Tell the coach about your personal goals and then the coach personally train you to achieve that goal via personalised updates every day ",
-            delay: 1,
-          },
-          {
-            title: "Newsletter Summaries",
-            icon: FiThumbsUp,
-            description:
-              "Get weekly and monthly summaries of your grind, what are the things which were correct this week, where did you mess up. Restrospect",
-            iconPosition: "left",
-            delay: 1.1,
-          },
-        ]}
-        reveal={FallInPlace}
-      /> */}
     </Box>
-  );
-};
-
-const HighlightsSection = () => {
-  const { value, onCopy, hasCopied } = useClipboard("yarn add @saas-ui/react");
-
-  return (
-    <Highlights id="highlights">
-      <HighlightsItem
-        colSpan={[1, null, 2]}
-        title="The magic number of true expertise"
-      >
-        <VStack alignItems="flex-start" spacing="8">
-          <Text color="muted" fontSize="xl">
-            Practice isn't the thing you do once and you're good . It's the
-            thing you do that makes you good. Researchers have settled on what
-            they believe is the magic number of true expertise: 10,000 hours.
-            Surprisingly the vast majority of your problems will be solved if
-            you simply put in more amount of hours developing the art. It is as
-            simple as that. Put in the work, and then probablity will happen.
-            <Em></Em>
-          </Text>
-
-          {/* <Flex
-            rounded="full"
-            borderWidth="1px"
-            flexDirection="row"
-            alignItems="center"
-            py="1"
-            ps="8"
-            pe="2"
-            bg="primary.900"
-            _dark={{ bg: "gray.900" }}
-          >
-            <Box>
-              <Text color="yellow.400" display="inline">
-                yarn add
-              </Text>{" "}
-              <Text color="cyan.300" display="inline">
-                @saas-ui/react
-              </Text>
-            </Box>
-            <IconButton
-              icon={hasCopied ? <FiCheck /> : <FiCopy />}
-              aria-label="Copy install command"
-              onClick={onCopy}
-              variant="ghost"
-              ms="4"
-              isRound
-              color="white"
-            />
-          </Flex> */}
-        </VStack>
-      </HighlightsItem>
-      <HighlightsItem title="It is as easy as that">
-        <Text color="muted" fontSize="lg">
-          Most of us don't have observability over our life. We are clueless
-          zombies who can't even remember what we had for breakfast yesterday
-          morning. The art of improving the game is as easy as gamifying the
-          process of grind. Personalised AI to overlook your progress
-        </Text>
-      </HighlightsItem>
-      <HighlightsTestimonialItem
-        name="Yashraj Shukla"
-        description="Founder"
-        avatar="/static/images/avatar.png"
-        gradient={["pink.200", "purple.500"]}
-      >
-        “Much of my success can be attributed to my habit of tracking the number
-        of hours I used to study. I really wanted to cross that mark of 10,000
-        hours and That's why I started clocking those hours. And now I know the
-        exact number of hours I have programmed in my life ~6,332 hours!"
-      </HighlightsTestimonialItem>
-      <HighlightsItem
-        colSpan={[1, null, 2]}
-        title="You can't improve what you can't measure"
-      >
-        <Text color="muted" fontSize="lg">
-          When you first start tracking your time, you get a reality check that
-          you don't actually get that much work done as much you think you do.
-          Tracked time is the ultimate source of truth. It tells you if you were
-          more productive this week or the previous one, things which went
-          correct or downright wrong
-        </Text>
-        <Wrap mt="8">
-          {[
-            "tracks your grind",
-            "final source of truth",
-            "personal accountability",
-            "10x better than pomodoro timers",
-            "proven productivity methodology",
-            "AI reports and analysis",
-            "Weekly & Monthly summary",
-            "Newsletter summaries for introspection",
-          ].map((value) => (
-            <Tag
-              key={value}
-              variant="subtle"
-              colorScheme="purple"
-              rounded="full"
-              px="3"
-            >
-              {value}
-            </Tag>
-          ))}
-        </Wrap>
-      </HighlightsItem>
-    </Highlights>
-  );
-};
-
-const FeaturesSection = () => {
-  return (
-    <Features
-      id="features"
-      title={
-        <Heading
-          lineHeight="short"
-          fontSize={["2xl", null, "4xl"]}
-          textAlign="left"
-          as="p"
-        >
-          Not your standard
-          <Br /> dashboard template.
-        </Heading>
-      }
-      description={
-        <>
-          Saas UI Pro includes everything you need to build modern frontends.
-          <Br />
-          Use it as a template for your next product or foundation for your
-          design system.
-        </>
-      }
-      align="left"
-      columns={[1, 2, 3]}
-      iconSize={4}
-      features={[
-        {
-          title: "Components.",
-          icon: FiBox,
-          description:
-            "All premium components are available on a private NPM registery, no more copy pasting and always up-to-date.",
-          variant: "inline",
-        },
-        {
-          title: "Starterkits.",
-          icon: FiLock,
-          description:
-            "Example apps in Next.JS, Electron. Including authentication, billing, example pages, everything you need to get started FAST.",
-          variant: "inline",
-        },
-        {
-          title: "Documentation.",
-          icon: FiSearch,
-          description:
-            "Extensively documented, including storybooks, best practices, use-cases and examples.",
-          variant: "inline",
-        },
-        {
-          title: "Onboarding.",
-          icon: FiUserPlus,
-          description:
-            "Add user onboarding flows, like tours, hints and inline documentation without breaking a sweat.",
-          variant: "inline",
-        },
-        {
-          title: "Feature flags.",
-          icon: FiFlag,
-          description:
-            "Implement feature toggles for your billing plans with easy to use hooks. Connect Flagsmith, or other remote config services once you're ready.",
-          variant: "inline",
-        },
-        {
-          title: "Upselling.",
-          icon: FiTrendingUp,
-          description:
-            "Components and hooks for upgrade flows designed to make upgrading inside your app frictionless.",
-          variant: "inline",
-        },
-        {
-          title: "Themes.",
-          icon: FiToggleLeft,
-          description:
-            "Includes multiple themes with darkmode support, always have the perfect starting point for your next project.",
-          variant: "inline",
-        },
-        {
-          title: "Generators.",
-          icon: FiTerminal,
-          description:
-            "Extend your design system while maintaininig code quality and consistency with built-in generators.",
-          variant: "inline",
-        },
-        {
-          title: "Monorepo.",
-          icon: FiCode,
-          description: (
-            <>
-              All code is available as packages in a high-performance{" "}
-              <Link href="#">Turborepo</Link>, you have full control to modify
-              and adjust it to your workflow.
-            </>
-          ),
-          variant: "inline",
-        },
-      ]}
-    />
-  );
-};
-
-const TestimonialsSection = () => {
-  const columns = React.useMemo(() => {
-    return testimonials.items.reduce<Array<typeof testimonials.items>>(
-      (columns, t, i) => {
-        columns[i % 3].push(t);
-
-        return columns;
-      },
-      [[], [], []]
-    );
-  }, []);
-
-  return (
-    <Testimonials
-      id="testimonials"
-      title={testimonials.title}
-      columns={[1, 2, 3]}
-      innerWidth="container.xl"
-    >
-      <>
-        {columns.map((column, i) => (
-          <Stack key={i} spacing="8" height="100%">
-            {column.map((t, i) => (
-              <Testimonial key={i} {...t} />
-            ))}
-          </Stack>
-        ))}
-      </>
-    </Testimonials>
   );
 };
 
@@ -486,13 +145,19 @@ const WaitlistSection: React.FC = () => {
   };
 
   return (
-    <Section id="waitlist" py={0} px={0} display="flex" justifyContent="center">
+    <Section
+      id="waitlist"
+      py={{ base: 4, md: 0 }} // Reduced padding on mobile from 0 to 4 for minimal spacing
+      px={0}
+      display="flex"
+      justifyContent="center"
+    >
       <Container maxW="container.md">
         <Flex
           direction="column"
           align="center"
           p={4}
-          my={0}
+          my={{ base: 0, md: 0 }} // Removed margin on mobile to reduce gap
           borderRadius="lg"
           boxShadow="lg"
         >
@@ -525,29 +190,4 @@ const WaitlistSection: React.FC = () => {
     </Section>
   );
 };
-
-const PricingSection = () => {
-  return (
-    <Pricing id="pricing" {...pricing}>
-      <Text p="8" textAlign="center" color="muted"></Text>
-    </Pricing>
-  );
-};
-
-const FaqSection = () => {
-  return <Faq {...faq} />;
-};
 export default Home;
-
-// export async function getStaticProps() {
-//   return {
-//     props: {
-//       announcement: {
-//         title: "Build with sprit by whynesspower.com 🚀 ",
-//         description: '<img src="" />',
-//         href: "https://x.com/whynesspower",
-//         action: false,
-//       },
-//     },
-//   };
-// }
