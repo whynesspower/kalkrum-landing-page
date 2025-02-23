@@ -37,7 +37,7 @@ import { Testimonial, Testimonials } from "components/testimonials";
 const Home: NextPage = () => {
   return (
     <Box>
-      <SEO title="KalKram" description="AI Agentic Time Tracking Tool" />
+      <SEO title="KalKram" description="Helping engineering teams get AI summaries of projects and teams" />
       <Box>
         <HeroSection />
         <Box display={{ base: "block", md: "none" }}>
@@ -116,7 +116,6 @@ const HeroSection: React.FC = () => {
     </Box>
   );
 };
-
 // Waitlist Section - Integrated directly into the index file
 const WaitlistSection: React.FC = () => {
   const [email, setEmail] = React.useState("");
@@ -138,9 +137,12 @@ const WaitlistSection: React.FC = () => {
           body: formData.toString(),
         }
       );
+
       alert("Thank you for signing up!");
+      setEmail(""); // Reset the input field to empty after submission
     } catch (error) {
       alert("Thank you for signing up!");
+      setEmail(""); // Reset the input field to empty after submission
     }
   };
 
