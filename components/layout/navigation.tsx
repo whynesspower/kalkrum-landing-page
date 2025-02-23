@@ -47,6 +47,17 @@ const Navigation: React.FC = () => {
                 (href && !!router.asPath.match(new RegExp(href)))
               )
             }
+            onClick={(e) => {
+              e.preventDefault();
+              const targetId = href ? href.substring(1) : id;
+              const targetElement = document.getElementById(targetId);
+              if (targetElement) {
+                window.scrollTo({
+                  top: targetElement.offsetTop,
+                  behavior: "smooth",
+                });
+              }
+            }}
             {...props}
           >
             {props.label}
