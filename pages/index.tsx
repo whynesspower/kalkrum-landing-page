@@ -122,10 +122,15 @@ const WaitlistSection: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+  
+    if (!email.trim()) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+  
     const formData = new URLSearchParams();
     formData.append("entry.1115472667", email);
-
+  
     try {
       await fetch(
         "https://docs.google.com/forms/u/0/d/e/1FAIpQLSeBOfXMilwtbDavfuqd1GmTTbTXuklbx8-i5BSW_aYzPfMRYA/formResponse",
@@ -137,7 +142,7 @@ const WaitlistSection: React.FC = () => {
           body: formData.toString(),
         }
       );
-
+  
       alert("Thank you for signing up!");
       setEmail(""); // Reset the input field to empty after submission
     } catch (error) {
@@ -145,6 +150,7 @@ const WaitlistSection: React.FC = () => {
       setEmail(""); // Reset the input field to empty after submission
     }
   };
+  
 
   return (
     <Section
