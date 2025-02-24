@@ -18,9 +18,11 @@ import {
   VStack,
   Input,
   Flex,
+  List,
+  ListItem,
 } from "@chakra-ui/react";
 import { SEO } from "components/seo/seo";
-
+import { MdLightbulb, MdDashboard } from "react-icons/md";
 import { FallInPlace } from "components/motion/fall-in-place";
 import { Hero } from "components/hero";
 import { Link, Br } from "@saas-ui/react";
@@ -57,61 +59,66 @@ const HeroSection: React.FC = () => {
         pt={{ base: 20, lg: 60 }} // Reduced padding-top on mobile from 40 to 20
         pb={{ base: 8, lg: 40 }} // Reduced padding-bottom on mobile from 40 to 8
       >
-        <Stack direction={{ base: "column", lg: "row" }} alignItems="center">
-          <Hero
-            id="home"
-            justifyContent="flex-start"
-            px="0"
-            title={
-              <FallInPlace>
-                <Text fontSize={{ base: "4xl", lg: "5xl" }}>
-                  Stay Informed.
-                  <Br />
-                  Updates about your organisation in 60 words!
-                </Text>
-              </FallInPlace>
-            }
-            description={
-              <FallInPlace delay={0.4} fontWeight="medium">
-                KalKram helps engineering leaders get<Em> AI summaries </Em>
-                of ongoing projects & team
-              </FallInPlace>
-            }
-          >
-            <Box display={{ base: "none", md: "block" }} pt={20}>
-              <WaitlistSection />
-            </Box>
-          </Hero>
-          <Box
-            height="600px"
-            position="absolute"
-            display={{ base: "none", lg: "block" }}
-            left={{ lg: "60%", xl: "55%" }}
-            width="80vw"
-            maxW="1100px"
-            margin="0 auto"
-          >
-            <FallInPlace delay={1}>
-              <Box
-                overflow="hidden"
-                height="100%"
-                borderRadius="20px"
-                boxShadow="0 4px 8px rgba(0, 0, 0, 0.5)"
-              >
-                <Image
-                  src="/static/screenshots/list.png"
-                  layout="fixed"
-                  width={1200}
-                  height={762}
-                  alt="Screenshot of a ListPage in Saas UI Pro"
-                  quality="75"
-                  priority
-                  style={{ borderRadius: "20px" }}
-                />
-              </Box>
-            </FallInPlace>
-          </Box>
-        </Stack>
+<Stack direction={{ base: "column", lg: "row" }} alignItems="center">
+  <Hero
+    id="home"
+    justifyContent="flex-start"
+    px="0"
+    title={
+      <FallInPlace>
+        <Text fontSize={{ base: "4xl", lg: "5xl" }} fontWeight="bold">
+          Updates about your organisation in 60 words!
+        </Text>
+      </FallInPlace>
+    }
+    description={
+      <FallInPlace delay={0.4} fontWeight="medium">
+      KalKram helps engineering leaders get<Em> AI summaries </Em>
+      of ongoing projects & team <Br/>
+      <Br/>
+    <ul> 
+    <li>AI curated 60 word updates about project status, organisational threats, sprint summaries, RCA docs, SSDLC tickets. </li>
+    <li>Save time, Get a bird's eye view of the whole organisation based on data from Jira, Slack, Docs, Github at one place. </li>
+    </ul>
+    </FallInPlace>
+    }
+  >
+    <Box display={{ base: "none", md: "block" }} pt={20}>
+      <WaitlistSection />
+    </Box>
+  </Hero>
+  
+  <Box
+    height="600px"
+    position="absolute"
+    display={{ base: "none", lg: "block" }}
+    left={{ lg: "60%", xl: "55%" }}
+    width="80vw"
+    maxW="1100px"
+    margin="0 auto"
+  >
+    <FallInPlace delay={1}>
+      <Box
+        overflow="hidden"
+        height="100%"
+        borderRadius="20px"
+        boxShadow="0 4px 8px rgba(0, 0, 0, 0.5)"
+      >
+        <Image
+          src="/static/screenshots/list.png"
+          layout="fixed"
+          width={1200}
+          height={762}
+          alt="Screenshot of a ListPage in Saas UI Pro"
+          quality="75"
+          priority
+          style={{ borderRadius: "20px" }}
+        />
+      </Box>
+    </FallInPlace>
+  </Box>
+</Stack>
+
       </Container>
     </Box>
   );
@@ -170,7 +177,7 @@ const WaitlistSection: React.FC = () => {
           boxShadow="lg"
         >
           <Text fontSize="2xl" mb={4} textAlign="center">
-            ✨ Early access waitlist <strong>KalKram</strong>!
+            ✨ Early access  <strong>waitlist</strong>!
           </Text>
           <form onSubmit={handleSubmit} style={{ width: "100%" }}>
             <Input
