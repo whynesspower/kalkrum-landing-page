@@ -4,24 +4,38 @@ import { theme } from '@saas-ui/react'
 import components from './components'
 import { fontSizes } from './foundations/typography'
 
-import '@fontsource/inter/variable.css'
+import '@fontsource/noto-sans-devanagari/devanagari-400.css'
+import '@fontsource/noto-sans-devanagari/devanagari-700.css'
 
 /**
- * Brand tokens. Components read these instead of raw hex values, so light
- * and dark mode stay in step. Accent text meets 4.5:1 on its canvas.
+ * Brand tokens. The site is dark only, so default and _dark share a value.
+ * Components read these names instead of raw hex values.
  */
+const dark = (value: string) => ({ default: value, _dark: value })
+
 const semanticTokens = {
   colors: {
-    'kk.canvas': { default: '#ffffff', _dark: '#07070b' },
-    'kk.surface': { default: '#f6f6fa', _dark: '#0e0e15' },
-    'kk.surfaceHi': { default: '#ffffff', _dark: '#14141e' },
-    'kk.line': { default: 'rgba(10, 10, 24, 0.12)', _dark: 'rgba(255, 255, 255, 0.10)' },
-    'kk.fg': { default: '#0b0b12', _dark: '#f4f4f8' },
-    'kk.muted': { default: '#4b4b5c', _dark: '#a6a6ba' },
-    'kk.accent': { default: '#6540d8', _dark: '#a18bff' },
-    'kk.accentSolid': { default: '#6540d8', _dark: '#6c45e4' },
-    'kk.accentHover': { default: '#5530c4', _dark: '#5a34d0' },
+    'kk.canvas': dark('#05060a'),
+    'kk.surface': dark('#0b0d14'),
+    'kk.surfaceHi': dark('#11141d'),
+    'kk.line': dark('rgba(255, 255, 255, 0.10)'),
+    'kk.fg': dark('#f2f4f8'),
+    'kk.muted': dark('#9aa3b5'),
+    'kk.accent': dark('#8ee3ff'),
+    'kk.violet': dark('#a18bff'),
+    'kk.accentSolid': dark('#5b7cff'),
+    'kk.accentHover': dark('#4a6af0'),
   },
+}
+
+const stack =
+  '"D-DIN", "DIN Alternate", "Barlow", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans Devanagari", sans-serif'
+
+const fonts = {
+  heading: stack,
+  body: stack,
+  display: stack,
+  mono: stack,
 }
 
 const styles = {
@@ -34,8 +48,9 @@ const styles = {
       fontSize: 'lg',
       WebkitFontSmoothing: 'antialiased',
       textRendering: 'optimizeLegibility',
+      fontVariantNumeric: 'tabular-nums',
     },
-    '::selection': { background: 'rgba(108, 69, 228, 0.35)' },
+    '::selection': { background: 'rgba(142, 227, 255, 0.28)' },
     '*:focus-visible': {
       outline: '2px solid',
       outlineColor: 'kk.accent',
@@ -60,6 +75,7 @@ export default extendTheme(
     },
     styles,
     semanticTokens,
+    fonts,
     fontSizes,
     components,
   },

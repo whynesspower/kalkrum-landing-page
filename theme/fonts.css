@@ -1,0 +1,22 @@
+/* D-DIN PRO by Datto, SIL OFL 1.1 (woff2 from npm @sarap422/font-d-din) */
+@font-face {
+  font-family: 'D-DIN';
+  src: url('/static/fonts/D-DIN-PRO-400-Regular.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'D-DIN';
+  src: url('/static/fonts/D-DIN-PRO-500-Medium.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'D-DIN';
+  src: url('/static/fonts/D-DIN-PRO-700-Bold.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}

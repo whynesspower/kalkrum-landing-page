@@ -1,6 +1,5 @@
 import * as React from "react";
 import NextLink from "next/link";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import {
   Box,
@@ -11,8 +10,6 @@ import {
   IconButton,
   Link,
   Text,
-  useColorMode,
-  useColorModeValue,
 } from "@chakra-ui/react";
 import {
   AnimatePresence,
@@ -20,25 +17,28 @@ import {
   useScroll,
   useSpring,
 } from "framer-motion";
-import { FiMenu, FiMoon, FiSun, FiX } from "react-icons/fi";
+import { FiMenu, FiX } from "react-icons/fi";
 import siteConfig from "data/config";
 import { MotionBox } from "components/motion/box";
 import { duration, ease } from "lib/motion";
 import { track } from "lib/posthog";
+import { Logo } from "./logo";
 
 export interface HeaderProps extends Omit<BoxProps, "children"> {}
 
-const LINKS = siteConfig.header.links;
-const SPY_IDS = LINKS.filter((l) => !l.cta).map((l) => l.id);
+const LINKS = siteConfig.nav;
+const JOIN_HREF = "/careers";
+
+/** Links with a hash (such as /about#vision) never count as the active page. */
+const isActiveLink = (href: string, pathname: string) =>
+  !href.includes("#") && href === pathname;
 
 export const Header = (props: HeaderProps) => {
   const router = useRouter();
   const reduce = useReducedMotion();
-  const { colorMode, toggleColorMode } = useColorMode();
   const [scrolled, setScrolled] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const [hovered, setHovered] = React.useState<string | null>(null);
-  const [activeId, setActiveId] = React.useState<string | null>(null);
   const wrapRef = React.useRef<HTMLDivElement>(null);
 
   const { scrollY, scrollYProgress } = useScroll();
@@ -51,25 +51,6 @@ export const Header = (props: HeaderProps) => {
     setScrolled(scrollY.get() > 12);
     return scrollY.on("change", (v) => setScrolled(v > 12));
   }, [scrollY]);
-
-  // Highlights the section that crosses the middle of the screen.
-  React.useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const id = entry.target.id;
-          if (entry.isIntersecting) setActiveId(id);
-          else setActiveId((cur) => (cur === id ? null : cur));
-        });
-      },
-      { rootMargin: "-45% 0px -50% 0px" }
-    );
-    SPY_IDS.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
-  }, [router.pathname]);
 
   // Close the mobile menu on Escape, outside clicks, and navigation.
   React.useEffect(() => {
@@ -93,32 +74,10 @@ export const Header = (props: HeaderProps) => {
     return () => router.events.off("routeChangeStart", close);
   }, [router.events]);
 
-  const goTo = (id: string, focusInput = false) => (e: React.MouseEvent) => {
-    const target = document.getElementById(id);
-    if (!target) return; // On other pages the link falls through to "/#id".
-    e.preventDefault();
-    setOpen(false);
-    target.scrollIntoView({
-      behavior: reduce ? "auto" : "smooth",
-      block: "start",
-    });
-    if (focusInput) {
-      window.setTimeout(
-        () => target.querySelector("input")?.focus({ preventScroll: true }),
-        reduce ? 0 : 700
-      );
-    }
-  };
-
-  const pillBg = useColorModeValue(
-    scrolled ? "rgba(255,255,255,0.86)" : "rgba(255,255,255,0.6)",
-    scrolled ? "rgba(16,16,24,0.78)" : "rgba(16,16,24,0.5)"
-  );
-  const highlight = useColorModeValue("blackAlpha.100", "whiteAlpha.200");
-  const dropdownBg = useColorModeValue("rgba(255,255,255,0.95)", "rgba(16,16,24,0.95)");
-  const current = hovered ?? activeId;
-  const links = LINKS.filter((l) => !l.cta);
-  const cta = LINKS.find((l) => l.cta);
+  const pillBg = scrolled ? "rgba(8,10,16,0.82)" : "rgba(8,10,16,0.5)";
+  const highlight = "whiteAlpha.200";
+  const activeHref = LINKS.find((l) => isActiveLink(l.href, router.pathname))?.href ?? null;
+  const current = hovered ?? activeHref;
 
   return (
     <Box
@@ -159,35 +118,33 @@ export const Header = (props: HeaderProps) => {
           backdropFilter="saturate(180%) blur(18px)"
           boxShadow={
             scrolled
-              ? "0 12px 40px -14px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.06)"
+              ? "0 12px 40px -14px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.06)"
               : "inset 0 1px 0 rgba(255,255,255,0.06)"
           }
           transition="background .3s ease, box-shadow .3s ease"
         >
           {/* Brand */}
-          <Flex
-            as={NextLink}
-            href="/"
-            align="center"
-            gap="2.5"
-            w="fit-content"
-            aria-label="KalKram home"
-            onClick={(e: React.MouseEvent) => {
-              if (router.pathname === "/") {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
-              }
-            }}
-          >
-            <Image
-              src="/static/screenshots/kalkram.png"
-              alt=""
-              width={28}
-              height={28}
-              priority
-              style={{ width: 28, height: 28 }}
+          <Flex align="center" gap="2.5" w="fit-content">
+            <Logo
+              size={30}
+              onClick={(e) => {
+                if (router.pathname === "/") {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+                }
+              }}
             />
-            <Text fontWeight="700" fontSize="lg" letterSpacing="-0.02em">
+            <Text
+              as={NextLink}
+              href="/"
+              aria-hidden
+              tabIndex={-1}
+              fontFamily="mono"
+              fontWeight="500"
+              fontSize="sm"
+              letterSpacing="0.18em"
+              textTransform="uppercase"
+            >
               KalKram
             </Text>
           </Flex>
@@ -200,25 +157,27 @@ export const Header = (props: HeaderProps) => {
             spacing="0"
             onMouseLeave={() => setHovered(null)}
           >
-            {links.map(({ id, label, href }) => (
+            {LINKS.map(({ label, href }) => (
               <Link
-                key={id}
+                key={href}
                 as={NextLink}
-                href={href || `/#${id}`}
+                href={href}
                 position="relative"
                 px="3.5"
                 py="2"
-                fontSize="md"
-                fontWeight="500"
-                color={current === id ? "kk.fg" : "kk.muted"}
+                fontFamily="mono"
+                fontSize="xs"
+                letterSpacing="0.12em"
+                textTransform="uppercase"
+                color={current === href ? "kk.fg" : "kk.muted"}
+                aria-current={activeHref === href ? "page" : undefined}
                 transition="color .2s ease"
                 _hover={{ textDecoration: "none", color: "kk.fg" }}
-                onMouseEnter={() => setHovered(id)}
-                onFocus={() => setHovered(id)}
+                onMouseEnter={() => setHovered(href)}
+                onFocus={() => setHovered(href)}
                 onBlur={() => setHovered(null)}
-                onClick={goTo(id)}
               >
-                {current === id && (
+                {current === href && (
                   <MotionBox
                     layoutId="nav-highlight"
                     position="absolute"
@@ -237,38 +196,22 @@ export const Header = (props: HeaderProps) => {
 
           {/* Actions */}
           <HStack spacing="1.5" justifySelf="end">
-            <IconButton
-              aria-label={
-                colorMode === "dark" ? "Switch to light mode" : "Switch to dark mode"
-              }
-              icon={colorMode === "dark" ? <FiSun size="16" /> : <FiMoon size="16" />}
-              onClick={toggleColorMode}
-              variant="ghost"
-              borderRadius="full"
-              w="40px"
-              minW="40px"
-              h="40px"
-              color="kk.muted"
-              _hover={{ bg: highlight, color: "kk.fg" }}
-            />
-            {cta && (
-              <Button
-                as="a"
-                href={cta.href || `/#${cta.id}`}
-                variant="cta"
-                size="sm"
-                h="40px"
-                px="5"
-                borderRadius="full"
-                display={{ base: "none", sm: "inline-flex" }}
-                onClick={(e) => {
-                  track("cta_click", { location: "header" });
-                  goTo(cta.id, true)(e);
-                }}
-              >
-                {cta.label}
-              </Button>
-            )}
+            <Button
+              as={NextLink}
+              href={JOIN_HREF}
+              variant="cta"
+              size="sm"
+              h="44px"
+              px="5"
+              fontFamily="mono"
+              fontSize="xs"
+              letterSpacing="0.1em"
+              textTransform="uppercase"
+              display={{ base: "none", sm: "inline-flex" }}
+              onClick={() => track("cta_click", { location: "header" })}
+            >
+              Join us
+            </Button>
             <IconButton
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
@@ -294,7 +237,7 @@ export const Header = (props: HeaderProps) => {
             bottom="0"
             h="2px"
             borderRadius="full"
-            bgGradient="linear(to-r, #6c45e4, #6cc4ff)"
+            bgGradient="linear(to-r, #5b7cff, #8ee3ff)"
             style={{ scaleX: progress, transformOrigin: "0% 50%" }}
           />
         </Box>
@@ -312,9 +255,9 @@ export const Header = (props: HeaderProps) => {
               borderRadius="28px"
               borderWidth="1px"
               borderColor="kk.line"
-              bg={dropdownBg}
+              bg="rgba(8,10,16,0.96)"
               backdropFilter="blur(18px)"
-              boxShadow="0 24px 60px -20px rgba(0,0,0,0.6)"
+              boxShadow="0 24px 60px -20px rgba(0,0,0,0.8)"
               display={{ base: "block", md: "none" }}
               initial={{ opacity: 0, y: -8, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -322,42 +265,45 @@ export const Header = (props: HeaderProps) => {
               transition={{ duration: duration.base, ease }}
             >
               <Flex as="nav" aria-label="Mobile" direction="column">
-                {links.map(({ id, label, href }) => (
-                  <Link
-                    key={id}
-                    as={NextLink}
-                    href={href || `/#${id}`}
-                    px="4"
-                    py="3.5"
-                    borderRadius="16px"
-                    fontSize="lg"
-                    fontWeight="500"
-                    color={activeId === id ? "kk.fg" : "kk.muted"}
-                    bg={activeId === id ? highlight : "transparent"}
-                    _hover={{ textDecoration: "none", bg: highlight, color: "kk.fg" }}
-                    onClick={goTo(id)}
-                  >
-                    {label}
-                  </Link>
-                ))}
+                {LINKS.map(({ label, href }) => {
+                  const active = activeHref === href;
+                  return (
+                    <Link
+                      key={href}
+                      as={NextLink}
+                      href={href}
+                      px="4"
+                      py="3.5"
+                      borderRadius="16px"
+                      fontFamily="mono"
+                      fontSize="sm"
+                      letterSpacing="0.12em"
+                      textTransform="uppercase"
+                      color={active ? "kk.fg" : "kk.muted"}
+                      bg={active ? highlight : "transparent"}
+                      aria-current={active ? "page" : undefined}
+                      _hover={{ textDecoration: "none", bg: highlight, color: "kk.fg" }}
+                    >
+                      {label}
+                    </Link>
+                  );
+                })}
               </Flex>
-              {cta && (
-                <Button
-                  as="a"
-                  href={cta.href || `/#${cta.id}`}
-                  variant="cta"
-                  w="full"
-                  h="48px"
-                  mt="2"
-                  borderRadius="16px"
-                  onClick={(e) => {
-                    track("cta_click", { location: "mobile_menu" });
-                    goTo(cta.id, true)(e);
-                  }}
-                >
-                  {cta.label}
-                </Button>
-              )}
+              <Button
+                as={NextLink}
+                href={JOIN_HREF}
+                variant="cta"
+                w="full"
+                h="48px"
+                mt="2"
+                fontFamily="mono"
+                fontSize="sm"
+                letterSpacing="0.1em"
+                textTransform="uppercase"
+                onClick={() => track("cta_click", { location: "mobile_menu" })}
+              >
+                Join us
+              </Button>
             </MotionBox>
           )}
         </AnimatePresence>

@@ -16,11 +16,11 @@ export const Logo = ({ href = "/", size = 32, onClick }: LogoProps) => {
       <Link href={href} onClick={onClick}>
         <Image
           alt="KalKram"
-          src="/static/screenshots/kalkram.png"
+          src="/static/brand/kalkram-logo.png"
           width={size}
           height={size}
           priority
-          style={{ width: size, height: size }}
+          style={{ width: size, height: size, objectFit: "contain" }}
         />
       </Link>
     </Flex>

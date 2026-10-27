@@ -4,25 +4,23 @@ import { ReactNode } from "react";
 import { SkipNavContent, SkipNavLink } from "@chakra-ui/skip-nav";
 
 import { Header, HeaderProps } from "./header";
-import {
-  AnnouncementBanner,
-  AnnouncementBannerProps,
-} from "../announcement-banner";
 import { Footer, FooterProps } from "./footer";
+import { GrainOverlay } from "components/lab/graphics/grain-overlay";
+import { CursorGlow } from "components/lab/graphics/cursor-glow";
 
 interface LayoutProps {
   children: ReactNode;
-  announcementProps: AnnouncementBannerProps;
-  headerProps: HeaderProps;
-  footerProps: FooterProps;
+  headerProps?: HeaderProps;
+  footerProps?: FooterProps;
 }
 
 export const Layout: React.FC<LayoutProps> = (props) => {
-  const { children, announcementProps, headerProps, footerProps } = props;
+  const { children, headerProps, footerProps } = props;
   return (
     <Box>
       <SkipNavLink>Skip to content</SkipNavLink>
-      <AnnouncementBanner {...announcementProps} />
+      <GrainOverlay />
+      <CursorGlow />
       <Header {...headerProps} />
       <Box as="main">
         <SkipNavContent />
