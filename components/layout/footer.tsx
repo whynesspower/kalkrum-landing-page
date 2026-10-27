@@ -1,104 +1,83 @@
 import {
   Box,
   BoxProps,
-  SimpleGrid,
   Container,
-  Text,
-  Stack,
   Flex,
   HStack,
-  Divider,
-} from "@chakra-ui/react"; // Import Divider
+  Link as ChakraLink,
+  Text,
+} from "@chakra-ui/react";
 import Link from "next/link";
-import Image from "next/image"; // Importing Image from next/image
+import Image from "next/image";
+import { FaLinkedin } from "react-icons/fa6";
 
 import siteConfig from "data/config";
 
-export interface FooterProps extends BoxProps {
-  columns?: number;
-}
+export interface FooterProps extends BoxProps {}
 
 export const Footer: React.FC<FooterProps> = (props) => {
-  const { columns = 2, ...rest } = props;
   return (
-    <Box bg="white" mt="8" _dark={{ bg: "gray.900" }} {...rest}>
-      {/* Divider added here */}
-      <Divider borderColor="gray.200" my="8" />
-      <Container maxW="container.2xl" px="8" py="8">
-        <SimpleGrid columns={columns}>
-          <Stack spacing="8">
-            <Stack alignItems="flex-start">
-              <Flex align="center">
-                {" "}
-                {/* Aligning "KalKram" vertically */}
-                <Image
-                  src="/static/screenshots/kalkram.png"
-                  alt="Footer Logo"
-                  width={48} // Specify a width
-                  height={48} // Specify a height
-                />
-                <Text ml="2" fontSize="xl" fontWeight="bold">
-                  {" "}
-                  {/* Adding margin to the left */}
-                  KalKram
-                </Text>
-              </Flex>
-              <Text fontSize="md" color="muted">
-                {siteConfig.seo.description}
+    <Box
+      as="footer"
+      borderTopWidth="1px"
+      borderColor="kk.line"
+      mt={{ base: 8, md: 16 }}
+      {...props}
+    >
+      <Container maxW="container.xl" px={{ base: 5, md: 8 }} py={{ base: 10, md: 12 }}>
+        <Flex
+          direction={{ base: "column", md: "row" }}
+          justify="space-between"
+          gap="8"
+        >
+          <Box maxW="360px">
+            <Flex align="center" gap="3">
+              <Image
+                src="/static/screenshots/kalkram.png"
+                alt=""
+                width={36}
+                height={32}
+                style={{ height: "auto" }}
+              />
+              <Text fontSize="lg" fontWeight="700">
+                KalKram
               </Text>
-            </Stack>
-            {/* <Copyright>{siteConfig.footer.copyright}</Copyright> */}
-          </Stack>
-          <HStack justify="flex-end" spacing="4" alignSelf="flex-end">
-            {siteConfig.footer?.links?.map(({ href, label }) => (
-              <FooterLink key={href} href={href}>
-                {label}
-              </FooterLink>
-            ))}
+            </Flex>
+            <Text fontSize="md" color="kk.muted" mt="3">
+              Your whole engineering org, in 60 words.
+            </Text>
+          </Box>
+
+          <HStack spacing="6" align="flex-start" fontSize="md">
+            <ChakraLink as={Link} href={siteConfig.privacyUrl} color="kk.muted" _hover={{ color: "kk.fg" }}>
+              Privacy
+            </ChakraLink>
+            <ChakraLink
+              href={`mailto:${siteConfig.footer.contactEmail}`}
+              color="kk.muted"
+              _hover={{ color: "kk.fg" }}
+            >
+              Contact
+            </ChakraLink>
+            <ChakraLink
+              href={siteConfig.footer.linkedin}
+              isExternal
+              aria-label="KalKram on LinkedIn"
+              color="kk.muted"
+              _hover={{ color: "kk.fg" }}
+              display="inline-flex"
+              alignItems="center"
+              minH="24px"
+            >
+              <FaLinkedin size="18" aria-hidden />
+            </ChakraLink>
           </HStack>
-        </SimpleGrid>
+        </Flex>
+
+        <Text fontSize="sm" color="kk.muted" mt="10">
+          © {new Date().getFullYear()} KalKram. All rights reserved.
+        </Text>
       </Container>
     </Box>
-  );
-};
-
-export interface CopyrightProps {
-  title?: React.ReactNode;
-  children: React.ReactNode;
-}
-
-export const Copyright: React.FC<CopyrightProps> = ({
-  title,
-  children,
-}: CopyrightProps) => {
-  let content;
-  if (title && !children) {
-    content = `© ${new Date().getFullYear()} - ${title}`;
-  }
-  return (
-    <Text color="muted" fontSize="sm">
-      {content || children}
-    </Text>
-  );
-};
-
-export const FooterLink: React.FC<
-  React.AnchorHTMLAttributes<HTMLAnchorElement>
-> = (props) => {
-  const { children, href, ...rest } = props;
-  return (
-    <Link legacyBehavior href={href || "#"} target="_blank" passHref>
-      <a
-        style={{
-          color: "inherit",
-          textDecoration: "none",
-          fontSize: "small",
-          transition: "color 0.2s ease-in",
-        }}
-        {...rest}
-      >
-        {children}
-      </a>
-    </Link>
   );
 };

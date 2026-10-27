@@ -1,26 +1,27 @@
 import * as React from "react";
-import { Box, Flex, Heading, VisuallyHidden } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import Link from "next/link";
+import Image from "next/image";
 
 export interface LogoProps {
   href?: string;
+  size?: number;
   onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 }
 
-import siteConfig from "data/config";
-import Image from "next/image";
-
-export const Logo = ({ href = "/", onClick }: LogoProps) => {
+/** The logo file is square, so it must be drawn square or it looks squashed. */
+export const Logo = ({ href = "/", size = 32, onClick }: LogoProps) => {
   return (
-    <Flex h="8" flexShrink="0" alignItems="flex-start">
+    <Flex flexShrink="0" alignItems="center">
       <Link href={href} onClick={onClick}>
         <Image
-          alt="Logo of KalKram"
+          alt="KalKram"
           src="/static/screenshots/kalkram.png"
-          width={45}
-          height={40}
-        ></Image>
-        <VisuallyHidden>{siteConfig.seo?.title}</VisuallyHidden>
+          width={size}
+          height={size}
+          priority
+          style={{ width: size, height: size }}
+        />
       </Link>
     </Flex>
   );

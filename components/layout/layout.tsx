@@ -28,7 +28,7 @@ export const Layout: React.FC<LayoutProps> = (props) => {
         <SkipNavContent />
         {children}
       </Box>
-      <Footer mt="4" {...footerProps} />
+      <Footer {...footerProps} />
     </Box>
   );
 };
