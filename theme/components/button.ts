@@ -1,6 +1,7 @@
 type Dict = Record<string, any>
 
 export default {
+  defaultProps: { variant: 'line', colorScheme: 'gray' },
   variants: {
     'nav-link': (props: Dict) => {
       const { isActive } = props

@@ -143,28 +143,6 @@ export const Hero: React.FC = () => {
         pb={{ base: 28, md: 28 }}
       >
         <MotionBox style={{ y: textY, opacity: textOpacity }} maxW="1040px">
-          <FallInPlace delay={0.1}>
-            <Text
-              fontFamily="mono"
-              fontSize="xs"
-              letterSpacing="0.2em"
-              textTransform="uppercase"
-              color="kk.accent"
-              mb={{ base: 6, md: 8 }}
-            >
-              <Box
-                as="span"
-                display="inline-block"
-                w="8px"
-                h="8px"
-                borderRadius="full"
-                bg="kk.accent"
-                mr="3"
-                boxShadow="0 0 12px #8ee3ff"
-              />
-              A frontier research lab
-            </Text>
-          </FallInPlace>
           <FallInPlace delay={0.25}>
             <Heading
               as="h1"

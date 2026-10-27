@@ -71,7 +71,6 @@ export const Footer: React.FC<FooterProps> = (props) => {
           gap={{ base: 12, lg: 16 }}
         >
           <Box maxW="560px">
-            <LogoMark size={72} />
             <Heading
               as="p"
               mt="6"
@@ -133,14 +132,15 @@ export const Footer: React.FC<FooterProps> = (props) => {
         >
           <LogoMark
             size={320}
-            w={{ base: "17vw", md: "13vw" }}
-            h={{ base: "17vw", md: "13vw" }}
+            w={{ base: "38vw", md: "13vw" }}
+            h={{ base: "38vw", md: "13vw" }}
             maxW="220px"
             maxH="220px"
             spinSeconds={180}
           />
           <Text
             as="span"
+            display={{ base: "none", md: "inline" }}
             fontFamily="display"
             fontWeight="700"
             textTransform="uppercase"

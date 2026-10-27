@@ -23,9 +23,34 @@ const semanticTokens = {
     'kk.muted': dark('#9aa3b5'),
     'kk.accent': dark('#8ee3ff'),
     'kk.violet': dark('#a18bff'),
-    'kk.accentSolid': dark('#5b7cff'),
-    'kk.accentHover': dark('#4a6af0'),
+    'kk.accentSolid': dark('#8ee3ff'),
+    'kk.accentHover': dark('#b6efff'),
   },
+}
+
+const cyan = {
+  50: '#effbff',
+  100: '#d4f5ff',
+  200: '#b6efff',
+  300: '#8ee3ff',
+  400: '#5fd3f5',
+  500: '#8ee3ff',
+  600: '#5fd3f5',
+  700: '#3fb4d8',
+  800: '#2a8aa8',
+  900: '#1b5f75',
+}
+
+// Any scale that could render purple by accident maps to cyan.
+const colors = {
+  primary: cyan,
+  purple: cyan,
+  violet: cyan,
+  indigo: cyan,
+}
+
+const shadows = {
+  outline: '0 0 0 3px rgba(142, 227, 255, 0.45)',
 }
 
 const stack =
@@ -74,6 +99,8 @@ export default extendTheme(
       useSystemColorMode: false,
     },
     styles,
+    colors,
+    shadows,
     semanticTokens,
     fonts,
     fontSizes,
