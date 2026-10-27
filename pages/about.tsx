@@ -5,7 +5,7 @@ import { SEO } from "components/seo/seo";
 import siteConfig from "data/config";
 import { IMAGE_CREDIT_LINE } from "data/images";
 import { Reveal } from "components/motion/reveal";
-import { DashedRule, LabSection, SectionLabel } from "components/lab/primitives";
+import { DashedRule, LabSection } from "components/lab/primitives";
 import { ArrowLink } from "components/lab/pages/arrow-link";
 import { LogoMark } from "components/lab/logo-mark";
 import { DnaHelix } from "components/lab/graphics/dna-helix";
@@ -28,7 +28,6 @@ const About: NextPage = () => {
 
       <LabSection>
         <Reveal>
-          <SectionLabel index="02">Principles</SectionLabel>
         </Reveal>
         <Box mt={{ base: 10, md: 16 }}>
           <PrinciplesWords />
@@ -73,7 +72,6 @@ const About: NextPage = () => {
 
       <LabSection py={{ base: 16, md: 24 }}>
         <Reveal>
-          <SectionLabel index="03">Contact</SectionLabel>
           <Box mt={6}>
             <ArrowLink href={`mailto:${email}`}>{email}</ArrowLink>
           </Box>

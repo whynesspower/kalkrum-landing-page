@@ -22,7 +22,7 @@ const semanticTokens = {
     'kk.fg': dark('#f2f4f8'),
     'kk.muted': dark('#9aa3b5'),
     'kk.accent': dark('#8ee3ff'),
-    'kk.violet': dark('#a18bff'),
+    'kk.mint': dark('#5ef2c4'),
     'kk.accentSolid': dark('#8ee3ff'),
     'kk.accentHover': dark('#b6efff'),
   },

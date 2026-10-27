@@ -18,12 +18,12 @@ interface Layer {
 
 const LAYERS: Layer[] = [
   { period: 300, amp: 62, phase: 0.0, dur: 26, dir: 1, color: "#8ee3ff", opacity: 0.7 },
-  { period: 200, amp: 48, phase: 1.1, dur: 22, dir: -1, color: "#a18bff", opacity: 0.6 },
-  { period: 150, amp: 38, phase: 2.3, dur: 18, dir: 1, color: "#5b7cff", opacity: 0.6 },
+  { period: 200, amp: 48, phase: 1.1, dur: 22, dir: -1, color: "#5ef2c4", opacity: 0.6 },
+  { period: 150, amp: 38, phase: 2.3, dur: 18, dir: 1, color: "#38bdf8", opacity: 0.6 },
   { period: 400, amp: 70, phase: 0.6, dur: 34, dir: -1, color: "#8ee3ff", opacity: 0.4 },
   { period: 240, amp: 30, phase: 3.1, dur: 28, dir: 1, color: "#f2f4f8", opacity: 0.28 },
-  { period: 120, amp: 22, phase: 4.2, dur: 20, dir: -1, color: "#a18bff", opacity: 0.4 },
-  { period: 600, amp: 84, phase: 1.7, dur: 44, dir: 1, color: "#5b7cff", opacity: 0.3 },
+  { period: 120, amp: 22, phase: 4.2, dur: 20, dir: -1, color: "#5ef2c4", opacity: 0.4 },
+  { period: 600, amp: 84, phase: 1.7, dur: 44, dir: 1, color: "#38bdf8", opacity: 0.3 },
 ];
 
 /** A sum of three harmonics, so the layer repeats exactly every `period`. */

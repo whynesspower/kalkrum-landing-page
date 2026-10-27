@@ -30,7 +30,7 @@ export const Glow: React.FC<{
   right?: string;
   bottom?: string;
 }> = ({
-  color = "#5b7cff",
+  color = "#38bdf8",
   size = 640,
   distance = -60,
   opacity = 0.2,

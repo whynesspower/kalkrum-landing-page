@@ -11,7 +11,7 @@ import { Lead } from "../primitives";
 import { LogoWatermark } from "../logo-mark";
 
 export interface PageHeroProps {
-  eyebrow: string;
+  eyebrow?: string;
   title: React.ReactNode;
   description: React.ReactNode;
   /** Key from SCIENCE_IMAGES. When omitted, a particle field is drawn. */
@@ -103,18 +103,6 @@ export const PageHero: React.FC<PageHeroProps> = ({
           alignItems="center"
         >
           <Box maxW="52rem">
-            <MotionBox {...enter(0)}>
-              <Text
-                fontFamily="mono"
-                fontSize="xs"
-                letterSpacing="0.18em"
-                textTransform="uppercase"
-                color="kk.accent"
-                mb={6}
-              >
-                {eyebrow}
-              </Text>
-            </MotionBox>
             <MotionBox {...enter(0.1)}>
               <Heading
                 as="h1"

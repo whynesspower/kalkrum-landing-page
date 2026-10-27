@@ -4,7 +4,7 @@ import { Box, Flex, Text } from "@chakra-ui/react";
 import { useMinWidth } from "hooks/use-min-width";
 import { Parallax } from "components/motion/parallax";
 import { IMAGE_CREDIT_LINE, SCIENCE_IMAGES } from "data/images";
-import { LabHeading, LabSection, SectionLabel } from "../primitives";
+import { LabHeading, LabSection } from "../primitives";
 import { HudFrame } from "../graphics/hud-frame";
 
 const SHOTS = [
@@ -49,7 +49,6 @@ const Shot: React.FC<{
 
 export const Gallery: React.FC = () => (
   <LabSection id="gallery">
-    <SectionLabel index="05">Gallery</SectionLabel>
     <LabHeading mt="6" maxW="760px">
       The sky as{" "}
       <Box as="span" fontStyle="normal" color="kk.accent">

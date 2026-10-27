@@ -33,7 +33,7 @@ export default {
         '0 1px 1px rgba(0,0,0,.45)',
         '0 6px 14px -4px rgba(0,0,0,.55)',
         '0 14px 30px -10px rgba(142,227,255,.32)',
-        '0 18px 40px -14px rgba(161,139,255,.28)',
+        '0 18px 40px -14px rgba(94,242,196,.28)',
       ].join(', '),
       transition:
         'transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .3s ease, filter .3s ease',
@@ -45,7 +45,7 @@ export default {
         borderRadius: 'inherit',
         padding: '1px',
         background:
-          'linear-gradient(160deg, rgba(255,255,255,.95), rgba(142,227,255,.55) 45%, rgba(161,139,255,.6) 100%)',
+          'linear-gradient(160deg, rgba(255,255,255,.95), rgba(142,227,255,.55) 45%, rgba(94,242,196,.6) 100%)',
         WebkitMask:
           'linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)',
         WebkitMaskComposite: 'xor',
@@ -82,7 +82,7 @@ export default {
           '0 2px 2px rgba(0,0,0,.4)',
           '0 10px 20px -4px rgba(0,0,0,.55)',
           '0 18px 44px -8px rgba(142,227,255,.55)',
-          '0 24px 60px -12px rgba(161,139,255,.5)',
+          '0 24px 60px -12px rgba(94,242,196,.5)',
         ].join(', '),
         _before: {
           opacity: 1,
@@ -147,7 +147,7 @@ export default {
         borderRadius: 'inherit',
         padding: '1px',
         background:
-          'linear-gradient(160deg, rgba(255,255,255,.55), rgba(255,255,255,.08) 40%, rgba(142,227,255,.3) 75%, rgba(161,139,255,.45) 100%)',
+          'linear-gradient(160deg, rgba(255,255,255,.55), rgba(255,255,255,.08) 40%, rgba(142,227,255,.3) 75%, rgba(94,242,196,.45) 100%)',
         WebkitMask:
           'linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)',
         WebkitMaskComposite: 'xor',
@@ -166,7 +166,7 @@ export default {
           '0 2px 2px rgba(0,0,0,.4)',
           '0 14px 30px -10px rgba(0,0,0,.6)',
           '0 12px 36px -8px rgba(142,227,255,.35)',
-          '0 18px 48px -12px rgba(161,139,255,.35)',
+          '0 18px 48px -12px rgba(94,242,196,.35)',
         ].join(', '),
         '& .chakra-button__icon:last-of-type, & > svg:last-child': {
           transform: 'translateX(3px)',

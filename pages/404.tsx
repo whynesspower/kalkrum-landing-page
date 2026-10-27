@@ -19,16 +19,6 @@ const NotFound: NextPage = () => (
       pb="20"
     >
       <LogoMark size={96} spinSeconds={60} mb="8" />
-      <Text
-        fontFamily="mono"
-        fontSize="xs"
-        letterSpacing="0.18em"
-        textTransform="uppercase"
-        color="kk.accent"
-        mb="5"
-      >
-        [404] Not found
-      </Text>
       <Heading
         as="h1"
         fontFamily="display"

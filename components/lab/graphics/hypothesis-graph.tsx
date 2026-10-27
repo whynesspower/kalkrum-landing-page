@@ -80,8 +80,8 @@ export const HypothesisGraph: React.FC<{ size?: number | string }> = ({ size }) 
         ))}
       </g>
 
-      {/* A rejected branch flickers in violet, then fades. */}
-      <line {...line(0, 1)} stroke="#a18bff" strokeWidth="1.2" strokeDasharray="3 4" opacity="0">
+      {/* A rejected branch flickers in mint, then fades. */}
+      <line {...line(0, 1)} stroke="#5ef2c4" strokeWidth="1.2" strokeDasharray="3 4" opacity="0">
         <animate
           attributeName="opacity"
           dur={DUR}
@@ -90,7 +90,7 @@ export const HypothesisGraph: React.FC<{ size?: number | string }> = ({ size }) 
           values="0;0;0.9;0.2;0;0"
         />
       </line>
-      <line {...line(1, 4)} stroke="#a18bff" strokeWidth="1.2" strokeDasharray="3 4" opacity="0">
+      <line {...line(1, 4)} stroke="#5ef2c4" strokeWidth="1.2" strokeDasharray="3 4" opacity="0">
         <animate
           attributeName="opacity"
           dur={DUR}
@@ -173,7 +173,7 @@ export const HypothesisGraph: React.FC<{ size?: number | string }> = ({ size }) 
                   cy={n.y}
                   r="9"
                   fill="none"
-                  stroke={isEnd ? "#a18bff" : "#8ee3ff"}
+                  stroke={isEnd ? "#5ef2c4" : "#8ee3ff"}
                   opacity="0"
                 >
                   <animate
@@ -229,7 +229,7 @@ export const HypothesisGraph: React.FC<{ size?: number | string }> = ({ size }) 
         fontFamily="'D-DIN', 'Noto Sans Devanagari', sans-serif"
         fontSize="7"
         letterSpacing="1.2"
-        fill="#a18bff"
+        fill="#5ef2c4"
         opacity="0"
       >
         SUPPORTED

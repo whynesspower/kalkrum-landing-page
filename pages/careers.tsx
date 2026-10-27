@@ -12,8 +12,7 @@ import {
   LabHeading,
   LabSection,
   Lead,
-  SectionLabel,
-} from "components/lab/primitives";
+  } from "components/lab/primitives";
 import { PageHero } from "components/lab/pages/page-hero";
 import { SpotlightCard } from "components/lab/pages/spotlight-card";
 import { ArrowLink } from "components/lab/pages/arrow-link";
@@ -80,7 +79,6 @@ const Careers: NextPage = () => {
         description="Join KalKram, a frontier research lab building AI systems that can do science. We hire research scientists, research engineers and infrastructure engineers."
       />
       <PageHero
-        eyebrow="[ Careers ]"
         title="Work on the hardest problem you can find."
         image="stephansQuintet"
         description="We are a lab with a long horizon. If you want to help build AI that can do science, and to do it with care, we would like to hear from you."
@@ -88,7 +86,6 @@ const Careers: NextPage = () => {
 
       <LabSection>
         <Reveal maxW="46rem">
-          <SectionLabel index="01">What we look for</SectionLabel>
           <LabHeading mt={5}>Four things matter most.</LabHeading>
           <Lead mt={6}>
             Degrees and titles matter less to us than how you think. These are
@@ -120,7 +117,6 @@ const Careers: NextPage = () => {
 
       <LabSection>
         <Reveal maxW="46rem">
-          <SectionLabel index="02">Where you could work</SectionLabel>
           <LabHeading mt={5}>Three areas we hire in.</LabHeading>
           <Lead mt={6}>
             These are areas of work, not open job postings. If one fits you,
@@ -170,7 +166,6 @@ const Careers: NextPage = () => {
           alignItems="start"
         >
           <Reveal>
-            <SectionLabel index="03">How to apply</SectionLabel>
             <LabHeading mt={5}>Send us an email.</LabHeading>
             <Lead mt={6}>
               There is no form and no portal. Write a short note about what

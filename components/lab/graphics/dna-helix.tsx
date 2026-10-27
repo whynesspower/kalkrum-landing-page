@@ -112,7 +112,7 @@ export const DnaHelix: React.FC<{ size?: number | string }> = ({ size }) => {
               key={i}
               y1={y}
               y2={y}
-              stroke={i % 3 === 0 ? "#a18bff" : "#f2f4f8"}
+              stroke={i % 3 === 0 ? "#5ef2c4" : "#f2f4f8"}
               strokeWidth="1"
             >
               <animate
@@ -140,7 +140,7 @@ export const DnaHelix: React.FC<{ size?: number | string }> = ({ size }) => {
         })}
 
         <Strand offset={0} color="#8ee3ff" />
-        <Strand offset={Math.PI} color="#a18bff" />
+        <Strand offset={Math.PI} color="#5ef2c4" />
 
         {/* Scanning band that travels down the helix. */}
         <rect x="70" width="240" height="46" fill="url(#dna-scan)">
@@ -157,7 +157,7 @@ export const DnaHelix: React.FC<{ size?: number | string }> = ({ size }) => {
           <text x="300" y="30" fill="#8ee3ff">
             A
           </text>
-          <text x="316" y="30" fill="#a18bff">
+          <text x="316" y="30" fill="#5ef2c4">
             T
           </text>
         </g>

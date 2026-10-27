@@ -30,16 +30,6 @@ const Privacy: NextPage = () => (
       description="How KalKram handles site usage data and the emails people send us."
     />
     <Container maxW="720px" px={{ base: 5, md: 8 }} pt={{ base: 32, md: 40 }} pb="20">
-      <Text
-        fontFamily="mono"
-        fontSize="xs"
-        letterSpacing="0.18em"
-        textTransform="uppercase"
-        color="kk.accent"
-        mb="4"
-      >
-        Legal
-      </Text>
       <Heading
         as="h1"
         fontFamily="display"

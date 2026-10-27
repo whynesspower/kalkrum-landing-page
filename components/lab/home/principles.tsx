@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Box, Grid, Text } from "@chakra-ui/react";
 import { Reveal } from "components/motion/reveal";
-import { LabHeading, LabSection, SectionLabel } from "../primitives";
+import { LabHeading, LabSection } from "../primitives";
 
 const stroke = {
   fill: "none",
@@ -62,7 +62,6 @@ const PRINCIPLES = [
 
 export const Principles: React.FC = () => (
   <LabSection id="principles">
-    <SectionLabel index="04">Principles</SectionLabel>
     <LabHeading mt="6" maxW="760px">
       How we{" "}
       <Box as="span" fontStyle="normal" color="kk.accent">

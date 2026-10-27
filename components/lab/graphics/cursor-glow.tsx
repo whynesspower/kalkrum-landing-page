@@ -51,7 +51,7 @@ export const CursorGlow: React.FC = () => {
         zIndex: 3,
         mixBlendMode: "screen",
         background:
-          "radial-gradient(circle, rgba(142,227,255,0.10) 0%, rgba(161,139,255,0.05) 35%, rgba(5,6,10,0) 68%)",
+          "radial-gradient(circle, rgba(142,227,255,0.10) 0%, rgba(94,242,196,0.05) 35%, rgba(5,6,10,0) 68%)",
         opacity: shown ? 1 : 0,
         transition: "opacity 0.5s ease",
       }}

@@ -3,7 +3,7 @@ import { Box, Grid, Text } from "@chakra-ui/react";
 import { Reveal } from "components/motion/reveal";
 import { SCIENCE_IMAGES, ScienceImageKey } from "data/images";
 import { LogoWatermark } from "../logo-mark";
-import { LabSection, SectionLabel } from "../primitives";
+import { LabSection } from "../primitives";
 import { HudFrame } from "../graphics/hud-frame";
 import { WordReveal } from "../graphics/word-reveal";
 import { NeuralLattice } from "../graphics/neural-lattice";
@@ -114,12 +114,11 @@ export const VisionBlock: React.FC<{ id?: string }> = ({ id }) => {
         decor={
           <>
             <LogoWatermark size={560} top="14%" right="-180px" opacity={0.07} distance={-70} />
-            <Glow color="#a18bff" size={700} top="-120px" left="-260px" distance={-80} opacity={0.14} />
-            <Glow color="#5b7cff" size={560} bottom="0" right="-200px" distance={-50} opacity={0.12} />
+            <Glow color="#5ef2c4" size={700} top="-120px" left="-260px" distance={-80} opacity={0.14} />
+            <Glow color="#38bdf8" size={560} bottom="0" right="-200px" distance={-50} opacity={0.12} />
           </>
         }
       >
-        <SectionLabel index="01">Vision</SectionLabel>
         <WordReveal
           as="h2"
           text={STATEMENT}

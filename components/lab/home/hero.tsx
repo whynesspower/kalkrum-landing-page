@@ -95,7 +95,7 @@ export const Hero: React.FC = () => {
         pointerEvents="none"
         sx={{
           background:
-            "radial-gradient(70% 60% at 75% 45%, rgba(91,124,255,0.16) 0%, transparent 70%)",
+            "radial-gradient(70% 60% at 75% 45%, rgba(56,189,248,0.16) 0%, transparent 70%)",
         }}
       />
 
@@ -158,7 +158,7 @@ export const Hero: React.FC = () => {
               <Box
                 as="span"
                 fontStyle="normal"
-                bgGradient="linear(to-r, #8ee3ff, #a18bff)"
+                bgGradient="linear(to-r, #8ee3ff, #5ef2c4 55%, #ffd27a)"
                 bgClip="text"
                 pr="0.08em"
               >

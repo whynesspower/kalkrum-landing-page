@@ -16,7 +16,7 @@ const MOUSE_R = 170;
 
 const pickColor = () => {
   const n = Math.random();
-  return n < 0.12 ? "142,227,255" : n < 0.22 ? "161,139,255" : "220,230,250";
+  return n < 0.12 ? "142,227,255" : n < 0.22 ? "94,242,196" : "220,230,250";
 };
 
 /** Drifting particles joined by faint lines, gently pushed and pulled by the pointer. */

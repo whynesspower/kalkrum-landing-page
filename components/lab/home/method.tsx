@@ -2,7 +2,7 @@ import * as React from "react";
 import { Box, Grid, Text } from "@chakra-ui/react";
 import { useReducedMotion, useScroll, motion } from "framer-motion";
 import { Reveal } from "components/motion/reveal";
-import { LabHeading, LabSection, Lead, SectionLabel } from "../primitives";
+import { LabHeading, LabSection, Lead } from "../primitives";
 import { LoopDiagram } from "../graphics/loop-diagram";
 import { Glow } from "./shared";
 
@@ -41,10 +41,9 @@ export const Method: React.FC = () => {
     <LabSection
       id="method"
       decor={
-        <Glow color="#a18bff" size={640} top="10%" left="-280px" distance={-60} opacity={0.12} />
+        <Glow color="#5ef2c4" size={640} top="10%" left="-280px" distance={-60} opacity={0.12} />
       }
     >
-      <SectionLabel index="03">Method</SectionLabel>
       <LabHeading mt="6" maxW="820px">
         How discovery works{" "}
         <Box as="span" fontStyle="normal" color="kk.accent">

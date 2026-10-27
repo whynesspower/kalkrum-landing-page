@@ -111,9 +111,6 @@ export const ResearchHero: React.FC = () => {
         pt="160px"
       >
         <MotionDiv style={{ y: textY, opacity: textOpacity }}>
-          <Mono mb={{ base: 6, md: 8 }}>
-            <ScrambleText text="[ Research ]" />
-          </Mono>
           <Heading
             as="h1"
             {...display}
@@ -230,9 +227,6 @@ export const AreaPanel: React.FC<{ area: PanelArea; flip: boolean }> = ({
           >
             <Box order={{ base: 2, lg: flip ? 2 : 1 }}>
               <Reveal>
-                <Mono mb={6}>
-                  <ScrambleText text={`[ ${area.index} / 04 ]`} />
-                </Mono>
                 <Heading
                   as="h2"
                   id={`area-${area.index}`}
@@ -267,7 +261,7 @@ export const AreaPanel: React.FC<{ area: PanelArea; flip: boolean }> = ({
                   position="absolute"
                   inset="-12%"
                   borderRadius="full"
-                  bg="radial-gradient(circle, rgba(142,227,255,0.16) 0%, rgba(91,124,255,0.06) 45%, transparent 70%)"
+                  bg="radial-gradient(circle, rgba(142,227,255,0.16) 0%, rgba(56,189,248,0.06) 45%, transparent 70%)"
                   style={{ opacity: glow }}
                 />
                 <Box
@@ -353,9 +347,6 @@ export const BandHeading: React.FC<{
   center?: boolean;
 }> = ({ label, title, line, center }) => (
   <Reveal textAlign={center ? "center" : "left"} mx={center ? "auto" : 0} maxW="46rem">
-    <Mono mb={6}>
-      <ScrambleText text={label} />
-    </Mono>
     <Heading
       as="h2"
       {...display}
@@ -488,7 +479,7 @@ export const Closing: React.FC = () => (
       aria-hidden="true"
       position="absolute"
       inset="0"
-      bg="radial-gradient(ellipse at 50% 100%, rgba(91,124,255,0.18), transparent 60%)"
+      bg="radial-gradient(ellipse at 50% 100%, rgba(56,189,248,0.18), transparent 60%)"
     />
     <Container maxW="container.xl" px={{ base: 5, md: 8 }} position="relative">
       <Reveal>

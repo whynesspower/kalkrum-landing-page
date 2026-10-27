@@ -9,6 +9,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import Link from "next/link";
+import { FaLinkedin } from "react-icons/fa6";
 
 import siteConfig from "data/config";
 import { IMAGE_CREDIT_LINE } from "data/images";
@@ -16,7 +17,12 @@ import { LogoMark, LogoWatermark } from "components/lab/logo-mark";
 
 export interface FooterProps extends BoxProps {}
 
-type FooterLink = { label: string; href: string; external?: boolean };
+type FooterLink = {
+  label: string;
+  href: string;
+  external?: boolean;
+  linkedin?: boolean;
+};
 
 const COLUMNS: Array<{ title: string; links: FooterLink[] }> = [
   {
@@ -36,7 +42,12 @@ const COLUMNS: Array<{ title: string; links: FooterLink[] }> = [
         href: `mailto:${siteConfig.footer.contactEmail}`,
         external: true,
       },
-      { label: "LinkedIn", href: siteConfig.footer.linkedin, external: true },
+      {
+        label: "LinkedIn",
+        href: siteConfig.footer.linkedin,
+        external: true,
+        linkedin: true,
+      },
     ],
   },
   {
@@ -86,7 +97,7 @@ export const Footer: React.FC<FooterProps> = (props) => {
             </Heading>
           </Box>
 
-          <SimpleGrid columns={{ base: 2, sm: 3 }} spacing={{ base: 10, md: 14 }}>
+          <SimpleGrid columns={{ base: 2, sm: 3 }} spacing={{ base: 10, md: 10, xl: 14 }}>
             {COLUMNS.map(({ title, links }) => (
               <Box key={title} minW="0">
                 <Text
@@ -100,17 +111,23 @@ export const Footer: React.FC<FooterProps> = (props) => {
                   {title}
                 </Text>
                 <Flex as="ul" direction="column" gap="3" listStyleType="none">
-                  {links.map(({ label, href, external }) => (
+                  {links.map(({ label, href, external, linkedin }) => (
                     <li key={label}>
                       <ChakraLink
                         as={external && href.startsWith("http") ? undefined : Link}
                         href={href}
                         isExternal={external && href.startsWith("http")}
-                        color="kk.muted"
-                        fontSize="md"
-                        overflowWrap="anywhere"
-                        _hover={{ color: "kk.fg", textDecoration: "none" }}
+                        color={linkedin ? "kk.fg" : "kk.muted"}
+                        fontSize={linkedin ? { base: "xl", md: "2xl" } : "md"}
+                        fontWeight={linkedin ? "700" : undefined}
+                        display={linkedin ? "inline-flex" : undefined}
+                        alignItems={linkedin ? "center" : undefined}
+                        gap={linkedin ? "3" : undefined}
+                        overflowWrap={linkedin ? "normal" : "anywhere"}
+                        whiteSpace={linkedin ? "nowrap" : { base: "normal", xl: "nowrap" }}
+                        _hover={{ color: "kk.accent", textDecoration: "none" }}
                       >
+                        {linkedin && <FaLinkedin aria-hidden size="1.1em" />}
                         {label}
                       </ChakraLink>
                     </li>

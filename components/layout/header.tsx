@@ -237,7 +237,7 @@ export const Header = (props: HeaderProps) => {
             bottom="0"
             h="2px"
             borderRadius="full"
-            bgGradient="linear(to-r, #5b7cff, #8ee3ff)"
+            bgGradient="linear(to-r, #38bdf8, #8ee3ff)"
             style={{ scaleX: progress, transformOrigin: "0% 50%" }}
           />
         </Box>

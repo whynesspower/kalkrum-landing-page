@@ -57,11 +57,6 @@ export const AboutHero: React.FC = () => {
         <NeuralLattice />
       </Box>
       <Container maxW="container.xl" px={{ base: 5, md: 8 }} position="relative" zIndex={1}>
-        <MotionBox {...enter(0)}>
-          <Text fontFamily="mono" fontSize="xs" letterSpacing="0.18em" textTransform="uppercase" color="kk.accent">
-            [ About ]
-          </Text>
-        </MotionBox>
         <MotionBox {...enter(0.12)}>
           <Heading
             as="h1"

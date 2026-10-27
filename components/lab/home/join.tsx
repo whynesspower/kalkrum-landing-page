@@ -3,7 +3,7 @@ import NextLink from "next/link";
 import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
 import { Reveal } from "components/motion/reveal";
 import siteConfig from "data/config";
-import { LabSection, Lead, SectionLabel } from "../primitives";
+import { LabSection, Lead } from "../primitives";
 import { DnaHelix } from "../graphics/dna-helix";
 import { Glow } from "./shared";
 import { LogoWatermark } from "../logo-mark";
@@ -15,8 +15,8 @@ export const Join: React.FC = () => (
     decor={
       <>
         <LogoWatermark size={620} bottom="-180px" left="-200px" opacity={0.1} distance={-40} />
-        <Glow color="#5b7cff" size={760} top="-10%" left="20%" distance={-70} opacity={0.18} />
-        <Glow color="#a18bff" size={520} bottom="-10%" right="-160px" distance={-40} opacity={0.16} />
+        <Glow color="#38bdf8" size={760} top="-10%" left="20%" distance={-70} opacity={0.18} />
+        <Glow color="#5ef2c4" size={520} bottom="-10%" right="-160px" distance={-40} opacity={0.16} />
         <Box
           aria-hidden
           position="absolute"
@@ -32,7 +32,6 @@ export const Join: React.FC = () => (
       </>
     }
   >
-    <SectionLabel index="06">Join us</SectionLabel>
     <Reveal>
       <Heading
         as="h2"
@@ -50,7 +49,7 @@ export const Join: React.FC = () => (
         <Box
           as="span"
           fontStyle="normal"
-          bgGradient="linear(to-r, #8ee3ff, #a18bff)"
+          bgGradient="linear(to-r, #8ee3ff, #5ef2c4 55%, #ffd27a)"
           bgClip="text"
           pr="0.08em"
         >

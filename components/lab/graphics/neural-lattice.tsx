@@ -32,10 +32,10 @@ const NODES: Node[][] = LAYERS.map((count, i) => {
 // Routes through one node per layer, with colour and timing.
 const ROUTES = [
   { path: [1, 3, 2, 4, 1], color: "#8ee3ff", dur: 3.4, begin: 0 },
-  { path: [0, 1, 4, 2, 0], color: "#a18bff", dur: 3.8, begin: -1.1 },
+  { path: [0, 1, 4, 2, 0], color: "#5ef2c4", dur: 3.8, begin: -1.1 },
   { path: [2, 0, 3, 1, 2], color: "#8ee3ff", dur: 3.2, begin: -2.0 },
-  { path: [1, 4, 5, 3, 1], color: "#5b7cff", dur: 4.1, begin: -0.6 },
-  { path: [0, 2, 1, 0, 2], color: "#a18bff", dur: 3.6, begin: -2.7 },
+  { path: [1, 4, 5, 3, 1], color: "#38bdf8", dur: 4.1, begin: -0.6 },
+  { path: [0, 2, 1, 0, 2], color: "#5ef2c4", dur: 3.6, begin: -2.7 },
   { path: [2, 3, 0, 2, 0], color: "#8ee3ff", dur: 4.4, begin: -3.3 },
 ].map((r) => ({
   ...r,
@@ -108,7 +108,7 @@ export const NeuralLattice: React.FC<{ size?: number | string }> = ({ size }) =>
               cy={n.y}
               r="7"
               fill="#0b0d14"
-              stroke={i === 0 ? "#8ee3ff" : i === LAYERS.length - 1 ? "#a18bff" : "#f2f4f8"}
+              stroke={i === 0 ? "#8ee3ff" : i === LAYERS.length - 1 ? "#5ef2c4" : "#f2f4f8"}
               strokeOpacity="0.55"
               strokeWidth="1"
             />
@@ -116,7 +116,7 @@ export const NeuralLattice: React.FC<{ size?: number | string }> = ({ size }) =>
               cx={n.x}
               cy={n.y}
               r="2.2"
-              fill={i === 0 ? "#8ee3ff" : i === LAYERS.length - 1 ? "#a18bff" : "#f2f4f8"}
+              fill={i === 0 ? "#8ee3ff" : i === LAYERS.length - 1 ? "#5ef2c4" : "#f2f4f8"}
             />
           </g>
         )),

@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { Parallax } from "components/motion/parallax";
 import { Reveal } from "components/motion/reveal";
-import { LabHeading, LabSection, Lead, SectionLabel } from "../primitives";
+import { LabHeading, LabSection, Lead } from "../primitives";
 import { HypothesisGraph } from "../graphics/hypothesis-graph";
 import { OrbitalAtom } from "../graphics/orbital-atom";
 import { WaveField } from "../graphics/wave-field";
@@ -160,7 +160,6 @@ export const ResearchAreas: React.FC = () => (
       <Glow color="#8ee3ff" size={620} top="20%" right="-240px" distance={-70} opacity={0.1} />
     }
   >
-    <SectionLabel index="02">Research</SectionLabel>
     <Flex
       mt="6"
       mb={{ base: 12, md: 20 }}

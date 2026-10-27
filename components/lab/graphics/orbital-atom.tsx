@@ -9,8 +9,8 @@ const ORBIT = `M ${C - RX} ${C} A ${RX} ${RY} 0 1 1 ${C + RX} ${C} A ${RX} ${RY}
 
 const ORBITS = [
   { angle: 0, dur: 6.5, color: "#8ee3ff", begin: 0 },
-  { angle: 60, dur: 8.5, color: "#a18bff", begin: -2.2 },
-  { angle: 120, dur: 7.5, color: "#5b7cff", begin: -4.6 },
+  { angle: 60, dur: 8.5, color: "#5ef2c4", begin: -2.2 },
+  { angle: 120, dur: 7.5, color: "#38bdf8", begin: -4.6 },
 ];
 
 const Electron: React.FC<{ dur: number; color: string; begin: number }> = ({
@@ -58,7 +58,7 @@ export const OrbitalAtom: React.FC<{ size?: number | string }> = ({ size }) => {
         <radialGradient id="atom-core">
           <stop offset="0" stopColor="#ffffff" stopOpacity="0.95" />
           <stop offset="0.25" stopColor="#8ee3ff" stopOpacity="0.8" />
-          <stop offset="1" stopColor="#5b7cff" stopOpacity="0" />
+          <stop offset="1" stopColor="#38bdf8" stopOpacity="0" />
         </radialGradient>
       </defs>
 
@@ -107,7 +107,7 @@ export const OrbitalAtom: React.FC<{ size?: number | string }> = ({ size }) => {
           cx={C + dx}
           cy={C + dy}
           r="3.2"
-          fill={i % 2 ? "#a18bff" : "#f2f4f8"}
+          fill={i % 2 ? "#5ef2c4" : "#f2f4f8"}
           opacity="0.9"
         />
       ))}

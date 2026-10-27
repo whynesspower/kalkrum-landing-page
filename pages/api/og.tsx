@@ -15,7 +15,7 @@ export default function handler() {
           padding: '72px',
           color: '#f2f4f8',
           background:
-            'radial-gradient(70% 60% at 50% 0%, rgba(91,124,255,0.45) 0%, #05060a 70%)',
+            'radial-gradient(70% 60% at 50% 0%, rgba(56,189,248,0.45) 0%, #05060a 70%)',
           fontFamily: 'sans-serif',
         }}
       >

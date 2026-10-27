@@ -5,13 +5,13 @@ import { CanvasFrame, useCanvasLoop } from "./use-canvas-loop";
 const N = 900;
 const GOLDEN = Math.PI * (3 - Math.sqrt(5));
 const CYAN = "142,227,255";
-const VIOLET = "161,139,255";
+const MINT = "94,242,196";
 const BASE = "205,222,255";
 
 interface Pulse {
   idx: number;
   born: number;
-  violet: boolean;
+  mint: boolean;
 }
 
 interface Ring {
@@ -24,7 +24,7 @@ interface Ring {
 
 const RINGS: Ring[] = [
   { r: 1.32, tiltX: 1.2, tiltZ: 0.35, speed: 0.55, rgb: CYAN },
-  { r: 1.62, tiltX: 0.82, tiltZ: -0.6, speed: -0.38, rgb: VIOLET },
+  { r: 1.62, tiltX: 0.82, tiltZ: -0.6, speed: -0.38, rgb: MINT },
 ];
 
 /** Rotate by yaw (around Y) then pitch (around X). Returns [x, y, z]. */
@@ -66,7 +66,7 @@ export const HeroSphere: React.FC<{ opacity?: number }> = ({ opacity = 1 }) => {
     py: new Float32Array(N),
     pd: new Float32Array(N),
     boost: new Float32Array(N),
-    violet: new Uint8Array(N),
+    mint: new Uint8Array(N),
     pulses: [] as Pulse[],
     nextPulse: 0.4,
     mouse: { x: 0, y: 0 },
@@ -101,14 +101,14 @@ export const HeroSphere: React.FC<{ opacity?: number }> = ({ opacity = 1 }) => {
     // Soft core glow.
     const g = ctx.createRadialGradient(cx, cy, R * 0.1, cx, cy, R * 1.9);
     g.addColorStop(0, `rgba(${CYAN},${0.1 * opacity})`);
-    g.addColorStop(0.45, `rgba(${VIOLET},${0.05 * opacity})`);
+    g.addColorStop(0.45, `rgba(${MINT},${0.05 * opacity})`);
     g.addColorStop(1, "rgba(5,6,10,0)");
     ctx.fillStyle = g;
     ctx.fillRect(0, 0, w, h);
 
     // Pulses: spawn, age, and add brightness to a short run of neighbours.
     if (t > s.nextPulse) {
-      s.pulses.push({ idx: Math.floor(Math.random() * N), born: t, violet: Math.random() < 0.4 });
+      s.pulses.push({ idx: Math.floor(Math.random() * N), born: t, mint: Math.random() < 0.4 });
       s.nextPulse = t + 0.25 + Math.random() * 0.5;
     }
     s.pulses = s.pulses.filter((p) => t - p.born < 2);
@@ -121,7 +121,7 @@ export const HeroSphere: React.FC<{ opacity?: number }> = ({ opacity = 1 }) => {
         const b = (1 - a) * (1 - Math.abs(d) / 6);
         if (b > s.boost[i]) {
           s.boost[i] = b;
-          s.violet[i] = p.violet ? 1 : 0;
+          s.mint[i] = p.mint ? 1 : 0;
         }
       }
     }
@@ -212,7 +212,7 @@ export const HeroSphere: React.FC<{ opacity?: number }> = ({ opacity = 1 }) => {
       const alpha = (0.1 + 0.7 * d * d + b * 0.9) * opacity;
       ctx.fillStyle =
         b > 0.02
-          ? `rgba(${s.violet[i] ? VIOLET : CYAN},${Math.min(1, alpha)})`
+          ? `rgba(${s.mint[i] ? MINT : CYAN},${Math.min(1, alpha)})`
           : `rgba(${d > 0.7 ? "220,240,255" : BASE},${alpha})`;
       ctx.beginPath();
       ctx.arc(s.px[i], s.py[i], size, 0, Math.PI * 2);
@@ -222,7 +222,7 @@ export const HeroSphere: React.FC<{ opacity?: number }> = ({ opacity = 1 }) => {
     // Expanding rings at pulse origins.
     for (const p of s.pulses) {
       const a = (t - p.born) / 2;
-      const rgb = p.violet ? VIOLET : CYAN;
+      const rgb = p.mint ? MINT : CYAN;
       ctx.strokeStyle = `rgba(${rgb},${(1 - a) * 0.6 * opacity * (0.3 + 0.7 * s.pd[p.idx])})`;
       ctx.lineWidth = 1;
       ctx.beginPath();
