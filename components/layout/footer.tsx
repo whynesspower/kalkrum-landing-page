@@ -5,7 +5,6 @@ import {
   Flex,
   Heading,
   Link as ChakraLink,
-  SimpleGrid,
   Text,
 } from "@chakra-ui/react";
 import Link from "next/link";
@@ -16,44 +15,20 @@ import { LogoMark, LogoWatermark } from "components/lab/logo-mark";
 
 export interface FooterProps extends BoxProps {}
 
-type FooterLink = {
-  label: string;
-  href: string;
-  external?: boolean;
-  linkedin?: boolean;
-};
-
-const COLUMNS: Array<{ title: string; links: FooterLink[] }> = [
-  {
-    title: "Lab",
-    links: [
-      { label: "Research", href: "/research" },
-      { label: "Vision", href: "/about#vision" },
-      { label: "About", href: "/about" },
-      { label: "Careers", href: "/careers" },
-    ],
-  },
-  {
-    title: "Contact",
-    links: [
-      {
-        label: siteConfig.footer.contactEmail,
-        href: `mailto:${siteConfig.footer.contactEmail}`,
-        external: true,
-      },
-      {
-        label: "LinkedIn",
-        href: siteConfig.footer.linkedin,
-        external: true,
-        linkedin: true,
-      },
-    ],
-  },
-  {
-    title: "Legal",
-    links: [{ label: "Privacy", href: siteConfig.privacyUrl }],
-  },
+const LINKS: Array<{ label: string; href: string }> = [
+  { label: "Research", href: "/research" },
+  { label: "Careers", href: "/careers" },
+  { label: "Privacy", href: siteConfig.privacyUrl },
 ];
+
+const linkStyle = {
+  fontFamily: "mono",
+  fontSize: "sm",
+  letterSpacing: "0.12em",
+  textTransform: "uppercase",
+  color: "kk.muted",
+  _hover: { color: "kk.accent", textDecoration: "none" },
+} as const;
 
 export const Footer: React.FC<FooterProps> = (props) => {
   return (
@@ -81,6 +56,7 @@ export const Footer: React.FC<FooterProps> = (props) => {
           gap={{ base: 12, lg: 16 }}
         >
           <Box maxW="560px">
+            <LogoMark size={48} spinSeconds={120} />
             <Heading
               as="p"
               mt="6"
@@ -92,49 +68,53 @@ export const Footer: React.FC<FooterProps> = (props) => {
               letterSpacing="0.05em"
               color="whiteAlpha.400"
             >
-              Intelligence that keeps learning.
+              Intelligence that learns from experience.
             </Heading>
           </Box>
 
-          <SimpleGrid columns={{ base: 2, sm: 3 }} spacing={{ base: 10, md: 10, xl: 14 }}>
-            {COLUMNS.map(({ title, links }) => (
-              <Box key={title} minW="0">
-                <Text
-                  fontFamily="mono"
-                  fontSize="xs"
-                  letterSpacing="0.18em"
-                  textTransform="uppercase"
-                  color="kk.accent"
-                  mb="4"
-                >
-                  {title}
-                </Text>
-                <Flex as="ul" direction="column" gap="3" listStyleType="none">
-                  {links.map(({ label, href, external, linkedin }) => (
-                    <li key={label}>
-                      <ChakraLink
-                        as={external && href.startsWith("http") ? undefined : Link}
-                        href={href}
-                        isExternal={external && href.startsWith("http")}
-                        color={linkedin ? "kk.fg" : "kk.muted"}
-                        fontSize={linkedin ? { base: "xl", md: "2xl" } : "md"}
-                        fontWeight={linkedin ? "700" : undefined}
-                        display={linkedin ? "inline-flex" : undefined}
-                        alignItems={linkedin ? "center" : undefined}
-                        gap={linkedin ? "3" : undefined}
-                        overflowWrap={linkedin ? "normal" : "anywhere"}
-                        whiteSpace={linkedin ? "nowrap" : { base: "normal", xl: "nowrap" }}
-                        _hover={{ color: "kk.accent", textDecoration: "none" }}
-                      >
-                        {linkedin && <FaLinkedin aria-hidden size="1.1em" />}
-                        {label}
-                      </ChakraLink>
-                    </li>
-                  ))}
-                </Flex>
-              </Box>
-            ))}
-          </SimpleGrid>
+          <Flex
+            as="nav"
+            aria-label="Footer"
+            direction="column"
+            align={{ base: "flex-start", lg: "flex-end" }}
+            gap="4"
+            flexShrink={0}
+            minW="0"
+          >
+            <Flex as="ul" listStyleType="none" wrap="wrap" gap={{ base: 5, md: 8 }}>
+              {LINKS.map(({ label, href }) => (
+                <li key={href}>
+                  <ChakraLink as={Link} href={href} {...linkStyle}>
+                    {label}
+                  </ChakraLink>
+                </li>
+              ))}
+            </Flex>
+            <Flex align="center" gap="4" minW="0" maxW="full">
+              <ChakraLink
+                href={`mailto:${siteConfig.footer.contactEmail}`}
+                {...linkStyle}
+                textTransform="none"
+                letterSpacing="0.04em"
+                color="kk.fg"
+                sx={{ overflowWrap: "anywhere" }}
+              >
+                {siteConfig.footer.contactEmail}
+              </ChakraLink>
+              <ChakraLink
+                href={siteConfig.footer.linkedin}
+                isExternal
+                aria-label="KalKram on LinkedIn"
+                display="inline-flex"
+                alignItems="center"
+                color="kk.fg"
+                flexShrink={0}
+                _hover={{ color: "kk.accent" }}
+              >
+                <FaLinkedin aria-hidden size="22" />
+              </ChakraLink>
+            </Flex>
+          </Flex>
         </Flex>
 
         {/* Oversized wordmark with the mark */}

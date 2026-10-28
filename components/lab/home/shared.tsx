@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Box, BoxProps } from "@chakra-ui/react";
 import { useInView } from "framer-motion";
-import { Parallax } from "components/motion/parallax";
 
 /**
  * Mounts its children only once the box has come within 300px of the
@@ -18,35 +17,3 @@ export const LazyWhenVisible: React.FC<
     </Box>
   );
 };
-
-/** A soft radial glow that drifts at its own speed behind a section. */
-export const Glow: React.FC<{
-  color?: string;
-  size?: number;
-  distance?: number;
-  opacity?: number;
-  top?: string;
-  left?: string;
-  right?: string;
-  bottom?: string;
-}> = ({
-  color = "#38bdf8",
-  size = 640,
-  distance = -60,
-  opacity = 0.2,
-  ...pos
-}) => (
-  <Parallax
-    aria-hidden
-    distance={distance}
-    position="absolute"
-    pointerEvents="none"
-    w={`${size}px`}
-    h={`${size}px`}
-    maxW="140vw"
-    borderRadius="full"
-    opacity={opacity}
-    sx={{ background: `radial-gradient(circle, ${color} 0%, transparent 65%)` }}
-    {...pos}
-  />
-);

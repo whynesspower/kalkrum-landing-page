@@ -5,14 +5,9 @@ import { Box } from "@chakra-ui/react";
 import { SEO } from "components/seo/seo";
 import { useScrollDepth } from "hooks/use-scroll-depth";
 import siteConfig from "data/config";
-import { DashedRule } from "components/lab/primitives";
 import { Hero } from "components/lab/home/hero";
-import { Ticker } from "components/lab/home/ticker";
-import { Vision } from "components/lab/home/vision";
-import { ResearchAreas } from "components/lab/home/research-areas";
-import { Learning } from "components/lab/home/learning";
-import { Candour } from "components/lab/home/candour";
-import { Principles } from "components/lab/home/principles";
+import { Manifesto } from "components/lab/home/manifesto";
+import { Bet } from "components/lab/home/bet";
 import { Join } from "components/lab/home/join";
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "").replace(/\/$/, "");
@@ -41,15 +36,8 @@ const Home: NextPage = () => {
         />
       </Head>
       <Hero />
-      <Ticker />
-      <Vision />
-      <DashedRule />
-      <ResearchAreas />
-      <DashedRule />
-      <Learning />
-      <Candour />
-      <Principles />
-      <DashedRule />
+      <Manifesto />
+      <Bet />
       <Join />
     </Box>
   );

@@ -1,72 +1,54 @@
 import * as React from "react";
 import type { NextPage } from "next";
-import { Box, Container } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { SEO } from "components/seo/seo";
 import { TimeAxis } from "components/lab/graphics/time-axis";
 import { StateFlow } from "components/lab/graphics/state-flow";
-import { HypothesisGraph } from "components/lab/graphics/hypothesis-graph";
 import { NeuralLattice } from "components/lab/graphics/neural-lattice";
 import {
   AreaPanel,
-  ChipWall,
   Closing,
   OpenProblems,
   PanelArea,
   ResearchHero,
 } from "components/lab/research/blocks";
-import { Reveal } from "components/motion/reveal";
-import { Heading } from "@chakra-ui/react";
 
 const AREAS: PanelArea[] = [
   {
     index: "01",
-    title: "Continual Learning",
-    line: "Models that update on a stream of experience without overwriting what they already know.",
-    terms: ["continual learning", "catastrophic forgetting", "test-time training", "self-distillation"],
+    title: "Learning from experience",
+    paragraph:
+      "An agent that improves from its own actions and their consequences over months and years, with no training run that ends and no catastrophic forgetting of what it already knows. We work on continual learning and test-time training, on self-distillation as the way a long run compresses itself, and on world models, including JEPA-style latent predictors and diffusion language models, that let the agent predict and plan hierarchically over horizons far longer than any single episode.",
     graphic: <TimeAxis />,
   },
   {
     index: "02",
-    title: "Memory and Architecture",
-    line: "Sequence models whose cost grows linearly with length and that still recall an exact detail from far back.",
-    terms: ["state space models", "Mamba", "Gated DeltaNet", "hybrid architectures", "long-term memory modules"],
+    title: "Memory and architecture",
+    paragraph:
+      "A lifetime does not fit in a context window. We build sequence models whose cost grows linearly with time and whose memory does not fade: state space models such as Mamba, linear attention and Gated DeltaNet, sub-quadratic attention, and hybrid architectures that pair them with explicit long-term memory modules and mixture of experts routing.",
     graphic: <StateFlow />,
   },
   {
     index: "03",
-    title: "World Models and Planning",
-    line: "Models that predict what happens next in a learned latent space and plan many steps ahead inside it.",
-    terms: ["world models", "JEPA", "hierarchical planning", "diffusion language models"],
-    graphic: <HypothesisGraph />,
-  },
-  {
-    index: "04",
-    title: "Interpretability and Safety",
-    line: "Reading the circuits inside a trained network, and watching how they form, so we can verify what it does.",
-    terms: ["Mechanistic Interpretability", "circuits", "feature dynamics"],
+    title: "Legibility",
+    paragraph:
+      "A mind that keeps learning cannot be audited once. We do mechanistic interpretability on a moving target: tracing circuits and features as they form, change and disappear across a lifetime of learning, so that capability never runs ahead of our ability to read it.",
     graphic: <NeuralLattice />,
   },
 ];
 
 const QUESTIONS = [
-  "Can test-time training replace a fixed context window?",
-  "How do we measure forgetting at scale?",
-  "Can hybrid architectures keep exact recall?",
-  "What does a feature look like as it changes during training?",
-];
-
-const ROWS: string[][] = [
-  ["Mechanistic Interpretability", "world models", "state space models", "continual learning", "Gated DeltaNet"],
-  ["JEPA", "catastrophic forgetting", "Mamba", "diffusion language models", "self-distillation"],
-  ["hybrid architectures", "test-time training", "mixture of experts", "long-term memory modules"],
-  ["linear attention", "hierarchical planning", "sub-quadratic attention"],
+  "Can a model keep learning at test time without a separate training run, and without forgetting?",
+  "What does a feature look like while it is being learned?",
+  "Can linear-time memory keep exact recall across a lifetime?",
+  "Where do grounded rewards come from when the goal is years away?",
 ];
 
 const Research: NextPage = () => (
   <Box>
     <SEO
       title="Research | KalKram"
-      description="KalKram's four research programmes: continual learning, memory and architecture, world models and planning, and interpretability and safety."
+      description="KalKram's three research programmes: learning from experience, memory and architecture, and legibility."
     />
     <ResearchHero />
 
@@ -75,35 +57,6 @@ const Research: NextPage = () => (
     ))}
 
     <OpenProblems questions={QUESTIONS} />
-
-    <Box
-      as="section"
-      aria-labelledby="agenda"
-      borderTopWidth="1px"
-      borderColor="kk.line"
-      py={{ base: 20, md: 36 }}
-      overflowX="clip"
-    >
-      <Container maxW="container.xl" px={{ base: 5, md: 8 }}>
-        <Reveal>
-          <Heading
-            as="h2"
-            id="agenda"
-            fontFamily="display"
-            textTransform="uppercase"
-            fontWeight="700"
-            letterSpacing="0.04em"
-            fontSize="clamp(2.2rem, 6vw, 5.5rem)"
-            lineHeight="1"
-          >
-            Technical agenda
-          </Heading>
-        </Reveal>
-      </Container>
-      <Box mt={{ base: 12, md: 20 }}>
-        <ChipWall rows={ROWS} />
-      </Box>
-    </Box>
 
     <Closing />
   </Box>

@@ -6,9 +6,9 @@ const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "").replace(/\/$/, "");
 
 const siteConfig = {
   seo: {
-    title: "KalKram | A frontier AI research lab",
+    title: "KalKram | A frontier AI lab",
     description:
-      "KalKram is a frontier AI research lab building systems that keep learning: continual learning, long-term memory and efficient architectures, with interpretability built in.",
+      "KalKram is a frontier AI lab building agents that learn from their own experience, remember it across a lifetime, and stay legible.",
     openGraph: {
       type: "website",
       siteName: "KalKram",
@@ -17,7 +17,7 @@ const siteConfig = {
           url: `${siteUrl}/api/og`,
           width: 1200,
           height: 630,
-          alt: "KalKram: Intelligence that keeps learning.",
+          alt: "KalKram: Intelligence that learns from experience.",
         },
       ],
     },
@@ -27,8 +27,6 @@ const siteConfig = {
   } as NextSeoProps,
   nav: [
     { label: "Research", href: "/research" },
-    { label: "Vision", href: "/about#vision" },
-    { label: "About", href: "/about" },
     { label: "Careers", href: "/careers" },
   ] as Array<{ label: string; href: string }>,
   privacyUrl: "/privacy",

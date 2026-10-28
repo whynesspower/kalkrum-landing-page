@@ -29,7 +29,7 @@ export interface HeaderProps extends Omit<BoxProps, "children"> {}
 const LINKS = siteConfig.nav;
 const JOIN_HREF = "/careers";
 
-/** Links with a hash (such as /about#vision) never count as the active page. */
+/** Links with a hash (such as /#vision) never count as the active page. */
 const isActiveLink = (href: string, pathname: string) =>
   !href.includes("#") && href === pathname;
 

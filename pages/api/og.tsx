@@ -35,17 +35,18 @@ export default function handler() {
           style={{
             display: 'flex',
             flexDirection: 'column',
-            fontSize: 104,
+            fontSize: 96,
             fontWeight: 700,
             lineHeight: 1.04,
             letterSpacing: '-0.04em',
           }}
         >
           <div style={{ display: 'flex' }}>Intelligence that</div>
-          <div style={{ display: 'flex' }}>keeps learning.</div>
+          <div style={{ display: 'flex' }}>learns from</div>
+          <div style={{ display: 'flex' }}>experience.</div>
         </div>
         <div style={{ display: 'flex', fontSize: 30, color: '#9aa3b5' }}>
-          A frontier AI research lab
+          A frontier AI lab
         </div>
       </div>
     ),

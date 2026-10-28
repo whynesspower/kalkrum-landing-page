@@ -35,7 +35,12 @@ export const Backdrop: React.FC<{ variant?: BackdropVariant; intensity?: number 
     <Box
       position="absolute"
       inset="0"
-      bg="radial-gradient(ellipse 75% 70% at 50% 45%, rgba(5,6,10,0) 0%, rgba(5,6,10,0.3) 60%, rgba(5,6,10,0.85) 100%)"
+      bg={
+        variant === "contours"
+          ? // Denser lines and particles need a darker centre so text stays legible.
+            "radial-gradient(ellipse 70% 65% at 50% 48%, rgba(5,6,10,0.28) 0%, rgba(5,6,10,0.45) 55%, rgba(5,6,10,0.9) 100%)"
+          : "radial-gradient(ellipse 75% 70% at 50% 45%, rgba(5,6,10,0) 0%, rgba(5,6,10,0.3) 60%, rgba(5,6,10,0.85) 100%)"
+      }
     />
     <Box
       position="absolute"
