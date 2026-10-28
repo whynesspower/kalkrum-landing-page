@@ -1,5 +1,6 @@
 import * as React from "react";
-import type { NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
+import { flags } from "lib/flags";
 import { Box, Button, Text } from "@chakra-ui/react";
 import { SEO } from "components/seo/seo";
 import siteConfig from "data/config";
@@ -98,5 +99,11 @@ const Writing: NextPage = () => {
     </Box>
   );
 };
+
+/** The page is a 404 until NEXT_PUBLIC_FEATURE_WRITING is set to true. */
+export const getStaticProps: GetStaticProps = async () => ({
+  notFound: !flags.writing,
+  props: {},
+});
 
 export default Writing;

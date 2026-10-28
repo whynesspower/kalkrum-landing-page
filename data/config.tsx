@@ -1,4 +1,5 @@
 import { NextSeoProps } from "next-seo";
+import { flags } from "lib/flags";
 
 // Set NEXT_PUBLIC_SITE_URL (for example https://kalkram.com) so link
 // previews get an absolute image URL.
@@ -29,7 +30,7 @@ const siteConfig = {
     { label: "Vision", href: "/vision" },
     { label: "Research", href: "/research" },
     { label: "Approach", href: "/approach" },
-    { label: "Writing", href: "/writing" },
+    ...(flags.writing ? [{ label: "Writing", href: "/writing" }] : []),
     { label: "Careers", href: "/careers" },
     { label: "Contact", href: "/contact" },
   ] as Array<{ label: string; href: string }>,
