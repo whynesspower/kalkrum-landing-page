@@ -99,14 +99,14 @@ export const Header = (props: HeaderProps) => {
         w="full"
         pointerEvents="auto"
         initial={false}
-        animate={{ maxWidth: scrolled ? 880 : 1000 }}
+        animate={{ maxWidth: scrolled ? 1000 : 1120 }}
         transition={{ duration: duration.slow, ease }}
       >
         <Box
           position="relative"
           overflow="hidden"
           display="grid"
-          gridTemplateColumns={{ base: "1fr auto", md: "1fr auto 1fr" }}
+          gridTemplateColumns={{ base: "1fr auto", lg: "auto 1fr auto" }}
           alignItems="center"
           h="56px"
           pl={{ base: 4, md: 5 }}
@@ -153,7 +153,8 @@ export const Header = (props: HeaderProps) => {
           <HStack
             as="nav"
             aria-label="Primary"
-            display={{ base: "none", md: "flex" }}
+            display={{ base: "none", lg: "flex" }}
+            justifySelf="center"
             spacing="0"
             onMouseLeave={() => setHovered(null)}
           >
@@ -163,7 +164,7 @@ export const Header = (props: HeaderProps) => {
                 as={NextLink}
                 href={href}
                 position="relative"
-                px="3.5"
+                px={{ lg: "3", xl: "3.5" }}
                 py="2"
                 fontFamily="mono"
                 fontSize="xs"
@@ -219,7 +220,7 @@ export const Header = (props: HeaderProps) => {
               icon={open ? <FiX size="18" /> : <FiMenu size="18" />}
               onClick={() => setOpen((v) => !v)}
               variant="ghost"
-              display={{ base: "inline-flex", md: "none" }}
+              display={{ base: "inline-flex", lg: "none" }}
               borderRadius="full"
               w="40px"
               minW="40px"
@@ -258,7 +259,7 @@ export const Header = (props: HeaderProps) => {
               bg="rgba(8,10,16,0.96)"
               backdropFilter="blur(18px)"
               boxShadow="0 24px 60px -20px rgba(0,0,0,0.8)"
-              display={{ base: "block", md: "none" }}
+              display={{ base: "block", lg: "none" }}
               initial={{ opacity: 0, y: -8, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -8, scale: 0.98 }}

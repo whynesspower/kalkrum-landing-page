@@ -17,8 +17,7 @@ import { LogoMark, LogoWatermark } from "components/lab/logo-mark";
 export interface FooterProps extends BoxProps {}
 
 const LINKS: Array<{ label: string; href: string }> = [
-  { label: "Research", href: "/research" },
-  { label: "Careers", href: "/careers" },
+  ...siteConfig.nav,
   { label: "Privacy", href: siteConfig.privacyUrl },
 ];
 
@@ -82,7 +81,14 @@ export const Footer: React.FC<FooterProps> = (props) => {
             flexShrink={0}
             minW="0"
           >
-            <Flex as="ul" listStyleType="none" wrap="wrap" gap={{ base: 5, md: 8 }}>
+            <Flex
+              as="ul"
+              listStyleType="none"
+              wrap="wrap"
+              justify={{ base: "flex-start", lg: "flex-end" }}
+              gap={{ base: 5, md: 7 }}
+              maxW="36rem"
+            >
               {LINKS.map(({ label, href }) => (
                 <li key={href}>
                   <ChakraLink as={Link} href={href} {...linkStyle}>

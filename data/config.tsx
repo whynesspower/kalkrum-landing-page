@@ -26,8 +26,12 @@ const siteConfig = {
     },
   } as NextSeoProps,
   nav: [
+    { label: "Vision", href: "/vision" },
     { label: "Research", href: "/research" },
+    { label: "Approach", href: "/approach" },
+    { label: "Writing", href: "/writing" },
     { label: "Careers", href: "/careers" },
+    { label: "Contact", href: "/contact" },
   ] as Array<{ label: string; href: string }>,
   privacyUrl: "/privacy",
   footer: {
