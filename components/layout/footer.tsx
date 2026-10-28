@@ -11,6 +11,7 @@ import Link from "next/link";
 import { FaLinkedin } from "react-icons/fa6";
 
 import siteConfig from "data/config";
+import { IMAGE_CREDIT_LINE } from "data/images";
 import { LogoMark, LogoWatermark } from "components/lab/logo-mark";
 
 export interface FooterProps extends BoxProps {}
@@ -166,7 +167,15 @@ export const Footer: React.FC<FooterProps> = (props) => {
           justify="space-between"
           gap="3"
         >
-          <Box aria-hidden />
+          <Text
+            fontFamily="mono"
+            fontSize="xs"
+            letterSpacing="0.08em"
+            color="kk.muted"
+            maxW="52rem"
+          >
+            {IMAGE_CREDIT_LINE}
+          </Text>
           <Text
             fontFamily="mono"
             fontSize="xs"

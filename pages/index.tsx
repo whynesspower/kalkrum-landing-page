@@ -8,6 +8,7 @@ import siteConfig from "data/config";
 import { Hero } from "components/lab/home/hero";
 import { Manifesto } from "components/lab/home/manifesto";
 import { Bet } from "components/lab/home/bet";
+import { Band } from "components/lab/home/band";
 import { Join } from "components/lab/home/join";
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "").replace(/\/$/, "");
@@ -38,6 +39,7 @@ const Home: NextPage = () => {
       <Hero />
       <Manifesto />
       <Bet />
+      <Band />
       <Join />
     </Box>
   );

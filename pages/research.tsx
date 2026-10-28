@@ -8,8 +8,10 @@ import { NeuralLattice } from "components/lab/graphics/neural-lattice";
 import {
   AreaPanel,
   Closing,
+  ImageBand,
   OpenProblems,
   PanelArea,
+  PanelGroup,
   ResearchHero,
 } from "components/lab/research/blocks";
 
@@ -52,9 +54,13 @@ const Research: NextPage = () => (
     />
     <ResearchHero />
 
-    {AREAS.map((a, i) => (
-      <AreaPanel key={a.index} area={a} flip={i % 2 === 1} />
-    ))}
+    <PanelGroup>
+      {AREAS.map((a, i) => (
+        <AreaPanel key={a.index} area={a} flip={i % 2 === 1} />
+      ))}
+    </PanelGroup>
+
+    <ImageBand image="stephansQuintet" />
 
     <OpenProblems questions={QUESTIONS} />
 

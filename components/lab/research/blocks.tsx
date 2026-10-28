@@ -7,10 +7,21 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
+import Image from "next/image";
+import { keyframes } from "@emotion/react";
 import { Reveal } from "components/motion/reveal";
+import { SCIENCE_IMAGES, type ScienceImageKey } from "data/images";
 import { Backdrop } from "../graphics/backdrop";
+import { OrbitalAtom } from "../graphics/orbital-atom";
+import { NetworkField } from "../graphics/network-field";
+import { HudFrame } from "../graphics/hud-frame";
 
 const MotionDiv = motion(Box);
+
+const slowZoom = keyframes`
+  from { transform: scale(1); }
+  to { transform: scale(1.12); }
+`;
 
 const display = {
   fontFamily: "display",
@@ -38,6 +49,9 @@ export const ResearchHero: React.FC = () => {
   const textY = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, 140]);
   const textOpacity = useTransform(scrollYProgress, [0, 0.7], reduce ? [1, 1] : [1, 0]);
   const bgScale = useTransform(scrollYProgress, [0, 1], reduce ? [1, 1] : [1, 1.2]);
+  const photoY = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, 220]);
+  const atomY = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, -120]);
+  const photo = SCIENCE_IMAGES.pillars;
 
   return (
     <Box
@@ -51,13 +65,58 @@ export const ResearchHero: React.FC = () => {
       borderBottomWidth="1px"
       borderColor="kk.line"
     >
+      {/* Photograph: dimmed, slow zoom, scroll parallax. */}
+      <MotionDiv
+        position="absolute"
+        inset="-12% 0"
+        aria-hidden="true"
+        style={{ y: photoY }}
+      >
+        <Box
+          position="absolute"
+          inset="0"
+          opacity={0.3}
+          animation={reduce ? undefined : `${slowZoom} 28s ease-in-out infinite alternate`}
+          willChange="transform"
+        >
+          <Image
+            src={photo.src}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            style={{ objectFit: "cover", objectPosition: "50% 35%" }}
+          />
+        </Box>
+        <Box
+          position="absolute"
+          inset="0"
+          bgGradient="linear(to-b, rgba(5,6,10,0.75) 0%, rgba(5,6,10,0.25) 45%, #05060a 100%)"
+        />
+      </MotionDiv>
+
       <MotionDiv position="absolute" inset="0" aria-hidden="true" style={{ scale: bgScale }}>
         <Backdrop variant="contours" />
         <Box
           position="absolute"
           inset="0"
-          bgGradient="linear(to-b, rgba(5,6,10,0.6) 0%, rgba(5,6,10,0.05) 40%, #05060a 100%)"
+          bgGradient="linear(to-b, rgba(5,6,10,0.3) 0%, rgba(5,6,10,0) 40%, #05060a 100%)"
         />
+      </MotionDiv>
+
+      {/* Large dim atom on the right, desktop only. */}
+      <MotionDiv
+        aria-hidden="true"
+        display={{ base: "none", lg: "block" }}
+        position="absolute"
+        right="-6vw"
+        top="8vh"
+        w="min(60vw, 820px)"
+        opacity={0.5}
+        pointerEvents="none"
+        style={{ y: atomY }}
+      >
+        <OrbitalAtom size="100%" />
       </MotionDiv>
 
       <Container
@@ -155,8 +214,8 @@ export const AreaPanel: React.FC<{ area: PanelArea; flip: boolean }> = ({
         <Container maxW="container.xl" px={{ base: 5, md: 8 }} position="relative" zIndex={1}>
           <Box
             display="grid"
-            gridTemplateColumns={{ base: "1fr", lg: "1.1fr 1fr" }}
-            gap={{ base: 12, lg: 16 }}
+            gridTemplateColumns={{ base: "1fr", lg: "1fr 1fr" }}
+            gap={{ base: 12, lg: 20 }}
             alignItems="center"
           >
             <Box order={{ base: 2, lg: flip ? 2 : 1 }}>
@@ -180,17 +239,105 @@ export const AreaPanel: React.FC<{ area: PanelArea; flip: boolean }> = ({
             <Box order={{ base: 1, lg: flip ? 1 : 2 }} aria-hidden="true">
               <MotionDiv
                 position="relative"
-                maxW={{ base: "420px", lg: "600px" }}
+                maxW={{ base: "520px", lg: "none" }}
                 mx="auto"
                 w="100%"
                 style={{ scale, y: gy }}
+                sx={{ "& > div > *": { width: "100%", maxWidth: "100%" } }}
               >
+                <Box
+                  aria-hidden="true"
+                  position="absolute"
+                  inset="-18%"
+                  pointerEvents="none"
+                  bg="radial-gradient(ellipse at 50% 50%, rgba(142,227,255,0.14), transparent 62%)"
+                />
                 <Box position="relative">{area.graphic}</Box>
               </MotionDiv>
             </Box>
           </Box>
         </Container>
       </Box>
+    </Box>
+  );
+};
+
+/* ---------------------------------------------------------- Panel group */
+
+/** Wraps the three programme panels and lays a faint network behind them. */
+export const PanelGroup: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <Box position="relative" overflowX="clip">
+    <Box aria-hidden="true" position="absolute" inset="0" opacity={0.45} pointerEvents="none">
+      <NetworkField density={0.7} />
+      <Box
+        position="absolute"
+        inset="0"
+        bgGradient="linear(to-b, #05060a 0%, transparent 12%, transparent 88%, #05060a 100%)"
+      />
+    </Box>
+    <Box position="relative">{children}</Box>
+  </Box>
+);
+
+/* ------------------------------------------------------------ Image band */
+
+/** Full-bleed photograph with scroll parallax, corner brackets and the credit. */
+export const ImageBand: React.FC<{ image?: ScienceImageKey }> = ({
+  image = "stephansQuintet",
+}) => {
+  const reduce = useReducedMotion();
+  const ref = React.useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], reduce ? ["0%", "0%"] : ["-14%", "14%"]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], reduce ? [1, 1, 1] : [1.08, 1, 1.08]);
+  const photo = SCIENCE_IMAGES[image];
+
+  return (
+    <Box
+      as="section"
+      ref={ref}
+      aria-label={photo.title}
+      position="relative"
+      borderTopWidth="1px"
+      borderColor="kk.line"
+      px={{ base: 5, md: 8 }}
+      py={{ base: 8, md: 10 }}
+      bg="kk.canvas"
+    >
+      <HudFrame credit={`${photo.title}. ${photo.credit}`}>
+        <Box
+          position="relative"
+          overflow="hidden"
+          mx={{ base: -5, md: 0 }}
+          h={{ base: "70svh", md: "92vh" }}
+          minH="420px"
+        >
+          <MotionDiv position="absolute" inset="-16% 0" style={{ y, scale }}>
+            <Image
+              src={photo.src}
+              alt={photo.alt}
+              fill
+              sizes="100vw"
+              style={{ objectFit: "cover", objectPosition: "50% 45%" }}
+            />
+          </MotionDiv>
+          <Box
+            aria-hidden="true"
+            position="absolute"
+            inset="0"
+            bgGradient="linear(to-b, rgba(5,6,10,0.55) 0%, rgba(5,6,10,0.05) 35%, rgba(5,6,10,0.05) 65%, rgba(5,6,10,0.7) 100%)"
+          />
+          <Box
+            aria-hidden="true"
+            position="absolute"
+            inset="0"
+            boxShadow="inset 0 0 0 1px rgba(255,255,255,0.08)"
+          />
+        </Box>
+      </HudFrame>
     </Box>
   );
 };

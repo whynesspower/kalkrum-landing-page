@@ -6,7 +6,9 @@ import siteConfig from "data/config";
 import { Reveal } from "components/motion/reveal";
 import { DashedRule, LabHeading, LabSection, Lead } from "components/lab/primitives";
 import { Backdrop } from "components/lab/graphics/backdrop";
+import { LoopDiagram } from "components/lab/graphics/loop-diagram";
 import { RoleRows } from "components/lab/careers/role-rows";
+import { HeroPhoto } from "components/lab/careers/hero-photo";
 
 const HOW_TO_APPLY = [
   "Email us.",
@@ -36,7 +38,13 @@ const Careers: NextPage = () => {
         pb={{ base: 20, md: 28 }}
       >
         <Box position="absolute" inset="0" aria-hidden>
+          <HeroPhoto />
           <Backdrop variant="tokens" />
+          <Box
+            position="absolute"
+            inset="0"
+            bgGradient="linear(to-b, rgba(5,6,10,0.2) 0%, rgba(5,6,10,0) 50%, #05060a 100%)"
+          />
         </Box>
         <Box position="relative" zIndex={1} w="full" maxW="container.xl" mx="auto" px={{ base: 5, md: 8 }}>
           <Heading
@@ -74,8 +82,22 @@ const Careers: NextPage = () => {
 
       <DashedRule />
 
-      <LabSection>
-        <Box maxW="52rem">
+      <LabSection position="relative" overflow="hidden">
+        <Box
+          aria-hidden="true"
+          display={{ base: "none", xl: "block" }}
+          position="absolute"
+          right="0"
+          top="50%"
+          transform="translateY(-50%)"
+          w="min(26vw, 400px)"
+          opacity={0.35}
+          pointerEvents="none"
+          userSelect="none"
+        >
+          <LoopDiagram role="presentation" aria-label={undefined} aria-hidden="true" maxW="none" />
+        </Box>
+        <Box maxW="52rem" position="relative">
           {HOW_TO_APPLY.map((line) => (
             <Reveal key={line}>
               <Text
@@ -96,7 +118,7 @@ const Careers: NextPage = () => {
           ))}
           <Box borderTopWidth="1px" borderColor="kk.line" />
         </Box>
-        <Button as="a" href={mail} variant="cta" mt={10}>
+        <Button as="a" href={mail} variant="cta" mt={10} position="relative">
           Write to us
         </Button>
       </LabSection>
