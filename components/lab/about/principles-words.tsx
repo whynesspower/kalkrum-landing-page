@@ -3,10 +3,10 @@ import { Box, Text } from "@chakra-ui/react";
 import { Reveal } from "components/motion/reveal";
 
 const WORDS = [
-  { word: "Safety", line: "Capability and safety advance together." },
-  { word: "Scrutiny", line: "Outside criticism makes the work better." },
-  { word: "Patience", line: "We choose long questions over quick wins." },
-  { word: "Rigour", line: "We share results others can verify." },
+  { word: "One thesis", line: "Every project serves learning in time." },
+  { word: "Safety inside", line: "We build it into the architecture." },
+  { word: "Evidence", line: "We trust results, not announcements." },
+  { word: "Long horizons", line: "We take the questions that need years." },
 ];
 
 /** Four huge words separated by hairlines. A glow follows the hover. */
@@ -48,7 +48,7 @@ export const PrinciplesWords: React.FC = () => (
             textTransform="uppercase"
             letterSpacing="0.04em"
             lineHeight="1"
-            fontSize="clamp(3rem, 11vw, 9rem)"
+            fontSize="clamp(2.6rem, 9vw, 8rem)"
           >
             {w.word}
           </Text>

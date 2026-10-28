@@ -1,5 +1,4 @@
 import * as React from "react";
-import Image from "next/image";
 import NextLink from "next/link";
 import { Box, Button, Container, Heading, Text } from "@chakra-ui/react";
 import { keyframes } from "@emotion/react";
@@ -9,12 +8,8 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import { Parallax } from "components/motion/parallax";
 import { Reveal } from "components/motion/reveal";
-import { SCIENCE_IMAGES } from "data/images";
-import { HeroSphere } from "../graphics/hero-sphere";
-import { ScrambleText } from "../graphics/scramble-text";
-import { HudFrame } from "../graphics/hud-frame";
+import { Backdrop } from "../graphics/backdrop";
 
 const MotionDiv = motion(Box);
 
@@ -24,17 +19,6 @@ const display = {
   fontWeight: "700",
   letterSpacing: "0.04em",
 };
-
-const Mono: React.FC<React.ComponentProps<typeof Text>> = (props) => (
-  <Text
-    fontFamily="mono"
-    fontSize="xs"
-    letterSpacing="0.18em"
-    textTransform="uppercase"
-    color="kk.accent"
-    {...props}
-  />
-);
 
 /* ------------------------------------------------------------------ Hero */
 
@@ -47,8 +31,7 @@ export const ResearchHero: React.FC = () => {
   });
   const textY = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, 140]);
   const textOpacity = useTransform(scrollYProgress, [0, 0.7], reduce ? [1, 1] : [1, 0]);
-  const sphereScale = useTransform(scrollYProgress, [0, 1], reduce ? [1, 1] : [1, 1.35]);
-  const photo = SCIENCE_IMAGES.deepField;
+  const bgScale = useTransform(scrollYProgress, [0, 1], reduce ? [1, 1] : [1, 1.2]);
 
   return (
     <Box
@@ -62,45 +45,14 @@ export const ResearchHero: React.FC = () => {
       borderBottomWidth="1px"
       borderColor="kk.line"
     >
-      <Box position="absolute" inset="0" aria-hidden="true">
-        <Parallax
-          distance={-80}
-          position="absolute"
-          top="-80px"
-          bottom="-80px"
-          left="0"
-          right="0"
-        >
-          <Image
-            src={photo.src}
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            style={{ objectFit: "cover", opacity: 0.3 }}
-          />
-        </Parallax>
-        <MotionDiv
-          position="absolute"
-          top={{ base: "4%", lg: "6%" }}
-          right={{ base: "-30%", lg: "-6%" }}
-          w={{ base: "130%", lg: "62%" }}
-          h={{ base: "62%", lg: "88%" }}
-          style={{ scale: sphereScale }}
-        >
-          <HeroSphere />
-        </MotionDiv>
+      <MotionDiv position="absolute" inset="0" aria-hidden="true" style={{ scale: bgScale }}>
+        <Backdrop variant="contours" />
         <Box
           position="absolute"
           inset="0"
-          bgGradient="linear(to-b, rgba(5,6,10,0.7) 0%, rgba(5,6,10,0.1) 40%, #05060a 100%)"
+          bgGradient="linear(to-b, rgba(5,6,10,0.6) 0%, rgba(5,6,10,0.05) 40%, #05060a 100%)"
         />
-        <Box
-          position="absolute"
-          inset="0"
-          bgGradient="linear(to-r, rgba(5,6,10,0.8) 0%, rgba(5,6,10,0) 65%)"
-        />
-      </Box>
+      </MotionDiv>
 
       <Container
         maxW="container.xl"
@@ -119,25 +71,18 @@ export const ResearchHero: React.FC = () => {
             sx={{ textWrap: "balance" }}
             maxW="14ch"
           >
-            Intelligence that does science
+            One thesis. Four programmes.
           </Heading>
           <Text
             mt={{ base: 8, md: 10 }}
             color="kk.muted"
             fontSize={{ base: "lg", md: "xl" }}
-            maxW="30rem"
+            maxW="32rem"
             lineHeight="1.6"
           >
-            Four programmes with one aim: systems that discover.
+            Each programme attacks one reason today's models stop learning.
           </Text>
         </MotionDiv>
-        <Box
-          aria-hidden="true"
-          mt={{ base: 10, md: 14 }}
-          w="1px"
-          h="64px"
-          bgGradient="linear(to-b, kk.accent, transparent)"
-        />
       </Container>
     </Box>
   );
@@ -149,6 +94,7 @@ export interface PanelArea {
   index: string;
   title: string;
   line: string;
+  terms: string[];
   graphic: React.ReactNode;
 }
 
@@ -165,15 +111,10 @@ export const AreaPanel: React.FC<{ area: PanelArea; flip: boolean }> = ({
   const scale = useTransform(
     scrollYProgress,
     [0, 0.5, 1],
-    reduce ? [1, 1, 1] : [0.78, 1.04, 1.12]
+    reduce ? [1, 1, 1] : [0.8, 1.03, 1.1]
   );
-  const rotate = useTransform(
-    scrollYProgress,
-    [0, 1],
-    reduce ? [0, 0] : [flip ? 6 : -6, flip ? -6 : 6]
-  );
+  const gy = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [60, -60]);
   const numY = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [120, -160]);
-  const glow = useTransform(scrollYProgress, [0, 0.5, 1], [0.1, 0.9, 0.2]);
 
   return (
     <Box
@@ -194,7 +135,6 @@ export const AreaPanel: React.FC<{ area: PanelArea; flip: boolean }> = ({
         alignItems="center"
         py={{ base: 20, lg: 0 }}
       >
-        {/* huge outlined numeral */}
         <MotionDiv
           aria-hidden="true"
           position="absolute"
@@ -213,12 +153,7 @@ export const AreaPanel: React.FC<{ area: PanelArea; flip: boolean }> = ({
           {area.index}
         </MotionDiv>
 
-        <Container
-          maxW="container.xl"
-          px={{ base: 5, md: 8 }}
-          position="relative"
-          zIndex={1}
-        >
+        <Container maxW="container.xl" px={{ base: 5, md: 8 }} position="relative" zIndex={1}>
           <Box
             display="grid"
             gridTemplateColumns={{ base: "1fr", lg: "1fr 1.1fr" }}
@@ -243,10 +178,31 @@ export const AreaPanel: React.FC<{ area: PanelArea; flip: boolean }> = ({
                   color="kk.muted"
                   fontSize={{ base: "lg", md: "xl" }}
                   lineHeight="1.6"
-                  maxW="26rem"
+                  maxW="28rem"
                 >
                   {area.line}
                 </Text>
+                <Box as="ul" m={0} p={0} mt={8} display="flex" flexWrap="wrap" gap={2}>
+                  {area.terms.map((t) => (
+                    <Box
+                      as="li"
+                      key={t}
+                      listStyleType="none"
+                      px={4}
+                      py={1.5}
+                      borderWidth="1px"
+                      borderColor="kk.line"
+                      borderRadius="full"
+                      bg="rgba(11,13,20,0.6)"
+                      fontFamily="mono"
+                      fontSize="xs"
+                      letterSpacing="0.06em"
+                      color="kk.fg"
+                    >
+                      {t}
+                    </Box>
+                  ))}
+                </Box>
               </Reveal>
             </Box>
             <Box order={{ base: 1, lg: flip ? 1 : 2 }} aria-hidden="true">
@@ -255,22 +211,8 @@ export const AreaPanel: React.FC<{ area: PanelArea; flip: boolean }> = ({
                 maxW={{ base: "420px", lg: "640px" }}
                 mx="auto"
                 w="100%"
-                style={{ scale, rotate }}
+                style={{ scale, y: gy }}
               >
-                <MotionDiv
-                  position="absolute"
-                  inset="-12%"
-                  borderRadius="full"
-                  bg="radial-gradient(circle, rgba(142,227,255,0.16) 0%, rgba(56,189,248,0.06) 45%, transparent 70%)"
-                  style={{ opacity: glow }}
-                />
-                <Box
-                  position="absolute"
-                  inset="-4%"
-                  borderRadius="full"
-                  borderWidth="1px"
-                  borderColor="kk.line"
-                />
                 <Box position="relative">{area.graphic}</Box>
               </MotionDiv>
             </Box>
@@ -281,92 +223,60 @@ export const AreaPanel: React.FC<{ area: PanelArea; flip: boolean }> = ({
   );
 };
 
-/* ------------------------------------------------------------ Image band */
+/* --------------------------------------------------------- Open problems */
 
-export const ImageBand: React.FC<{
-  image: keyof typeof SCIENCE_IMAGES;
-  fig: string;
-}> = ({ image, fig }) => {
-  const photo = SCIENCE_IMAGES[image];
-  return (
-    <Box
-      as="section"
-      aria-label={photo.title}
-      borderTopWidth="1px"
-      borderColor="kk.line"
-      py={{ base: 16, md: 28 }}
-      overflowX="clip"
-    >
-      <Container maxW="container.xl" px={{ base: 5, md: 8 }}>
-        <HudFrame label={`${fig} / ${photo.title}`} credit={photo.credit}>
-          <Box
-            position="relative"
-            overflow="hidden"
-            h={{ base: "52vw", md: "62vh" }}
-            minH="240px"
-            borderWidth="1px"
-            borderColor="kk.line"
-            role="img"
-            aria-label={photo.alt}
-          >
-            <Parallax
-              distance={-70}
-              position="absolute"
-              top="-70px"
-              bottom="-70px"
-              left="0"
-              right="0"
-            >
-              <Image
-                src={photo.src}
-                alt=""
-                fill
-                sizes="(min-width: 1280px) 1180px, 100vw"
-                style={{ objectFit: "cover" }}
-              />
-            </Parallax>
+export const OpenProblems: React.FC<{ questions: string[] }> = ({ questions }) => (
+  <Box
+    as="section"
+    aria-labelledby="open-problems"
+    borderTopWidth="1px"
+    borderColor="kk.line"
+    py={{ base: 20, md: 36 }}
+    overflowX="clip"
+  >
+    <Container maxW="container.xl" px={{ base: 5, md: 8 }}>
+      <Reveal>
+        <Heading
+          as="h2"
+          id="open-problems"
+          {...display}
+          fontSize="clamp(2.2rem, 6vw, 5.5rem)"
+          lineHeight="1"
+        >
+          Open problems
+        </Heading>
+      </Reveal>
+      <Box as="ol" m={0} p={0} mt={{ base: 10, md: 16 }}>
+        {questions.map((q, i) => (
+          <Box as="li" key={q} listStyleType="none"><Reveal delay={i * 0.05}>
             <Box
-              position="absolute"
-              inset="0"
-              pointerEvents="none"
-              bgGradient="linear(to-t, rgba(5,6,10,0.55), transparent 50%)"
-            />
-          </Box>
-        </HudFrame>
-      </Container>
-    </Box>
-  );
-};
-
-/* ------------------------------------------------------------ Loop band */
-
-export const BandHeading: React.FC<{
-  label: string;
-  title: string;
-  line: string;
-  center?: boolean;
-}> = ({ label, title, line, center }) => (
-  <Reveal textAlign={center ? "center" : "left"} mx={center ? "auto" : 0} maxW="46rem">
-    <Heading
-      as="h2"
-      {...display}
-      fontSize="clamp(2.2rem, 6vw, 5.5rem)"
-      lineHeight="1"
-      sx={{ textWrap: "balance" }}
-    >
-      {title}
-    </Heading>
-    <Text
-      mt={7}
-      color="kk.muted"
-      fontSize={{ base: "lg", md: "xl" }}
-      lineHeight="1.6"
-      mx={center ? "auto" : 0}
-      maxW="30rem"
-    >
-      {line}
-    </Text>
-  </Reveal>
+              display="grid"
+              gridTemplateColumns={{ base: "2.2rem 1fr", md: "4rem 1fr" }}
+              gap={4}
+              py={{ base: 6, md: 8 }}
+              borderTopWidth="1px"
+              borderColor="kk.line"
+              alignItems="baseline"
+            >
+              <Text fontFamily="mono" fontSize="sm" color="kk.accent">
+                {String(i + 1).padStart(2, "0")}
+              </Text>
+              <Text
+                fontFamily="display"
+                fontWeight="700"
+                textTransform="uppercase"
+                letterSpacing="0.03em"
+                fontSize="clamp(1.2rem, 2.6vw, 2.2rem)"
+                lineHeight="1.15"
+              >
+                {q}
+              </Text>
+            </Box>
+          </Reveal></Box>
+        ))}
+      </Box>
+    </Container>
+  </Box>
 );
 
 /* --------------------------------------------------------- Chip marquee */
@@ -490,7 +400,7 @@ export const Closing: React.FC = () => (
           lineHeight="0.98"
           sx={{ textWrap: "balance" }}
         >
-          Work on the questions with us
+          We may be wrong. The questions are worth it.
         </Heading>
         <Button
           as={NextLink}

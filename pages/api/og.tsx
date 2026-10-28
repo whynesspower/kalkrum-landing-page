@@ -41,11 +41,11 @@ export default function handler() {
             letterSpacing: '-0.04em',
           }}
         >
-          <div style={{ display: 'flex' }}>Intelligence</div>
-          <div style={{ display: 'flex' }}>that discovers.</div>
+          <div style={{ display: 'flex' }}>Intelligence that</div>
+          <div style={{ display: 'flex' }}>keeps learning.</div>
         </div>
         <div style={{ display: 'flex', fontSize: 30, color: '#9aa3b5' }}>
-          A frontier research lab
+          A frontier AI research lab
         </div>
       </div>
     ),

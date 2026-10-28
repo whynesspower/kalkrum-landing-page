@@ -3,25 +3,23 @@ import { Box } from "@chakra-ui/react";
 import { Marquee } from "../graphics/marquee";
 
 const ITEMS = [
-  "Scientific reasoning",
-  "World models",
-  "JEPA",
+  "Continual learning",
+  "Catastrophic forgetting",
+  "Test-time training",
+  "Self-distillation",
   "State space models",
   "Mamba",
   "Linear attention",
   "Gated DeltaNet",
   "Sub-quadratic attention",
-  "Mixture of experts",
   "Hybrid architectures",
-  "Diffusion language models",
-  "Continual learning",
-  "Catastrophic forgetting",
-  "Self-distillation",
-  "Test-time training",
+  "Mixture of experts",
   "Long-term memory modules",
+  "World models",
+  "JEPA",
   "Hierarchical planning",
+  "Diffusion language models",
   "Mechanistic Interpretability",
-  "Autonomous experimentation",
 ];
 
 export const Ticker: React.FC = () => (

@@ -10,10 +10,9 @@ import { Hero } from "components/lab/home/hero";
 import { Ticker } from "components/lab/home/ticker";
 import { Vision } from "components/lab/home/vision";
 import { ResearchAreas } from "components/lab/home/research-areas";
-import { Method } from "components/lab/home/method";
-import { ImageBand } from "components/lab/home/image-band";
+import { Learning } from "components/lab/home/learning";
+import { Candour } from "components/lab/home/candour";
 import { Principles } from "components/lab/home/principles";
-import { Gallery } from "components/lab/home/gallery";
 import { Join } from "components/lab/home/join";
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "").replace(/\/$/, "");
@@ -47,11 +46,9 @@ const Home: NextPage = () => {
       <DashedRule />
       <ResearchAreas />
       <DashedRule />
-      <Method />
-      <ImageBand />
+      <Learning />
+      <Candour />
       <Principles />
-      <DashedRule />
-      <Gallery />
       <DashedRule />
       <Join />
     </Box>

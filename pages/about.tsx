@@ -1,16 +1,15 @@
 import * as React from "react";
 import type { NextPage } from "next";
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Text } from "@chakra-ui/react";
 import { SEO } from "components/seo/seo";
 import siteConfig from "data/config";
-import { IMAGE_CREDIT_LINE } from "data/images";
 import { Reveal } from "components/motion/reveal";
 import { DashedRule, LabSection } from "components/lab/primitives";
-import { ArrowLink } from "components/lab/pages/arrow-link";
 import { LogoMark } from "components/lab/logo-mark";
-import { DnaHelix } from "components/lab/graphics/dna-helix";
+import { Backdrop } from "components/lab/graphics/backdrop";
 import { AboutHero } from "components/lab/about/about-hero";
-import { VisionBlock } from "components/lab/about/vision-block";
+import { Vision } from "components/lab/about/vision";
+import { Contrast } from "components/lab/about/contrast";
 import { PrinciplesWords } from "components/lab/about/principles-words";
 
 const About: NextPage = () => {
@@ -20,39 +19,20 @@ const About: NextPage = () => {
     <Box>
       <SEO
         title="About | KalKram"
-        description="KalKram is a research lab building scientific superintelligence in software."
+        description="KalKram builds minds that keep learning: systems that learn from experience, remember it, and plan over long horizons."
       />
       <AboutHero />
-
-      <VisionBlock id="vision" />
-
-      <LabSection>
-        <Reveal>
-        </Reveal>
-        <Box mt={{ base: 10, md: 16 }}>
-          <PrinciplesWords />
-        </Box>
-      </LabSection>
-
+      <Vision id="vision" />
       <DashedRule />
-
-      <LabSection
-        py={{ base: 16, md: 24 }}
-        decor={
-          <Box
-            position="absolute"
-            top="50%"
-            right={{ base: "-80px", md: "4%" }}
-            w={{ base: "160px", md: "220px" }}
-            transform="translateY(-50%)"
-            opacity={0.3}
-            pointerEvents="none"
-            aria-hidden="true"
-          >
-            <DnaHelix />
-          </Box>
-        }
-      >
+      <LabSection>
+        <Contrast />
+      </LabSection>
+      <DashedRule />
+      <LabSection>
+        <PrinciplesWords />
+      </LabSection>
+      <DashedRule />
+      <LabSection py={{ base: 16, md: 24 }}>
         <Reveal>
           <Flex align="center" gap={{ base: 4, md: 6 }}>
             <LogoMark size={72} />
@@ -60,24 +40,48 @@ const About: NextPage = () => {
               fontFamily="display"
               textTransform="uppercase"
               letterSpacing="0.05em"
-              fontSize={{ base: "lg", md: "2xl" }}
+              fontSize={{ base: "md", md: "2xl" }}
+              lineHeight="1.3"
             >
-              KalKram (कालक्रम): chronology
+              KalKram (कालक्रम): chronology, the order in which things unfold.
             </Text>
           </Flex>
         </Reveal>
       </LabSection>
-
-      <DashedRule />
-
+      <Box
+        as="section"
+        position="relative"
+        overflow="hidden"
+        py={{ base: 28, md: 44 }}
+        borderTopWidth="1px"
+        borderBottomWidth="1px"
+        borderColor="kk.line"
+      >
+        <Box position="absolute" inset="0" aria-hidden="true">
+          <Backdrop variant="contours" />
+          <Box position="absolute" inset="0" bg="rgba(5,6,10,0.45)" />
+        </Box>
+        <LabSection py={0}>
+          <Reveal>
+            <Text
+              fontFamily="display"
+              fontWeight="700"
+              textTransform="uppercase"
+              letterSpacing="0.03em"
+              lineHeight="1.05"
+              fontSize="clamp(2rem, 6vw, 5.5rem)"
+              maxW="18ch"
+            >
+              Learning does not end at deployment.
+            </Text>
+          </Reveal>
+        </LabSection>
+      </Box>
       <LabSection py={{ base: 16, md: 24 }}>
         <Reveal>
-          <Box mt={6}>
-            <ArrowLink href={`mailto:${email}`}>{email}</ArrowLink>
-          </Box>
-          <Text mt={10} fontFamily="mono" fontSize="10px" color="kk.muted">
-            {IMAGE_CREDIT_LINE}
-          </Text>
+          <Button as="a" href={`mailto:${email}`} variant="line">
+            {email}
+          </Button>
         </Reveal>
       </LabSection>
     </Box>

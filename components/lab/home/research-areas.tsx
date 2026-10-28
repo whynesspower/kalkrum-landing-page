@@ -1,57 +1,49 @@
 import { useMinWidth } from "hooks/use-min-width";
 import * as React from "react";
 import NextLink from "next/link";
-import {
-  Box,
-  Flex,
-  Grid,
-  LinkBox,
-  LinkOverlay,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Flex, Grid, LinkBox, LinkOverlay, Text } from "@chakra-ui/react";
 import { Parallax } from "components/motion/parallax";
 import { Reveal } from "components/motion/reveal";
-import { LabHeading, LabSection, Lead } from "../primitives";
+import { LabHeading, LabSection } from "../primitives";
+import { TimeAxis } from "../graphics/time-axis";
+import { StateFlow } from "../graphics/state-flow";
 import { HypothesisGraph } from "../graphics/hypothesis-graph";
-import { OrbitalAtom } from "../graphics/orbital-atom";
-import { WaveField } from "../graphics/wave-field";
 import { NeuralLattice } from "../graphics/neural-lattice";
 import { Glow } from "./shared";
 
 const AREAS = [
   {
     n: "01",
-    title: "Scientific Reasoning",
-    body: "Hypotheses, evidence and hierarchical planning, with test-time training and self-distillation to sharpen reasoning.",
-    Graphic: HypothesisGraph,
+    title: "Continual Learning",
+    body: "Learning that never stops, without catastrophic forgetting, through test-time training and self-distillation.",
+    Graphic: TimeAxis,
   },
   {
     n: "02",
-    title: "Autonomous Experimentation",
-    body: "Closing the loop from idea to evidence with hierarchical planning, and continual learning from every result.",
-    Graphic: OrbitalAtom,
+    title: "Memory and Architecture",
+    body: "State space models, Mamba, Gated DeltaNet and hybrid architectures with long-term memory modules.",
+    Graphic: StateFlow,
   },
   {
     n: "03",
-    title: "World Models and Simulation",
-    body: "World models that predict, not only describe, studied through JEPA and diffusion language models.",
-    Graphic: WaveField,
+    title: "World Models and Planning",
+    body: "World models such as JEPA that predict, with hierarchical planning on top.",
+    Graphic: HypothesisGraph,
   },
   {
     n: "04",
-    title: "Safety and Interpretability",
-    body: "Mechanistic Interpretability to see what these systems do inside, and to keep them verifiable as they grow.",
+    title: "Interpretability and Safety",
+    body: "Mechanistic Interpretability to read circuits and feature dynamics from the inside.",
     Graphic: NeuralLattice,
   },
 ];
 
-// Left column drifts one way, right column the other.
 const COLUMN_DISTANCE = [14, -14];
 
-const AreaCard: React.FC<{
-  area: (typeof AREAS)[number];
-  index: number;
-}> = ({ area, index }) => {
+const AreaCard: React.FC<{ area: (typeof AREAS)[number]; index: number }> = ({
+  area,
+  index,
+}) => {
   const isMd = useMinWidth(768);
   const d = isMd ? COLUMN_DISTANCE[index % 2] : 0;
   const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -77,7 +69,7 @@ const AreaCard: React.FC<{
           borderColor="kk.line"
           borderRadius="2xl"
           bg="kk.surface"
-          transition="border-color .3s ease, transform .3s ease"
+          transition="border-color .3s ease"
           _hover={{ borderColor: "rgba(142,227,255,0.35)" }}
         >
           <Box
@@ -94,13 +86,8 @@ const AreaCard: React.FC<{
             }}
           />
           <Flex justify="space-between" align="center" position="relative">
-            <Text
-              fontFamily="mono"
-              fontSize="xs"
-              letterSpacing="0.18em"
-              color="kk.accent"
-            >
-              [{area.n}]
+            <Text fontFamily="mono" fontSize="xs" letterSpacing="0.18em" color="kk.accent">
+              {area.n}
             </Text>
             <Text
               aria-hidden
@@ -118,7 +105,8 @@ const AreaCard: React.FC<{
             my={{ base: 6, md: 8 }}
             w="100%"
             maxW="440px"
-            h={{ base: "220px", md: "280px" }}
+            h={{ base: "200px", md: "260px" }}
+            overflow="hidden"
             sx={{ "& > svg": { width: "100%", height: "100%" } }}
           >
             <Graphic />
@@ -138,12 +126,7 @@ const AreaCard: React.FC<{
                 {area.title}
               </LinkOverlay>
             </Text>
-            <Text
-              mt="3"
-              color="kk.muted"
-              lineHeight="1.65"
-              minH={{ base: "6.6em", md: "4.95em" }}
-            >
+            <Text mt="3" color="kk.muted" lineHeight="1.65" minH={{ base: "6.6em", md: "4.95em" }}>
               {area.body}
             </Text>
           </Box>
@@ -156,31 +139,19 @@ const AreaCard: React.FC<{
 export const ResearchAreas: React.FC = () => (
   <LabSection
     id="research"
-    decor={
-      <Glow color="#8ee3ff" size={620} top="20%" right="-240px" distance={-70} opacity={0.1} />
-    }
+    decor={<Glow color="#8ee3ff" size={620} top="20%" right="-240px" distance={-70} opacity={0.1} />}
   >
-    <Flex
-      mt="6"
-      mb={{ base: 12, md: 20 }}
-      direction={{ base: "column", lg: "row" }}
-      justify="space-between"
-      align={{ lg: "flex-end" }}
-      gap="6"
-    >
+    <Box mt="6" mb={{ base: 12, md: 20 }}>
       <LabHeading maxW="760px">
-        Four lines of{" "}
+        The{" "}
         <Box as="span" fontStyle="normal" color="kk.accent">
-          inquiry
+          bet
         </Box>
       </LabHeading>
-      <Lead maxW="440px">
-        Each area feeds the others. A system that reasons well needs a world to
-        test against, and a way for us to see inside it.
-      </Lead>
-    </Flex>
+    </Box>
     <Grid
       templateColumns={{ base: "1fr", md: "1fr 1fr" }}
+      gridAutoRows="1fr"
       gap={{ base: 5, md: 6 }}
       pb={{ md: 10 }}
     >

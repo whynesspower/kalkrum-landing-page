@@ -1,25 +1,20 @@
 import * as React from "react";
-import { LogoMark } from "../logo-mark";
 import NextLink from "next/link";
 import dynamic from "next/dynamic";
-import Image from "next/image";
 import { Box, Button, Container, Flex, Heading, Text } from "@chakra-ui/react";
 import { useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { MotionBox } from "components/motion/box";
 import { FallInPlace } from "components/motion/fall-in-place";
-import { SCIENCE_IMAGES } from "data/images";
+import { LogoMark } from "../logo-mark";
+import { Backdrop } from "../graphics/backdrop";
 import { LazyWhenVisible } from "./shared";
 
 const HeroSphere = dynamic(
   () => import("../graphics/hero-sphere").then((m) => m.HeroSphere),
   { ssr: false }
 );
-const NetworkField = dynamic(
-  () => import("../graphics/network-field").then((m) => m.NetworkField),
-  { ssr: false }
-);
 
-const READOUTS = ["AI", "SCIENCE", "SAFETY"];
+const READOUTS = ["CONTINUAL LEARNING", "MEMORY", "PLANNING"];
 
 export const Hero: React.FC = () => {
   const ref = React.useRef<HTMLElement>(null);
@@ -28,14 +23,12 @@ export const Hero: React.FC = () => {
     target: ref,
     offset: ["start start", "end start"],
   });
-  const bgY = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 160]);
   const textY = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 120]);
   const textOpacity = useTransform(
     scrollYProgress,
     [0, 0.55],
     [1, reduce ? 1 : 0]
   );
-  const img = SCIENCE_IMAGES.deepField;
 
   return (
     <Box
@@ -48,45 +41,15 @@ export const Hero: React.FC = () => {
       display="flex"
       flexDirection="column"
     >
-      {/* Photo layer: parallax down, slow zoom */}
-      <MotionBox
-        aria-hidden
-        position="absolute"
-        top="-20%"
-        left="0"
-        right="0"
-        bottom="0"
-        style={{ y: bgY }}
-      >
-        <MotionBox
-          position="absolute"
-          inset="0"
-          initial={{ scale: 1.04 }}
-          animate={reduce ? undefined : { scale: 1.16 }}
-          transition={{
-            duration: 40,
-            ease: "linear",
-            repeat: Infinity,
-            repeatType: "reverse",
-          }}
-        >
-          <Image
-            src={img.src}
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            quality={70}
-            style={{ objectFit: "cover", objectPosition: "center" }}
-          />
-        </MotionBox>
-      </MotionBox>
+      <Box aria-hidden position="absolute" inset="0" pointerEvents="none">
+        <Backdrop variant="tokens" intensity={0.45} />
+      </Box>
       <Box
         aria-hidden
         position="absolute"
         inset="0"
         pointerEvents="none"
-        bgGradient="linear(to-b, rgba(5,6,10,0.78) 0%, rgba(5,6,10,0.45) 40%, rgba(5,6,10,0.7) 78%, #05060a 100%)"
+        bgGradient="linear(to-b, rgba(5,6,10,0.5) 0%, rgba(5,6,10,0.2) 40%, rgba(5,6,10,0.6) 80%, #05060a 100%)"
       />
       <Box
         aria-hidden
@@ -95,24 +58,10 @@ export const Hero: React.FC = () => {
         pointerEvents="none"
         sx={{
           background:
-            "radial-gradient(70% 60% at 75% 45%, rgba(56,189,248,0.16) 0%, transparent 70%)",
+            "radial-gradient(70% 60% at 75% 45%, rgba(56,189,248,0.14) 0%, transparent 70%)",
         }}
       />
 
-      {/* Faint network behind everything */}
-      <Box
-        aria-hidden
-        position="absolute"
-        inset="0"
-        opacity={0.35}
-        pointerEvents="none"
-      >
-        <LazyWhenVisible>
-          <NetworkField density={0.6} />
-        </LazyWhenVisible>
-      </Box>
-
-      {/* Sphere: right on desktop, below the text and dimmer on phones */}
       <Box
         aria-hidden
         position="absolute"
@@ -162,7 +111,7 @@ export const Hero: React.FC = () => {
                 bgClip="text"
                 pr="0.08em"
               >
-                discovers.
+                keeps learning.
               </Box>
             </Heading>
           </FallInPlace>
@@ -174,39 +123,24 @@ export const Hero: React.FC = () => {
               fontSize={{ base: "md", md: "xl" }}
               lineHeight="1.6"
             >
-              KalKram is a frontier research lab building AI systems that can do
-              science: ask questions, design experiments, and understand what
-              they find. We pursue capability and safety together.
+              KalKram is a frontier AI research lab. We are building systems
+              that learn continuously from experience, remember what they
+              learn, and plan over long horizons.
             </Text>
           </FallInPlace>
           <FallInPlace delay={0.6}>
             <Flex mt={{ base: 8, md: 10 }} gap="3" wrap="wrap">
-              <Button
-                as={NextLink}
-                href="/research"
-                variant="cta"
-                size="lg"
-                h="14"
-                px="8"
-              >
+              <Button as={NextLink} href="/research" variant="cta" size="lg" h="14" px="8">
                 Our research
               </Button>
-              <Button
-                as={NextLink}
-                href="/#vision"
-                variant="line"
-                size="lg"
-                h="14"
-                px="8"
-              >
-                Our vision
+              <Button as={NextLink} href="/careers" variant="line" size="lg" h="14" px="8">
+                Join us
               </Button>
             </Flex>
           </FallInPlace>
         </MotionBox>
       </Container>
 
-      {/* Bottom readout strip */}
       <Box
         position="absolute"
         left="0"
@@ -229,8 +163,8 @@ export const Hero: React.FC = () => {
         >
           <Text
             fontFamily="mono"
-            fontSize="xs"
-            letterSpacing="0.18em"
+            fontSize={{ base: "10px", md: "xs" }}
+            letterSpacing={{ base: "0.1em", md: "0.18em" }}
             color="kk.muted"
           >
             {READOUTS.map((r, i) => (
@@ -246,40 +180,9 @@ export const Hero: React.FC = () => {
           </Text>
           <Flex display={{ base: "none", md: "flex" }} align="center" gap="3">
             <LogoMark size={28} />
-            <Text
-              fontFamily="mono"
-              fontSize="xs"
-              letterSpacing="0.18em"
-              color="kk.muted"
-            >
+            <Text fontFamily="mono" fontSize="xs" letterSpacing="0.18em" color="kk.muted">
               KALKRAM / कालक्रम
             </Text>
-          </Flex>
-          <Flex align="center" gap="3" aria-hidden>
-            <Text
-              fontFamily="mono"
-              fontSize="xs"
-              letterSpacing="0.18em"
-              color="kk.muted"
-            >
-              SCROLL
-            </Text>
-            <Box position="relative" w="1px" h="28px" bg="kk.line" overflow="hidden">
-              <MotionBox
-                position="absolute"
-                left="0"
-                top="0"
-                w="1px"
-                h="12px"
-                bg="kk.accent"
-                animate={reduce ? undefined : { y: [-12, 28] }}
-                transition={{
-                  duration: 1.8,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
-            </Box>
           </Flex>
         </Container>
       </Box>

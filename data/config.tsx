@@ -6,9 +6,9 @@ const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "").replace(/\/$/, "");
 
 const siteConfig = {
   seo: {
-    title: "KalKram | A frontier research lab",
+    title: "KalKram | A frontier AI research lab",
     description:
-      "KalKram is a frontier research lab building AI systems that can do science, through world models, continual learning and mechanistic interpretability.",
+      "KalKram is a frontier AI research lab building systems that keep learning: continual learning, long-term memory and efficient architectures, with interpretability built in.",
     openGraph: {
       type: "website",
       siteName: "KalKram",
@@ -17,7 +17,7 @@ const siteConfig = {
           url: `${siteUrl}/api/og`,
           width: 1200,
           height: 630,
-          alt: "KalKram: Intelligence that discovers.",
+          alt: "KalKram: Intelligence that keeps learning.",
         },
       ],
     },

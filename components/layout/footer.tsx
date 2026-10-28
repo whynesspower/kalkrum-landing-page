@@ -12,7 +12,6 @@ import Link from "next/link";
 import { FaLinkedin } from "react-icons/fa6";
 
 import siteConfig from "data/config";
-import { IMAGE_CREDIT_LINE } from "data/images";
 import { LogoMark, LogoWatermark } from "components/lab/logo-mark";
 
 export interface FooterProps extends BoxProps {}
@@ -93,7 +92,7 @@ export const Footer: React.FC<FooterProps> = (props) => {
               letterSpacing="0.05em"
               color="whiteAlpha.400"
             >
-              Intelligence that discovers.
+              Intelligence that keeps learning.
             </Heading>
           </Box>
 
@@ -187,9 +186,7 @@ export const Footer: React.FC<FooterProps> = (props) => {
           justify="space-between"
           gap="3"
         >
-          <Text fontSize="xs" color="kk.muted" maxW="640px" lineHeight="1.6">
-            {IMAGE_CREDIT_LINE}
-          </Text>
+          <Box aria-hidden />
           <Text
             fontFamily="mono"
             fontSize="xs"

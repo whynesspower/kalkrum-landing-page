@@ -4,7 +4,6 @@ import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
 import { Reveal } from "components/motion/reveal";
 import siteConfig from "data/config";
 import { LabSection, Lead } from "../primitives";
-import { DnaHelix } from "../graphics/dna-helix";
 import { Glow } from "./shared";
 import { LogoWatermark } from "../logo-mark";
 
@@ -17,18 +16,6 @@ export const Join: React.FC = () => (
         <LogoWatermark size={620} bottom="-180px" left="-200px" opacity={0.1} distance={-40} />
         <Glow color="#38bdf8" size={760} top="-10%" left="20%" distance={-70} opacity={0.18} />
         <Glow color="#5ef2c4" size={520} bottom="-10%" right="-160px" distance={-40} opacity={0.16} />
-        <Box
-          aria-hidden
-          position="absolute"
-          top="50%"
-          right={{ base: "-90px", md: "4%" }}
-          w={{ base: "180px", md: "300px" }}
-          transform="translateY(-50%)"
-          opacity={{ base: 0.3, md: 0.7 }}
-          pointerEvents="none"
-        >
-          <DnaHelix />
-        </Box>
       </>
     }
   >
@@ -45,7 +32,7 @@ export const Join: React.FC = () => (
         maxW="900px"
         sx={{ textWrap: "balance" }}
       >
-        Work on the hardest problem you{" "}
+        Build the next architecture of{" "}
         <Box
           as="span"
           fontStyle="normal"
@@ -53,13 +40,13 @@ export const Join: React.FC = () => (
           bgClip="text"
           pr="0.08em"
         >
-          can find.
+          intelligence.
         </Box>
       </Heading>
     </Reveal>
     <Lead mt="8" maxW="560px">
       We hire research scientists, research engineers, and people who build
-      infrastructure and systems. Tell us what you want to work on.
+      infrastructure. Tell us what you want to work on.
     </Lead>
     <Flex mt="10" gap="3" wrap="wrap">
       <Button as={NextLink} href="/careers" variant="cta" size="lg" h="14" px="8">

@@ -1,111 +1,105 @@
 import * as React from "react";
 import type { NextPage } from "next";
-import Image from "next/image";
-import { Box, Heading, Text } from "@chakra-ui/react";
+import { Box, Button, Heading, Text } from "@chakra-ui/react";
 import { SEO } from "components/seo/seo";
 import siteConfig from "data/config";
-import { IMAGE_CREDIT_LINE, SCIENCE_IMAGES } from "data/images";
 import { Reveal } from "components/motion/reveal";
-import { Parallax } from "components/motion/parallax";
-import {
-  DashedRule,
-  LabHeading,
-  LabSection,
-  Lead,
-  } from "components/lab/primitives";
-import { PageHero } from "components/lab/pages/page-hero";
-import { SpotlightCard } from "components/lab/pages/spotlight-card";
-import { ArrowLink } from "components/lab/pages/arrow-link";
-import { HudFrame } from "components/lab/graphics/hud-frame";
+import { DashedRule, LabHeading, LabSection, Lead } from "components/lab/primitives";
+import { Backdrop } from "components/lab/graphics/backdrop";
+import { RoleList } from "components/lab/careers/roles";
 
 const TRAITS = [
-  {
-    title: "Curiosity",
-    body: "You keep asking why after the first answer, and you follow a question into unfamiliar fields.",
-  },
-  {
-    title: "Rigour",
-    body: "You check your own work first, and you want others to be able to check it too.",
-  },
-  {
-    title: "Honesty about uncertainty",
-    body: "You can say \"I do not know\" and \"I was wrong\" without fuss, and you say how sure you are.",
-  },
-  {
-    title: "Care about safety",
-    body: "You want powerful systems to be understood and verifiable, and you see that as part of the research.",
-  },
+  { word: "Depth.", line: "You go past the first answer and stay with a problem until it gives." },
+  { word: "Taste.", line: "You know which experiment is worth running and which is noise." },
+  { word: "Honesty about uncertainty.", line: "You say how sure you are, and you say when you were wrong." },
+  { word: "Care about what these systems become.", line: "You treat understanding and safety as part of the research." },
 ];
 
-const AREAS = [
-  {
-    title: "Research scientists",
-    body: "People who pose the questions and design the studies: reasoning and learning, scientific modelling, and the safety and interpretability of capable systems.",
-    subject: "Research scientist enquiry",
-  },
-  {
-    title: "Research engineers",
-    body: "People who turn ideas into working experiments: training and evaluating models, building tools for experimentation, and making results repeatable.",
-    subject: "Research engineer enquiry",
-  },
-  {
-    title: "Infrastructure and systems",
-    body: "People who build the foundations that research runs on: compute, data pipelines, simulation and lab automation, and the reliability that keeps it all running.",
-    subject: "Infrastructure and systems enquiry",
-  },
+const STEPS = [
+  "Write to us at the address below.",
+  "Send your best work: a paper, a repo or a result.",
+  "Answer two questions: what is the hardest problem you have solved, and what would you do about forgetting?",
 ];
-
-const mailto = (email: string, subject: string) =>
-  `mailto:${email}?subject=${encodeURIComponent(subject)}`;
-
-const heading3 = {
-  as: "h3" as const,
-  fontFamily: "display",
-  fontWeight: "400",
-  fontSize: { base: "2xl", md: "3xl" },
-  lineHeight: "1.15",
-  letterSpacing: "-0.01em",
-};
 
 const Careers: NextPage = () => {
   const email = siteConfig.footer.contactEmail;
-  const pillars = SCIENCE_IMAGES.pillars;
-  const quintet = SCIENCE_IMAGES.stephansQuintet;
+  const mail = (subject: string) =>
+    `mailto:${email}?subject=${encodeURIComponent(subject)}`;
 
   return (
     <Box>
       <SEO
         title="Careers | KalKram"
-        description="Join KalKram, a frontier research lab building AI systems that can do science. We hire research scientists, research engineers and infrastructure engineers."
-      />
-      <PageHero
-        title="Work on the hardest problem you can find."
-        image="stephansQuintet"
-        description="We are a lab with a long horizon. If you want to help build AI that can do science, and to do it with care, we would like to hear from you."
+        description="KalKram is a lab with one thesis: intelligence is learning in time. We are hiring researchers and engineers. The bar is high and the odds are long."
       />
 
-      <LabSection>
-        <Reveal maxW="46rem">
-          <LabHeading mt={5}>Four things matter most.</LabHeading>
-          <Lead mt={6}>
-            Degrees and titles matter less to us than how you think. These are
-            the qualities we look for in everyone we work with. Depth in areas
-            such as state space models, mixture of experts or Mechanistic
-            Interpretability helps, but curiosity comes first.
+      <Box
+        as="section"
+        position="relative"
+        overflow="hidden"
+        minH={{ base: "auto", md: "80vh" }}
+        display="flex"
+        alignItems="center"
+        pt={{ base: 32, md: 40 }}
+        pb={{ base: 20, md: 28 }}
+      >
+        <Box position="absolute" inset="0" aria-hidden>
+          <Backdrop variant="tokens" />
+        </Box>
+        <Box position="relative" zIndex={1} maxW="container.xl" mx="auto" px={{ base: 5, md: 8 }}>
+          <Heading
+            as="h1"
+            fontFamily="display"
+            textTransform="uppercase"
+            fontWeight="700"
+            fontSize="clamp(2.2rem, 6.4vw, 5.6rem)"
+            lineHeight="1.02"
+            letterSpacing="0.04em"
+            maxW="62rem"
+            sx={{ textWrap: "balance" }}
+          >
+            Build the next architecture of intelligence.
+          </Heading>
+          <Lead mt={8} maxW="40rem">
+            We are a lab with one thesis and little patience for anything else.
+            If you want to work on learning that never stops, write to us.
           </Lead>
+          <Button as="a" href={mail("Introduction to KalKram")} variant="cta" mt={10}>
+            Write to us
+          </Button>
+        </Box>
+      </Box>
+
+      <LabSection>
+        <Reveal>
+          <LabHeading>What we look for.</LabHeading>
         </Reveal>
-        <Box
-          mt={{ base: 10, md: 16 }}
-          display="grid"
-          gridTemplateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }}
-          columnGap={{ base: 0, md: 16 }}
-        >
-          {TRAITS.map((t, i) => (
-            <Reveal key={t.title} delay={(i % 2) * 0.08}>
-              <Box borderTopWidth="1px" borderColor="kk.line" py={8}>
-                <Heading {...heading3}>{t.title}</Heading>
-                <Text mt={3} color="kk.muted" lineHeight="1.7" maxW="30rem">
-                  {t.body}
+        <Box mt={{ base: 10, md: 16 }}>
+          {TRAITS.map((t) => (
+            <Reveal key={t.word}>
+              <Box
+                borderTopWidth="1px"
+                borderColor="kk.line"
+                py={{ base: 8, md: 10 }}
+                display="grid"
+                gridTemplateColumns={{ base: "1fr", lg: "3fr 2fr" }}
+                gap={{ base: 3, lg: 12 }}
+                alignItems="end"
+              >
+                <Heading
+                  as="h3"
+                  fontFamily="display"
+                  textTransform="uppercase"
+                  fontWeight="700"
+                  fontSize="clamp(2rem, 5.6vw, 4.6rem)"
+                  lineHeight="1.02"
+                  letterSpacing="0.03em"
+                  sx={{ overflowWrap: "anywhere", textWrap: "balance" }}
+                >
+                  {t.word}
+                </Heading>
+                <Text color="kk.muted" fontSize={{ base: "md", md: "lg" }} lineHeight="1.6">
+                  {t.line}
                 </Text>
               </Box>
             </Reveal>
@@ -115,128 +109,78 @@ const Careers: NextPage = () => {
 
       <DashedRule />
 
-      <LabSection>
-        <Reveal maxW="46rem">
-          <LabHeading mt={5}>Three areas we hire in.</LabHeading>
-          <Lead mt={6}>
-            These are areas of work, not open job postings. If one fits you,
-            write to us and tell us what you would like to build.
-          </Lead>
+      <LabSection id="roles">
+        <Reveal>
+          <LabHeading>Roles.</LabHeading>
         </Reveal>
-        <Box
-          mt={{ base: 10, md: 16 }}
-          display="grid"
-          gridTemplateColumns={{ base: "1fr", lg: "repeat(3, 1fr)" }}
-          gap={5}
-        >
-          {AREAS.map((a, i) => (
-            <Reveal key={a.title} delay={i * 0.08}>
-              <SpotlightCard h="100%">
-                <Text
-                  fontFamily="mono"
-                  fontSize="xs"
-                  letterSpacing="0.18em"
-                  color="kk.accent"
-                  mb={6}
-                >
-                  {`0${i + 1}`}
-                </Text>
-                <Heading {...heading3}>{a.title}</Heading>
-                <Text mt={4} color="kk.muted" lineHeight="1.7" flex="1">
-                  {a.body}
-                </Text>
-                <Box mt={8}>
-                  <ArrowLink href={mailto(email, a.subject)} fontSize="xs">
-                    Email us about {a.title.toLowerCase()}
-                  </ArrowLink>
-                </Box>
-              </SpotlightCard>
-            </Reveal>
-          ))}
+        <Box mt={{ base: 10, md: 16 }}>
+          <RoleList email={email} />
         </Box>
       </LabSection>
 
       <DashedRule />
 
       <LabSection>
-        <Box
-          display="grid"
-          gridTemplateColumns={{ base: "1fr", lg: "1fr 1fr" }}
-          gap={{ base: 12, lg: 20 }}
-          alignItems="start"
-        >
-          <Reveal>
-            <LabHeading mt={5}>Send us an email.</LabHeading>
-            <Lead mt={6}>
-              There is no form and no portal. Write a short note about what
-              you have worked on, what you want to work on next, and why it
-              matters to you. Add links to anything you are proud of.
-            </Lead>
-            <Box mt={8}>
-              <ArrowLink
-                href={mailto(email, "Introduction to KalKram")}
+        <Reveal>
+          <LabHeading>How to apply.</LabHeading>
+        </Reveal>
+        <Box as="ol" mt={{ base: 10, md: 16 }} listStyleType="none" maxW="52rem">
+          {STEPS.map((s, i) => (
+            <Reveal key={s}>
+              <Box
+                as="li"
+                display="grid"
+                gridTemplateColumns={{ base: "2.5rem 1fr", md: "4rem 1fr" }}
+                borderTopWidth="1px"
+                borderColor="kk.line"
+                py={7}
               >
-                Email {email}
-              </ArrowLink>
-            </Box>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <Text color="kk.muted" lineHeight="1.75">
-              We read every message. We cannot promise a quick reply to each,
-              but a real person will read what you send. We are happy to hear
-              from people whose path has not followed the usual route into
-              research.
-            </Text>
-          </Reveal>
+                <Text fontFamily="mono" fontSize="sm" color="kk.accent" pt={1}>
+                  {String(i + 1).padStart(2, "0")}
+                </Text>
+                <Text fontSize={{ base: "lg", md: "xl" }} lineHeight="1.55">
+                  {s}
+                </Text>
+              </Box>
+            </Reveal>
+          ))}
         </Box>
+        <Text mt={4} color="kk.muted">
+          <Box as="a" href={mail("Introduction to KalKram")} textDecoration="underline" sx={{ overflowWrap: "anywhere" }}>
+            {email}
+          </Box>
+        </Text>
       </LabSection>
 
       <Box
+        as="section"
         position="relative"
-        overflowX="clip"
-        px={{ base: 5, md: 8 }}
-        pb={{ base: 20, md: 32 }}
-        maxW="container.xl"
-        mx="auto"
+        overflow="hidden"
+        py={{ base: 24, md: 40 }}
+        borderTopWidth="1px"
+        borderColor="kk.line"
       >
-        <Box
-          display="grid"
-          gridTemplateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }}
-          gap={{ base: 8, md: 6 }}
-        >
-          <Parallax distance={20}>
-            <HudFrame label="FIG. 01" credit={pillars.credit}>
-              <Image
-                src={pillars.src}
-                alt={pillars.alt}
-                width={pillars.width}
-                height={pillars.height}
-                sizes="(min-width: 768px) 50vw, 100vw"
-                style={{ width: "100%", height: "auto", display: "block" }}
-              />
-            </HudFrame>
-          </Parallax>
-          <Parallax distance={-20}>
-            <HudFrame label="FIG. 02" credit={quintet.credit}>
-              <Image
-                src={quintet.src}
-                alt={quintet.alt}
-                width={quintet.width}
-                height={quintet.height}
-                sizes="(min-width: 768px) 50vw, 100vw"
-                style={{ width: "100%", height: "auto", display: "block" }}
-              />
-            </HudFrame>
-          </Parallax>
+        <Box position="absolute" inset="0" aria-hidden>
+          <Backdrop variant="attention" intensity={0.8} />
         </Box>
-        <Text
-          mt={6}
-          fontFamily="mono"
-          fontSize="xs"
-          color="kk.muted"
-        >
-          {IMAGE_CREDIT_LINE}
-        </Text>
+        <Box position="relative" zIndex={1} maxW="container.xl" mx="auto" px={{ base: 5, md: 8 }}>
+          <Heading
+            as="h2"
+            fontFamily="display"
+            textTransform="uppercase"
+            fontWeight="700"
+            fontSize="clamp(2.2rem, 6.4vw, 5.6rem)"
+            lineHeight="1.02"
+            letterSpacing="0.04em"
+            maxW="60rem"
+            sx={{ textWrap: "balance" }}
+          >
+            The odds are long. Now is the time.
+          </Heading>
+          <Button as="a" href={mail("Introduction to KalKram")} variant="cta" mt={10}>
+            Write to us
+          </Button>
+        </Box>
       </Box>
     </Box>
   );
