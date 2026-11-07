@@ -8,6 +8,7 @@ import { useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { MotionBox } from "components/motion/box";
 import { FallInPlace } from "components/motion/fall-in-place";
 import { SCIENCE_IMAGES } from "data/images";
+import siteConfig from "data/config";
 import { NetworkField } from "../graphics/network-field";
 import { LazyWhenVisible } from "./shared";
 
@@ -218,6 +219,26 @@ export const Hero: React.FC = () => {
               </Button>
             </Flex>
           </FallInPlace>
+          <FallInPlace delay={0.75}>
+            <Text
+              mt={{ base: 8, md: 10 }}
+              pt="4"
+              borderTopWidth="1px"
+              borderColor="kk.line"
+              w="fit-content"
+              maxW="full"
+              fontFamily="mono"
+              fontSize={{ base: "xs", md: "sm" }}
+              letterSpacing="0.14em"
+              textTransform="uppercase"
+              color="kk.fg"
+            >
+              A product of{" "}
+              <Box as="span" color="kk.accent" fontWeight="700">
+                {siteConfig.company.legalName}
+              </Box>
+            </Text>
+          </FallInPlace>
         </MotionBox>
       </Container>
 
@@ -237,7 +258,7 @@ export const Hero: React.FC = () => {
             letterSpacing={{ base: "0.12em", md: "0.18em" }}
             color="kk.muted"
           >
-            KALKRAM / कालक्रम
+            KALKRAM / कालक्रम / {siteConfig.company.legalName.toUpperCase()}
           </Text>
           <Text
             fontFamily="mono"

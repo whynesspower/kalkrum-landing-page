@@ -70,6 +70,16 @@ export const Footer: React.FC<FooterProps> = (props) => {
             >
               Intelligence that learns from experience.
             </Heading>
+            <Text
+              mt="6"
+              fontFamily="mono"
+              fontSize={{ base: "sm", md: "md" }}
+              letterSpacing="0.1em"
+              textTransform="uppercase"
+              color="kk.fg"
+            >
+              {siteConfig.company.productOf}
+            </Text>
           </Box>
 
           <Flex
@@ -187,9 +197,10 @@ export const Footer: React.FC<FooterProps> = (props) => {
             fontSize="xs"
             letterSpacing="0.08em"
             color="kk.muted"
-            flexShrink="0"
+            flexShrink={{ base: 1, md: 0 }}
           >
-            © {new Date().getFullYear()} KalKram
+            © {new Date().getFullYear()} {siteConfig.company.legalName}. KalKram is a product
+            of {siteConfig.company.legalName}.
           </Text>
         </Flex>
       </Container>

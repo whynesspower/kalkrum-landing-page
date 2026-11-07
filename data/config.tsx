@@ -6,10 +6,15 @@ import { flags } from "lib/flags";
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "").replace(/\/$/, "");
 
 const siteConfig = {
+  // The registered company that owns and runs KalKram.
+  company: {
+    legalName: "Alaka Labs LLP",
+    productOf: "KalKram is a product of Alaka Labs LLP.",
+  },
   seo: {
     title: "KalKram | A frontier AI lab",
     description:
-      "KalKram is a frontier AI lab building agents that learn from their own experience, remember it across a lifetime, and stay legible.",
+      "KalKram, a product of Alaka Labs LLP, is a frontier AI lab building agents that learn from their own experience, remember it across a lifetime, and stay legible.",
     openGraph: {
       type: "website",
       siteName: "KalKram",

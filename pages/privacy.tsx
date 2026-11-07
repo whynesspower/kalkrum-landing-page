@@ -6,6 +6,10 @@ import siteConfig from "data/config";
 
 const SECTIONS = [
   {
+    title: "Who we are",
+    body: `${siteConfig.company.productOf} Alaka Labs LLP runs this site and is responsible for the data described below.`,
+  },
+  {
     title: "What we collect",
     body: "We collect basic usage data about how visitors use this site, such as the pages viewed and how far down a page people scroll. We also keep any email you choose to send us.",
   },

@@ -70,6 +70,22 @@ const Contact: NextPage = () => {
               borderColor="kk.line"
               py={{ base: 6, md: 8 }}
             >
+              <Text {...rowText}>Company</Text>
+              <Text fontFamily="mono" fontSize={{ base: "md", md: "lg" }} letterSpacing="0.04em" color="kk.fg">
+                {siteConfig.company.productOf}
+              </Text>
+            </Flex>
+          </Reveal>
+          <Reveal>
+            <Flex
+              direction={{ base: "column", md: "row" }}
+              justify="space-between"
+              align={{ base: "flex-start", md: "center" }}
+              gap={{ base: 3, md: 8 }}
+              borderTopWidth="1px"
+              borderColor="kk.line"
+              py={{ base: 6, md: 8 }}
+            >
               <Text {...rowText}>Email</Text>
               <Link href={mail} fontFamily="mono" fontSize={{ base: "md", md: "lg" }} letterSpacing="0.04em" color="kk.fg" _hover={{ color: "kk.accent" }} sx={{ overflowWrap: "anywhere" }}>
                 {email}

@@ -68,6 +68,16 @@ const Careers: NextPage = () => {
           <Button as="a" href={mail} variant="cta" mt={10}>
             Write to us
           </Button>
+          <Text
+            mt={8}
+            fontFamily="mono"
+            fontSize={{ base: "xs", md: "sm" }}
+            letterSpacing="0.1em"
+            textTransform="uppercase"
+            color="kk.muted"
+          >
+            All roles are with {siteConfig.company.legalName}, the company behind KalKram.
+          </Text>
         </Box>
       </Box>
 

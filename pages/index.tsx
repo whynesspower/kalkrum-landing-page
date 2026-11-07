@@ -13,10 +13,20 @@ import { Join } from "components/lab/home/join";
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "").replace(/\/$/, "");
 
+// The legal entity is Alaka Labs LLP; KalKram is its brand.
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "KalKram",
+  legalName: siteConfig.company.legalName,
+  alternateName: siteConfig.company.legalName,
+  brand: { "@type": "Brand", name: "KalKram" },
+  parentOrganization: {
+    "@type": "Organization",
+    name: siteConfig.company.legalName,
+  },
+  email: siteConfig.footer.contactEmail,
+  sameAs: [siteConfig.footer.linkedin],
   ...(siteUrl ? { url: siteUrl } : {}),
   description: siteConfig.seo.description,
 };

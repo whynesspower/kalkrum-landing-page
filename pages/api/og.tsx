@@ -46,7 +46,7 @@ export default function handler() {
           <div style={{ display: 'flex' }}>experience.</div>
         </div>
         <div style={{ display: 'flex', fontSize: 30, color: '#9aa3b5' }}>
-          A frontier AI lab
+          A frontier AI lab. A product of Alaka Labs LLP.
         </div>
       </div>
     ),
