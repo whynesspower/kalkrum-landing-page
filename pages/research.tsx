@@ -9,48 +9,41 @@ import {
   AreaPanel,
   Closing,
   ImageBand,
-  OpenProblems,
   PanelArea,
   PanelGroup,
   ResearchHero,
 } from "components/lab/research/blocks";
+import { ResultsLedger } from "components/lab/research/results-ledger";
 
 const AREAS: PanelArea[] = [
   {
     index: "01",
-    title: "Learning from experience",
+    title: "Find the structure",
     paragraph:
-      "An agent that improves from its own actions and their consequences over months and years, with no training run that ends and no catastrophic forgetting of what it already knows. We work on continual learning and test-time training, on self-distillation as the way a long run compresses itself, and on world models, including JEPA-style latent predictors and diffusion language models, that let the agent predict and plan hierarchically over horizons far longer than any single episode.",
-    graphic: <TimeAxis />,
+      "General solvers pay for the whole search space. Structure, whether a symmetry, an identity or a way the problem splits, shows where answers can live. So the system first runs detectors over the problem, and commits to a structure only after a checker confirms it holds. On blind tests it recognised the right structure in 5 of 8 models, with no false detections.",
+    graphic: <NeuralLattice />,
   },
   {
     index: "02",
-    title: "Memory and architecture",
+    title: "Compile a solver",
     paragraph:
-      "A lifetime does not fit in a context window. We build sequence models whose cost grows linearly with time and whose memory does not fade: state space models such as Mamba, linear attention and Gated DeltaNet, sub-quadratic attention, and hybrid architectures that pair them with explicit long-term memory modules and mixture of experts routing.",
+      "A compiler turns the problem's model into an engine made for that structure alone: its own data layout, pruning and symmetry breaking. We hand-built the FLC method for Williamson, good and best matrices. The compiler now matches it automatically, more than 30,000× faster than Kissat and CP-SAT. Agents then choose the next bound to push, test it in simulation, run the compiled search at scale and send the result to verification.",
     graphic: <StateFlow />,
   },
   {
     index: "03",
-    title: "Legibility",
+    title: "Prove it and keep everything",
     paragraph:
-      "A mind that keeps learning cannot be audited once. We do mechanistic interpretability on a moving target: tracing circuits and features as they form, change and disappear across a lifetime of learning, so that capability never runs ahead of our ability to read it.",
-    graphic: <NeuralLattice />,
+      "Every result we accept is re-derived by multiple separately written verifiers, so a bug in one is unlikely to repeat in the others. Where possible, a result ships with a certificate anyone can check. Every verified result leaves behind a detector, a checker and a solver, and the next problem starts from that library. On a problem type it had never seen, the system built a verified solver in 5 to 6 minutes.",
+    graphic: <TimeAxis />,
   },
-];
-
-const QUESTIONS = [
-  "Can a model keep learning at test time without a separate training run, and without forgetting?",
-  "What does a feature look like while it is being learned?",
-  "Can linear-time memory keep exact recall across a lifetime?",
-  "Where do grounded rewards come from when the goal is years away?",
 ];
 
 const Research: NextPage = () => (
   <Box>
     <SEO
       title="Research | KalKram"
-      description="KalKram's three research programmes: learning from experience, memory and architecture, and legibility."
+      description="Every result the KalKram system has found: what was known before, what we found and how it was checked. All of it ran on one cloud machine with an 8 GB GPU."
     />
     <ResearchHero />
 
@@ -60,9 +53,9 @@ const Research: NextPage = () => (
       ))}
     </PanelGroup>
 
-    <ImageBand image="stephansQuintet" />
+    <ResultsLedger />
 
-    <OpenProblems questions={QUESTIONS} />
+    <ImageBand image="stephansQuintet" />
 
     <Closing />
   </Box>

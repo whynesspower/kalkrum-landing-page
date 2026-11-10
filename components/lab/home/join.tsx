@@ -3,7 +3,6 @@ import NextLink from "next/link";
 import { Box, Button, Flex } from "@chakra-ui/react";
 import { Reveal } from "components/motion/reveal";
 import { Parallax } from "components/motion/parallax";
-import siteConfig from "data/config";
 import { LabSection, Lead } from "../primitives";
 import { LogoWatermark } from "../logo-mark";
 import { DnaHelix } from "../graphics/dna-helix";
@@ -35,19 +34,12 @@ export const Join: React.FC = () => (
     <Reveal>
       <Box maxW="640px">
         <Lead fontSize={{ base: "xl", md: "2xl" }} color="kk.fg">
-          This will take a small number of people who are extremely good. If
-          you are one of them, write to us.
+          We are hiring a small number of people who are extremely good. If
+          you are one of them, see the open roles.
         </Lead>
         <Flex mt="10" gap="3" wrap="wrap">
-          <Button
-            as="a"
-            href={`mailto:${siteConfig.footer.contactEmail}`}
-            variant="cta"
-            size="lg"
-            h="14"
-            px="8"
-          >
-            Write to us
+          <Button as={NextLink} href="/careers" variant="cta" size="lg" h="14" px="8">
+            Open roles
           </Button>
           <Button as={NextLink} href="/research" variant="line" size="lg" h="14" px="8">
             Research

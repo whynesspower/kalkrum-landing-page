@@ -12,8 +12,8 @@ import { HeroPhoto } from "components/lab/careers/hero-photo";
 
 const HOW_TO_APPLY = [
   "Email us.",
-  "Send the best thing you have made.",
-  "Tell us what you would do about forgetting.",
+  "Skip the CV.",
+  "Send something you built, proved or found.",
 ];
 
 const Careers: NextPage = () => {
@@ -24,7 +24,7 @@ const Careers: NextPage = () => {
     <Box>
       <SEO
         title="Careers | KalKram"
-        description="We are hiring a very small number of researchers and engineers who want to build the first mind that learns from its own life."
+        description="KalKram is hiring a very small number of researchers and engineers in search, verification, mathematics and systems."
       />
 
       <Box
@@ -61,23 +61,12 @@ const Careers: NextPage = () => {
             We are hiring a very small number of people.
           </Heading>
           <Lead mt={8} maxW="42rem">
-            Researchers and engineers who want to build the first mind that learns
-            from its own life. We do not care about credentials. We care about what
-            you have built and how you think.
+            In search, verification, mathematics and systems. We do not care about
+            credentials. Skip the CV: send something you built, proved or found.
           </Lead>
           <Button as="a" href={mail} variant="cta" mt={10}>
             Write to us
           </Button>
-          <Text
-            mt={8}
-            fontFamily="mono"
-            fontSize={{ base: "xs", md: "sm" }}
-            letterSpacing="0.1em"
-            textTransform="uppercase"
-            color="kk.muted"
-          >
-            All roles are with {siteConfig.company.legalName}, the company behind KalKram.
-          </Text>
         </Box>
       </Box>
 

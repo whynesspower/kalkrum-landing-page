@@ -136,10 +136,12 @@ export const ResearchHero: React.FC = () => {
             sx={{ textWrap: "balance" }}
             maxW="14ch"
           >
-            Learning that does not end.
+            What the system has found.
           </Heading>
           <Text mt={{ base: 8, md: 10 }} {...body}>
-            Three programmes, one system.
+            Every result below came from our own system, on one cloud machine
+            with an 8 GB GPU. Each entry says what was known, what we found and
+            how it was checked.
           </Text>
         </MotionDiv>
       </Container>

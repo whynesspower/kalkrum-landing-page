@@ -35,18 +35,18 @@ export default function handler() {
           style={{
             display: 'flex',
             flexDirection: 'column',
-            fontSize: 96,
+            fontSize: 84,
             fontWeight: 700,
             lineHeight: 1.04,
             letterSpacing: '-0.04em',
           }}
         >
-          <div style={{ display: 'flex' }}>Intelligence that</div>
-          <div style={{ display: 'flex' }}>learns from</div>
-          <div style={{ display: 'flex' }}>experience.</div>
+          <div style={{ display: 'flex' }}>Every discovery should</div>
+          <div style={{ display: 'flex' }}>make the next one</div>
+          <div style={{ display: 'flex' }}>cheaper.</div>
         </div>
         <div style={{ display: 'flex', fontSize: 30, color: '#9aa3b5' }}>
-          A frontier AI lab. A product of Alaka Labs LLP.
+          A frontier AI lab for verified discovery. A product of Aalaka Labs LLP.
         </div>
       </div>
     ),

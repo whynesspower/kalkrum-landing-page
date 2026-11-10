@@ -21,20 +21,20 @@ const AttentionMatrix = dynamic(
 
 const PANELS = [
   {
-    title: "Experience",
-    body: "Agents that learn continually from one lifelong stream of actions, observations and grounded reward, and do not forget.",
+    title: "Search",
+    body: "Discovery is search. Shrink the search and you shrink the cost. Nothing else about a discovery is expensive.",
     Graphic: TimeAxis,
     distance: 26,
   },
   {
-    title: "Memory",
-    body: "Architectures whose cost grows with time instead of with the square of it, so a lifetime fits and recall stays exact.",
+    title: "Structure",
+    body: "Structure makes search small. An engine built for one structure runs up to 47,000× faster than published times.",
     Graphic: MemoryGrid,
     distance: -18,
   },
   {
-    title: "Legibility",
-    body: "Tools that read a mind while it changes, so a system that keeps learning stays understandable.",
+    title: "Verification",
+    body: "Verification makes it compound. Only a re-derivable result can be built on. Each one leaves tools the next problem reuses.",
     Graphic: AttentionMatrix,
     distance: 36,
   },

@@ -15,7 +15,7 @@ import { LogoWatermark } from "components/lab/logo-mark";
 const WILL_PUBLISH = [
   "Results we can reproduce.",
   "Negative results that changed our plan.",
-  "The tools we use to read a mind while it changes.",
+  "The detectors, checkers and solvers each result leaves behind.",
 ];
 
 const Writing: NextPage = () => {
@@ -89,8 +89,7 @@ const Writing: NextPage = () => {
 
       <LabSection>
         <Lead maxW="40rem">
-          If you want to read our work before it is public, write to us and say
-          what you are working on.
+          If you want to read our work before it is public, write to us.
         </Lead>
         <Button as="a" href={mail} variant="cta" mt={10}>
           Write to us

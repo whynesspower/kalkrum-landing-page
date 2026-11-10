@@ -10,6 +10,7 @@ import { LabSection, Lead } from "components/lab/primitives";
 import { PageHero } from "components/lab/page-hero";
 import { DnaHelix } from "components/lab/graphics/dna-helix";
 import { LogoWatermark } from "components/lab/logo-mark";
+import { IpStatement } from "components/lab/ip-statement";
 
 const rowText = {
   fontFamily: "display",
@@ -71,9 +72,15 @@ const Contact: NextPage = () => {
               py={{ base: 6, md: 8 }}
             >
               <Text {...rowText}>Company</Text>
-              <Text fontFamily="mono" fontSize={{ base: "md", md: "lg" }} letterSpacing="0.04em" color="kk.fg">
-                {siteConfig.company.productOf}
-              </Text>
+              <Box maxW={{ md: "30rem" }} textAlign={{ base: "left", md: "right" }}>
+                <Text fontFamily="mono" fontSize={{ base: "md", md: "lg" }} letterSpacing="0.04em" color="kk.fg">
+                  {siteConfig.company.productOf}
+                </Text>
+                <Text mt="2" fontSize="sm" color="kk.muted" lineHeight="1.6">
+                  Our research was first published under the name {siteConfig.company.formerName}.
+                </Text>
+                <IpStatement mt="2" fontSize="sm" color="kk.muted" lineHeight="1.6" />
+              </Box>
             </Flex>
           </Reveal>
           <Reveal>
@@ -140,8 +147,8 @@ const Contact: NextPage = () => {
         </Box>
 
         <Lead mt={{ base: 12, md: 16 }} maxW="40rem" position="relative">
-          Tell us what you are building, or what you think we have wrong. Both are
-          welcome.
+          Write to us if you want to join, or if you think one of our results is
+          wrong. We would rather hear it.
         </Lead>
       </LabSection>
     </Box>

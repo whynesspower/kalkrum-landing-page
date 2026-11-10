@@ -6,16 +6,16 @@ export type Role = { title: string; line: string };
 
 export const ROLES: Role[] = [
   {
-    title: "Research Scientist, Learning from Experience",
-    line: "Build agents that improve from long streams of interaction, and measure what they forget.",
+    title: "Research Scientist, Search and Structure",
+    line: "Find the structure in hard problems and turn it into engines that search a small part of the space.",
   },
   {
-    title: "Research Scientist, Memory and Architecture",
-    line: "Design and train sequence models whose memory scales with time, and find out where they break.",
+    title: "Research Scientist, Verification",
+    line: "Build the separately written verifiers that re-derive every result before we accept it.",
   },
   {
-    title: "Research Engineer, Training Systems",
-    line: "Make the experiments cheap to repeat: the training stack, the environments, the evaluation harness.",
+    title: "Research Engineer, Platform",
+    line: "Make the platform cheap to run and easy to repeat: the solver compiler, the experiment loop and the evaluation harness.",
   },
 ];
 

@@ -9,17 +9,19 @@ import { Hero } from "components/lab/home/hero";
 import { Manifesto } from "components/lab/home/manifesto";
 import { Bet } from "components/lab/home/bet";
 import { Band } from "components/lab/home/band";
+import { Product } from "components/lab/home/product";
+import { Evidence } from "components/lab/home/evidence";
 import { Join } from "components/lab/home/join";
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "").replace(/\/$/, "");
 
-// The legal entity is Alaka Labs LLP; KalKram is its brand.
+// The legal entity is Aalaka Labs LLP; KalKram is its brand.
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "KalKram",
   legalName: siteConfig.company.legalName,
-  alternateName: siteConfig.company.legalName,
+  alternateName: [siteConfig.company.legalName, "Generalised Superintelligence", "GSI"],
   brand: { "@type": "Brand", name: "KalKram" },
   parentOrganization: {
     "@type": "Organization",
@@ -49,6 +51,8 @@ const Home: NextPage = () => {
       <Hero />
       <Manifesto />
       <Bet />
+      <Product />
+      <Evidence />
       <Band />
       <Join />
     </Box>

@@ -12,29 +12,29 @@ import { StateFlow } from "components/lab/graphics/state-flow";
 import { WaveField } from "components/lab/graphics/wave-field";
 
 const RULES = [
-  "One system, not a portfolio.",
-  "Small and dense.",
-  "Evidence before announcement.",
-  "Legibility from the first experiment.",
-  "Long horizons.",
+  "Find the structure.",
+  "Compile a solver.",
+  "Optimise, simulate, experiment, verify.",
+  "Prove it.",
+  "Keep everything.",
 ];
 
 const DETAIL: Array<{ title: string; body: string }> = [
   {
-    title: "One system",
-    body: "Every programme feeds the same agent. Nothing we build is a demo on its own; it is a part that has to fit the rest.",
+    title: "Find the structure",
+    body: "General solvers pay for the whole search space. Structure, whether a symmetry, an identity or a way the problem splits, shows where answers can live. So the system first runs detectors over the problem, and commits to a structure only after a checker confirms it holds.",
   },
   {
-    title: "Small and dense",
-    body: "We would rather have ten people who can each change the plan than a hundred who follow it.",
+    title: "Compile a solver",
+    body: "A compiler turns the problem's model into an engine made for that structure alone: its own data layout, pruning and symmetry breaking. We hand-built the FLC method for Williamson, good and best matrices. The compiler now matches it automatically.",
   },
   {
-    title: "Evidence first",
-    body: "We publish what we can verify, and we say plainly what we do not yet know. A result we cannot reproduce is not a result.",
+    title: "Prove it",
+    body: "Every result we accept is re-derived by multiple separately written verifiers, so a bug in one is unlikely to repeat in the others. Where one engine stands behind a claim, a case was closed internally, novelty is unsettled, or someone got there first, the log says so.",
   },
   {
-    title: "Read while it learns",
-    body: "Interpretability is not a review at the end. The tools that read the system are built with the system, and they run while it changes.",
+    title: "Keep everything",
+    body: "Every verified result leaves behind a detector, a checker and a solver. The next problem starts from that library. And it runs on hardware a university lab already owns.",
   },
 ];
 
@@ -42,12 +42,12 @@ const Approach: NextPage = () => (
   <Box>
     <SEO
       title="Approach | KalKram"
-      description="How KalKram works: one system, a small dense team, evidence before announcement, and legibility built in from the first experiment."
+      description="How KalKram makes discoveries: find the structure in a problem, compile a solver for it, run an optimise, simulate, experiment, verify loop, and re-derive every result with independent verifiers."
     />
 
     <PageHero
-      title="How we work."
-      lede="A small lab, one thesis, and a rule about what we say."
+      title="How a discovery gets made."
+      lede="Most search is spent where no answer can be. Our system works out what a problem is made of, builds a solver for exactly that, and keeps every tool it makes."
       image="cosmicCliffs"
       backdrop="state"
       position="50% 60%"
@@ -61,7 +61,7 @@ const Approach: NextPage = () => (
 
     <Box px={{ base: 5, md: 8 }} py={{ base: 6, md: 10 }} borderTopWidth="1px" borderColor="kk.line">
       <Parallax distance={-24}>
-        <HudFrame credit="A hidden state carried forward in time, written to and read from without fading.">
+        <HudFrame credit="The loop. Every verified result feeds the library every later run starts from.">
           <Box position="relative" h={{ base: "52svh", md: "74vh" }} minH="380px" overflow="hidden">
             <Box position="absolute" inset="0">
               <StateFlow size="100%" />
@@ -82,7 +82,7 @@ const Approach: NextPage = () => (
         <WaveField size="100%" />
       </Box>
       <Reveal>
-        <LabHeading>In practice</LabHeading>
+        <LabHeading>Each discovery makes the next one cheaper.</LabHeading>
       </Reveal>
       <SimpleGrid columns={{ base: 1, md: 2 }} spacingX={{ md: 16 }} spacingY={{ base: 8, md: 12 }} mt={{ base: 10, md: 16 }}>
         {DETAIL.map(({ title, body }) => (
@@ -119,7 +119,7 @@ const Approach: NextPage = () => (
         maxW="52rem"
         sx={{ textWrap: "balance" }}
       >
-        We are not building a product this quarter. We are building the thing that comes after products.
+        The loop, not any single model, is what makes the output trustworthy.
       </Text>
       <Button as={NextLink} href="/careers" variant="cta" mt={10}>
         Join us

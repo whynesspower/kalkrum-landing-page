@@ -8,7 +8,6 @@ import { useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { MotionBox } from "components/motion/box";
 import { FallInPlace } from "components/motion/fall-in-place";
 import { SCIENCE_IMAGES } from "data/images";
-import siteConfig from "data/config";
 import { NetworkField } from "../graphics/network-field";
 import { LazyWhenVisible } from "./shared";
 
@@ -182,14 +181,14 @@ export const Hero: React.FC = () => {
               letterSpacing="0.05em"
               sx={{ textWrap: "balance" }}
             >
-              Intelligence that learns{" "}
+              Every discovery should make the next one{" "}
               <Box
                 as="span"
                 bgGradient="linear(to-r, #8ee3ff, #5ef2c4 55%, #ffd27a)"
                 bgClip="text"
                 pr="0.08em"
               >
-                from experience.
+                cheaper.
               </Box>
             </Heading>
           </FallInPlace>
@@ -201,11 +200,12 @@ export const Hero: React.FC = () => {
               fontSize={{ base: "md", md: "xl" }}
               lineHeight="1.6"
             >
-              KalKram is building the first mind that learns from its own life:
-              an agent that acts, remembers everything, improves without end,
-              and can be read from the inside.
+              KalKram is a frontier AI lab. We are building a system that makes
+              new discoveries and proves them: it finds the structure in a hard
+              problem, compiles a solver for that structure, and accepts a result
+              only when separately written verifiers re-derive it.
               <Box as="span" display="block" mt="3" color="kk.fg">
-                Superintelligence will not be trained. It will be lived.
+                It has already answered open questions in combinatorics, coding theory and quantum error correction.
               </Box>
             </Text>
           </FallInPlace>
@@ -218,26 +218,6 @@ export const Hero: React.FC = () => {
                 Join us
               </Button>
             </Flex>
-          </FallInPlace>
-          <FallInPlace delay={0.75}>
-            <Text
-              mt={{ base: 8, md: 10 }}
-              pt="4"
-              borderTopWidth="1px"
-              borderColor="kk.line"
-              w="fit-content"
-              maxW="full"
-              fontFamily="mono"
-              fontSize={{ base: "xs", md: "sm" }}
-              letterSpacing="0.14em"
-              textTransform="uppercase"
-              color="kk.fg"
-            >
-              A product of{" "}
-              <Box as="span" color="kk.accent" fontWeight="700">
-                {siteConfig.company.legalName}
-              </Box>
-            </Text>
           </FallInPlace>
         </MotionBox>
       </Container>
@@ -258,7 +238,7 @@ export const Hero: React.FC = () => {
             letterSpacing={{ base: "0.12em", md: "0.18em" }}
             color="kk.muted"
           >
-            KALKRAM / कालक्रम / {siteConfig.company.legalName.toUpperCase()}
+            KALKRAM / कालक्रम
           </Text>
           <Text
             fontFamily="mono"

@@ -13,6 +13,7 @@ import { FaLinkedin } from "react-icons/fa6";
 import siteConfig from "data/config";
 import { IMAGE_CREDIT_LINE } from "data/images";
 import { LogoMark, LogoWatermark } from "components/lab/logo-mark";
+import { IpStatement } from "components/lab/ip-statement";
 
 export interface FooterProps extends BoxProps {}
 
@@ -68,7 +69,7 @@ export const Footer: React.FC<FooterProps> = (props) => {
               letterSpacing="0.05em"
               color="whiteAlpha.400"
             >
-              Intelligence that learns from experience.
+              Every discovery should make the next one cheaper.
             </Heading>
             <Text
               mt="6"
@@ -78,8 +79,10 @@ export const Footer: React.FC<FooterProps> = (props) => {
               textTransform="uppercase"
               color="kk.fg"
             >
-              {siteConfig.company.productOf}
+              KalKram, a frontier AI lab for verified discovery, is a product of{" "}
+              {siteConfig.company.legalName}.
             </Text>
+            <IpStatement mt="3" fontFamily="mono" fontSize="sm" letterSpacing="0.06em" color="kk.muted" />
           </Box>
 
           <Flex
@@ -199,8 +202,7 @@ export const Footer: React.FC<FooterProps> = (props) => {
             color="kk.muted"
             flexShrink={{ base: 1, md: 0 }}
           >
-            © {new Date().getFullYear()} {siteConfig.company.legalName}. KalKram is a product
-            of {siteConfig.company.legalName}.
+            © {new Date().getFullYear()} {siteConfig.company.legalName}. All rights reserved.
           </Text>
         </Flex>
       </Container>

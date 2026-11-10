@@ -5,9 +5,9 @@ import { WordReveal } from "../graphics/word-reveal";
 import { Backdrop } from "../graphics/backdrop";
 
 const STATEMENT = [
-  "Every model in use today learned from the recorded past of humans, then stopped. It cannot act, remember what happened, or get better from it. What it knows is a ceiling.",
-  "A mind with no such ceiling learns the way living things learn: from a continuous stream of its own actions and their consequences, with goals that reach years ahead and rewards grounded in the world rather than in human approval. It will reason in ways we did not teach it. It will find things no one has written down.",
-  "KalKram exists to build that mind, and to build it so that we can still read it.",
+  "Machines have started to make discoveries. Almost no one can afford to run them.",
+  "In September 2026, OpenAI said its agents had resolved Navier-Stokes. The run used about ten thousand agents and 130 billion output tokens over 88 hours. At that price, discovery belongs to a handful of organisations.",
+  "Most of that cost is search, spent where no answer can be. Hard problems have structure. Find it first and the search shrinks by orders of magnitude.",
 ];
 
 export const Manifesto: React.FC = () => (
@@ -38,8 +38,8 @@ export const Manifesto: React.FC = () => (
         color="kk.muted"
         maxW="44rem"
       >
-        कालक्रम means chronology, the order in which things happen. Intelligence
-        is made of it.
+        Figures from OpenAI&apos;s announcement, September 2026. Independent review
+        is still under way.
       </Text>
     </Box>
   </LabSection>

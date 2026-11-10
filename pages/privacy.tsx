@@ -7,7 +7,7 @@ import siteConfig from "data/config";
 const SECTIONS = [
   {
     title: "Who we are",
-    body: `${siteConfig.company.productOf} Alaka Labs LLP runs this site and is responsible for the data described below.`,
+    body: `${siteConfig.company.productOf} Aalaka Labs LLP runs this site and is responsible for the data described below.`,
   },
   {
     title: "What we collect",
