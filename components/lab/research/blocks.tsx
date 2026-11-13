@@ -11,6 +11,10 @@ import Image from "next/image";
 import { keyframes } from "@emotion/react";
 import { Reveal } from "components/motion/reveal";
 import { SCIENCE_IMAGES, type ScienceImageKey } from "data/images";
+import { domains } from "data/results";
+
+const ENTRY_COUNT = domains.reduce((n, d) => n + d.results.length, 0);
+const FIELD_COUNT = domains.filter((d) => d.id !== "platform").length;
 import { Backdrop } from "../graphics/backdrop";
 import { OrbitalAtom } from "../graphics/orbital-atom";
 import { NetworkField } from "../graphics/network-field";
@@ -139,9 +143,9 @@ export const ResearchHero: React.FC = () => {
             What the system has found.
           </Heading>
           <Text mt={{ base: 8, md: 10 }} {...body}>
-            Every result below came from our own system, on one cloud machine
-            with an 8 GB GPU. Each entry says what was known, what we found and
-            how it was checked.
+            {ENTRY_COUNT} entries across {FIELD_COUNT} fields. All of it ran on one
+            cloud machine with an 8 GB GPU. Each entry says what was known, what we
+            found and how it was checked.
           </Text>
         </MotionDiv>
       </Container>

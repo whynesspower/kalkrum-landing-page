@@ -11,6 +11,7 @@ import { Bet } from "components/lab/home/bet";
 import { Band } from "components/lab/home/band";
 import { Product } from "components/lab/home/product";
 import { Evidence } from "components/lab/home/evidence";
+import { Featured } from "components/lab/home/featured";
 import { Join } from "components/lab/home/join";
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "").replace(/\/$/, "");
@@ -51,8 +52,9 @@ const Home: NextPage = () => {
       <Hero />
       <Manifesto />
       <Bet />
-      <Product />
       <Evidence />
+      <Product />
+      <Featured />
       <Band />
       <Join />
     </Box>

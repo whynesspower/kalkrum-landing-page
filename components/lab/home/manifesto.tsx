@@ -1,12 +1,12 @@
 import * as React from "react";
-import { Box, Text } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { LabSection } from "../primitives";
 import { WordReveal } from "../graphics/word-reveal";
 import { Backdrop } from "../graphics/backdrop";
 
 const STATEMENT = [
   "Machines have started to make discoveries. Almost no one can afford to run them.",
-  "In September 2026, OpenAI said its agents had resolved Navier-Stokes. The run used about ten thousand agents and 130 billion output tokens over 88 hours. At that price, discovery belongs to a handful of organisations.",
+  "In September 2026 OpenAI announced its agents had resolved Navier-Stokes, using about ten thousand agents and 130 billion output tokens. At that price, discovery belongs to a handful of organisations.",
   "Most of that cost is search, spent where no answer can be. Hard problems have structure. Find it first and the search shrinks by orders of magnitude.",
 ];
 
@@ -30,17 +30,6 @@ export const Manifesto: React.FC = () => (
           _last={{ mb: 0 }}
         />
       ))}
-      <Text
-        mt={{ base: 12, md: 16 }}
-        fontFamily="mono"
-        fontSize={{ base: "xs", md: "sm" }}
-        letterSpacing="0.08em"
-        color="kk.muted"
-        maxW="44rem"
-      >
-        Figures from OpenAI&apos;s announcement, September 2026. Independent review
-        is still under way.
-      </Text>
     </Box>
   </LabSection>
 );

@@ -1,7 +1,7 @@
 import * as React from "react";
 import type { NextPage } from "next";
 import NextLink from "next/link";
-import { Box, Button, Flex, Link, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Link, SimpleGrid, Text } from "@chakra-ui/react";
 import { FaLinkedin } from "react-icons/fa6";
 import { SEO } from "components/seo/seo";
 import siteConfig from "data/config";
@@ -11,6 +11,20 @@ import { PageHero } from "components/lab/page-hero";
 import { DnaHelix } from "components/lab/graphics/dna-helix";
 import { LogoWatermark } from "components/lab/logo-mark";
 import { IpStatement } from "components/lab/ip-statement";
+import { founders } from "data/founders";
+
+const CONTACT_ROWS = [
+  {
+    label: "Join us",
+    title: "This will take a small number of people who are extremely good.",
+    body: "In search, verification, mathematics and systems. Skip the CV: send something you built, proved or found.",
+  },
+  {
+    label: "Investors and press",
+    title: "We are happy to talk about the work.",
+    body: "Every claim on this site links to its evidence. We would rather show a result than describe one.",
+  },
+];
 
 const rowText = {
   fontFamily: "display",
@@ -29,12 +43,12 @@ const Contact: NextPage = () => {
     <Box>
       <SEO
         title="Contact | KalKram"
-        description="Write to KalKram. One address, and a person reads every message."
+        description="Contact KalKram: researchers and engineers who want to join, and investors and press."
       />
 
       <PageHero
         title="Write to us."
-        lede="One address. A person reads every message."
+        lede="We are a small team and we read everything. Write to us, or message either founder on LinkedIn."
         image="stephansQuintet"
         backdrop="memory"
         position="50% 35%"
@@ -146,10 +160,63 @@ const Contact: NextPage = () => {
           </Reveal>
         </Box>
 
-        <Lead mt={{ base: 12, md: 16 }} maxW="40rem" position="relative">
-          Write to us if you want to join, or if you think one of our results is
-          wrong. We would rather hear it.
-        </Lead>
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 4, md: 6 }} mt={{ base: 12, md: 16 }} maxW="56rem" position="relative">
+          {founders.map((f) => (
+            <Link
+              key={f.name}
+              href={f.linkedin}
+              isExternal
+              display="flex"
+              alignItems="center"
+              justifyContent="space-between"
+              gap={4}
+              p={{ base: 5, md: 6 }}
+              borderWidth="1px"
+              borderColor="kk.line"
+              borderRadius="16px"
+              bg="kk.surface"
+              _hover={{ borderColor: "rgba(142,227,255,0.45)", textDecoration: "none" }}
+            >
+              <Box>
+                <Text fontFamily="display" fontWeight="700" textTransform="uppercase" letterSpacing="0.04em" fontSize="lg">
+                  {f.name}
+                </Text>
+                <Text mt={1} fontFamily="mono" fontSize="xs" letterSpacing="0.12em" textTransform="uppercase" color="kk.muted">
+                  {f.role} · LinkedIn
+                </Text>
+              </Box>
+              <FaLinkedin aria-hidden size="22" />
+            </Link>
+          ))}
+        </SimpleGrid>
+
+        <Box mt={{ base: 16, md: 24 }} maxW="56rem" position="relative">
+          {CONTACT_ROWS.map((r) => (
+            <Reveal key={r.label}>
+              <Box
+                borderTopWidth="1px"
+                borderColor="kk.line"
+                py={{ base: 6, md: 8 }}
+                display="grid"
+                gridTemplateColumns={{ base: "1fr", md: "14rem 1fr" }}
+                gap={{ base: 3, md: 10 }}
+              >
+                <Text fontFamily="mono" fontSize="xs" letterSpacing="0.14em" textTransform="uppercase" color="kk.accent" pt={{ md: 1 }}>
+                  {r.label}
+                </Text>
+                <Box>
+                  <Text {...rowText} fontSize="clamp(1.2rem, 2.4vw, 1.8rem)">
+                    {r.title}
+                  </Text>
+                  <Text mt={3} color="kk.muted" lineHeight="1.65">
+                    {r.body}
+                  </Text>
+                </Box>
+              </Box>
+            </Reveal>
+          ))}
+          <Box borderTopWidth="1px" borderColor="kk.line" />
+        </Box>
       </LabSection>
     </Box>
   );

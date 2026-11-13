@@ -60,13 +60,13 @@ export const Band: React.FC = () => (
           fontFamily="display"
           textTransform="uppercase"
           fontWeight="700"
-          fontSize="clamp(2.4rem, 8.4vw, 8.6rem)"
-          lineHeight="0.94"
+          fontSize="clamp(1.9rem, 4.6vw, 4.6rem)"
+          lineHeight="1.04"
           letterSpacing="0.04em"
           maxW="1180px"
           sx={{ textWrap: "balance" }}
         >
-          The odds are long. We think the bet is worth it.
+          The superintelligence worth building will not just answer questions. It will find what no one has written down, and hand you the proof.
         </Heading>
       </Reveal>
       <Text

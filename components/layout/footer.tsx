@@ -79,7 +79,7 @@ export const Footer: React.FC<FooterProps> = (props) => {
               textTransform="uppercase"
               color="kk.fg"
             >
-              KalKram, a frontier AI lab for verified discovery, is a product of{" "}
+              KalKram, a research lab for verified discovery, is a product of{" "}
               {siteConfig.company.legalName}.
             </Text>
             <IpStatement mt="3" fontFamily="mono" fontSize="sm" letterSpacing="0.06em" color="kk.muted" />

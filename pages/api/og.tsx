@@ -46,7 +46,7 @@ export default function handler() {
           <div style={{ display: 'flex' }}>cheaper.</div>
         </div>
         <div style={{ display: 'flex', fontSize: 30, color: '#9aa3b5' }}>
-          A frontier AI lab for verified discovery. A product of Aalaka Labs LLP.
+          A research lab for verified discovery. A product of Aalaka Labs LLP.
         </div>
       </div>
     ),

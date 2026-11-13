@@ -19,9 +19,9 @@ const siteConfig = {
     ipStatement: "",
   },
   seo: {
-    title: "KalKram | A frontier AI lab for verified discovery",
+    title: "KalKram | A research lab for verified discovery",
     description:
-      "KalKram is a frontier AI lab building a system that makes verified discoveries. It finds the structure in a hard problem, compiles a solver for it, and accepts a result only when independent verifiers re-derive it. A product of Aalaka Labs LLP.",
+      "KalKram builds a system that finds the structure in hard problems, compiles a solver for it, and verifies every result independently. A product of Aalaka Labs LLP.",
     openGraph: {
       type: "website",
       siteName: "KalKram",

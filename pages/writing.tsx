@@ -20,7 +20,7 @@ const WILL_PUBLISH = [
 
 const Writing: NextPage = () => {
   const email = siteConfig.footer.contactEmail;
-  const mail = `mailto:${email}?subject=${encodeURIComponent("Early access to KalKram results")}`;
+  const mail = `mailto:${email}?subject=${encodeURIComponent("KalKram research")}`;
 
   return (
     <Box>

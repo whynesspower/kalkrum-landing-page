@@ -21,20 +21,20 @@ const AttentionMatrix = dynamic(
 
 const PANELS = [
   {
-    title: "Search",
-    body: "Discovery is search. Shrink the search and you shrink the cost. Nothing else about a discovery is expensive.",
+    title: "Discovery is search.",
+    body: "Shrink the search and you shrink the cost.",
     Graphic: TimeAxis,
     distance: 26,
   },
   {
-    title: "Structure",
-    body: "Structure makes search small. An engine built for one structure runs up to 47,000× faster than published times.",
+    title: "Structure makes search small.",
+    body: "An engine built for one structure runs up to 47,000× faster than published times.",
     Graphic: MemoryGrid,
     distance: -18,
   },
   {
-    title: "Verification",
-    body: "Verification makes it compound. Only a re-derivable result can be built on. Each one leaves tools the next problem reuses.",
+    title: "Verification makes it compound.",
+    body: "Only a re-derivable result can be built on. Each leaves tools the next problem reuses.",
     Graphic: AttentionMatrix,
     distance: 36,
   },
@@ -87,7 +87,7 @@ export const Bet: React.FC = () => (
                       fontFamily="display"
                       textTransform="uppercase"
                       fontWeight="700"
-                      fontSize="clamp(2.4rem, 7vw, 6rem)"
+                      fontSize="clamp(2rem, 5.2vw, 4.6rem)"
                       letterSpacing="0.05em"
                       lineHeight="0.95"
                     >

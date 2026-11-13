@@ -1,7 +1,8 @@
 import * as React from "react";
 import type { NextPage } from "next";
 import NextLink from "next/link";
-import { Box, Button, Text } from "@chakra-ui/react";
+import { Box, Button, Link, SimpleGrid, Text } from "@chakra-ui/react";
+import { FaLinkedin } from "react-icons/fa6";
 import { SEO } from "components/seo/seo";
 import { Reveal } from "components/motion/reveal";
 import { Parallax } from "components/motion/parallax";
@@ -11,19 +12,22 @@ import { WordReveal } from "components/lab/graphics/word-reveal";
 import { HudFrame } from "components/lab/graphics/hud-frame";
 import { LossLandscape } from "components/lab/graphics/loss-landscape";
 import { NetworkField } from "components/lab/graphics/network-field";
-
-const STATEMENT = [
-  "The test now is the edge: can a machine find something true that no one has written down, and can anyone trust it?",
-  "This year machines began settling questions left open for decades. The flagship result, OpenAI's Navier-Stokes, took about ten thousand agents and 130 billion output tokens.",
-  "Discovery by machine is possible. At that cost, only a few can pay for it.",
-];
+import { founders } from "data/founders";
 
 const SECTIONS: Array<{ title: string; body: string[] }> = [
+  {
+    title: "Discovery has started",
+    body: [
+      "This year machines began settling questions left open for decades. The flagship result, OpenAI's Navier-Stokes, took about ten thousand agents and 130 billion output tokens.",
+      "Discovery by machine is possible. At that cost, only a few can pay for it.",
+    ],
+  },
   {
     title: "The cost of discovery is the cost of search",
     body: [
       "A hard problem is a vast space with a thin region where answers live. Brute force pays for all of it. Structure, whether a symmetry, an identity or a way the problem splits, tells you where to look.",
       "Our Hadamard engines run up to 47,000× faster than published times. Our quantum-code distance engine grows its effort about five-fold per step, where the best published tool grows ten-fold. All of it on one machine with an 8 GB GPU.",
+      "The question is not how much compute a discovery needs. It is how much structure you found first.",
     ],
   },
   {
@@ -38,6 +42,11 @@ const SECTIONS: Array<{ title: string; body: string[] }> = [
     body: [
       "Generating candidates is cheap. Knowing which are true is scarce. Every result we accept is re-derived by multiple separately written verifiers and, where possible, ships with a certificate anyone can check.",
       "When a result rests on one engine, may not be new, or someone got there first, we say so. A discovery engine that overclaims is worse than none.",
+    ],
+  },
+  {
+    title: "Where it goes",
+    body: [
       "We began in mathematics, where a computer can tell right from wrong. Designs led to codes, codes to quantum memory, and the same engines now work on SAT, metabolic networks and materials. Anywhere an answer can be checked is within reach.",
     ],
   },
@@ -53,7 +62,7 @@ const Vision: NextPage = () => (
   <Box>
     <SEO
       title="Vision | KalKram"
-      description="Superintelligence will be measured in discoveries. The cost of discovery is the cost of search; structure makes search small, and verification makes every result compound."
+      description="Why KalKram exists: the cost of discovery is the cost of search. Structure makes search small, and verification makes every result compound."
     />
 
     <PageHero
@@ -66,19 +75,14 @@ const Vision: NextPage = () => (
 
     <LabSection py={{ base: 20, md: 36 }} decor={<NetworkField density={0.5} />}>
       <Box maxW="60rem">
-        {STATEMENT.map((text) => (
-          <WordReveal
-            key={text}
-            text={text}
-            fontFamily="display"
-            fontWeight="500"
-            fontSize="clamp(1.4rem, 2.6vw, 2.4rem)"
-            lineHeight="1.3"
-            letterSpacing="0.01em"
-            mb={{ base: 6, md: 8 }}
-            _last={{ mb: 0 }}
-          />
-        ))}
+        <WordReveal
+          text="The test now is the edge: can a machine find something true that no one has written down, and can anyone trust it?"
+          fontFamily="display"
+          fontWeight="500"
+          fontSize="clamp(1.5rem, 3vw, 2.8rem)"
+          lineHeight="1.25"
+          letterSpacing="0.01em"
+        />
       </Box>
     </LabSection>
 
@@ -111,18 +115,55 @@ const Vision: NextPage = () => (
 
     <DashedRule />
 
-    <LabSection>
-      <Text
-        fontFamily="mono"
-        fontSize={{ base: "xs", md: "sm" }}
-        letterSpacing="0.08em"
-        color="kk.muted"
-        maxW="44rem"
-      >
-        The platform opens to research teams in the third week of November 2026.
+    <LabSection id="founders">
+      <Reveal>
+        <LabHeading maxW="48rem">Founders</LabHeading>
+        <Lead mt={6} maxW="44rem">
+          Founded in 2026 by two people who came at the same idea from opposite sides.
+        </Lead>
+      </Reveal>
+      <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 4, md: 6 }} mt={{ base: 10, md: 14 }}>
+        {founders.map((f) => (
+          <Reveal key={f.name}>
+            <Box h="100%" p={{ base: 6, md: 8 }} borderWidth="1px" borderColor="kk.line" borderRadius="16px" bg="kk.surface">
+              <Text fontFamily="display" fontWeight="700" textTransform="uppercase" letterSpacing="0.04em" fontSize={{ base: "xl", md: "2xl" }}>
+                {f.name}
+              </Text>
+              <Text mt={2} fontFamily="mono" fontSize="xs" letterSpacing="0.14em" textTransform="uppercase" color="kk.accent">
+                {f.role}
+              </Text>
+              <Text mt={5} color="kk.muted" lineHeight="1.65">
+                {f.line}
+              </Text>
+              <Link
+                href={f.linkedin}
+                isExternal
+                mt={5}
+                display="inline-flex"
+                alignItems="center"
+                gap={2}
+                fontFamily="mono"
+                fontSize="sm"
+                color="kk.fg"
+                _hover={{ color: "kk.accent" }}
+              >
+                <FaLinkedin aria-hidden size="18" />
+                LinkedIn
+              </Link>
+            </Box>
+          </Reveal>
+        ))}
+      </SimpleGrid>
+
+      <Text mt={{ base: 12, md: 16 }} fontFamily="mono" fontSize="xs" letterSpacing="0.06em" color="kk.muted" maxW="44rem">
+        1. OpenAI,{" "}
+        <Link href="https://openai.com/index/navier-stokes-solution" isExternal color="kk.accent">
+          &ldquo;On the Navier-Stokes Millennium Prize Problem&rdquo;
+        </Link>
+        , 2026.
       </Text>
       <Button as={NextLink} href="/research" variant="cta" mt={10}>
-        Research
+        See our research
       </Button>
     </LabSection>
   </Box>

@@ -34,15 +34,18 @@ export const Join: React.FC = () => (
     <Reveal>
       <Box maxW="640px">
         <Lead fontSize={{ base: "xl", md: "2xl" }} color="kk.fg">
-          We are hiring a small number of people who are extremely good. If
-          you are one of them, see the open roles.
+          This will take a small number of people who are extremely good.
+        </Lead>
+        <Lead mt="4">
+          In search, verification, mathematics and systems. Skip the CV: send
+          something you built, proved or found.
         </Lead>
         <Flex mt="10" gap="3" wrap="wrap">
           <Button as={NextLink} href="/careers" variant="cta" size="lg" h="14" px="8">
-            Open roles
+            Join us
           </Button>
-          <Button as={NextLink} href="/research" variant="line" size="lg" h="14" px="8">
-            Research
+          <Button as={NextLink} href="/vision" variant="line" size="lg" h="14" px="8">
+            Read the vision
           </Button>
         </Flex>
       </Box>

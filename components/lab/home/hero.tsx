@@ -200,19 +200,18 @@ export const Hero: React.FC = () => {
               fontSize={{ base: "md", md: "xl" }}
               lineHeight="1.6"
             >
-              KalKram is a frontier AI lab. We are building a system that makes
-              new discoveries and proves them: it finds the structure in a hard
-              problem, compiles a solver for that structure, and accepts a result
-              only when separately written verifiers re-derive it.
+              We build a system that finds the structure in hard problems,
+              compiles a solver for it, and accepts a result only when multiple
+              independent verifiers re-derive it.
               <Box as="span" display="block" mt="3" color="kk.fg">
-                It has already answered open questions in combinatorics, coding theory and quantum error correction.
+                What it learns, it keeps.
               </Box>
             </Text>
           </FallInPlace>
           <FallInPlace delay={0.6}>
             <Flex mt={{ base: 8, md: 10 }} gap="3" wrap="wrap">
               <Button as={NextLink} href="/research" variant="cta" size="lg" h="14" px="8">
-                Research
+                See our research
               </Button>
               <Button as={NextLink} href="/careers" variant="line" size="lg" h="14" px="8">
                 Join us
@@ -238,7 +237,7 @@ export const Hero: React.FC = () => {
             letterSpacing={{ base: "0.12em", md: "0.18em" }}
             color="kk.muted"
           >
-            KALKRAM / कालक्रम
+            KALKRAM / BENGALURU · SAN FRANCISCO
           </Text>
           <Text
             fontFamily="mono"
