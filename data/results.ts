@@ -69,7 +69,6 @@ const HADAMARD_SURVEY = {
   label: "Egan, Kotsireas, London, Ó Catháin (2026), arXiv:2610.27175",
   href: "https://arxiv.org/abs/2610.27175",
 };
-const HADAMARD_REPO = { label: "K. Kumar, New Hadamard matrices", href: "https://github.com/vatskishan03/Hadamard" };
 const LDPC_PAPER = {
   label: "Danilko, Mogilnykh, Tikhomolov (2026), arXiv:2607.04716",
   href: "https://arxiv.org/abs/2607.04716",
@@ -125,7 +124,7 @@ export const domains: Domain[] = [
           "More than 200 Hadamard, skew-Hadamard and symmetric Hadamard matrices, constructed at orders listed as open.",
         context: "The constructions are cited in the 2026 survey of Hadamard matrix constructions.",
         evidence: { level: "certified", text: "Each matrix is its own certificate: anyone can check `HH^{T} = nI`." },
-        refs: [HADAMARD_SURVEY, HADAMARD_REPO],
+        refs: [HADAMARD_SURVEY],
         figure: { value: "200+", caption: "matrices at open orders" },
       },
       {

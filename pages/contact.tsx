@@ -48,7 +48,7 @@ const Contact: NextPage = () => {
 
       <PageHero
         title="Write to us."
-        lede="We are a small team and we read everything. Write to us, or message either founder on LinkedIn."
+        lede="We are a small team and we read everything. Write to us, or message Yashraj Shukla on LinkedIn."
         image="stephansQuintet"
         backdrop="memory"
         position="50% 35%"

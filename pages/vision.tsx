@@ -1,8 +1,7 @@
 import * as React from "react";
 import type { NextPage } from "next";
 import NextLink from "next/link";
-import { Box, Button, Link, SimpleGrid, Text } from "@chakra-ui/react";
-import { FaLinkedin } from "react-icons/fa6";
+import { Box, Button, Link, Text } from "@chakra-ui/react";
 import { SEO } from "components/seo/seo";
 import { Reveal } from "components/motion/reveal";
 import { Parallax } from "components/motion/parallax";
@@ -12,7 +11,6 @@ import { WordReveal } from "components/lab/graphics/word-reveal";
 import { HudFrame } from "components/lab/graphics/hud-frame";
 import { LossLandscape } from "components/lab/graphics/loss-landscape";
 import { NetworkField } from "components/lab/graphics/network-field";
-import { founders } from "data/founders";
 
 const SECTIONS: Array<{ title: string; body: string[] }> = [
   {
@@ -115,47 +113,8 @@ const Vision: NextPage = () => (
 
     <DashedRule />
 
-    <LabSection id="founders">
-      <Reveal>
-        <LabHeading maxW="48rem">Founders</LabHeading>
-        <Lead mt={6} maxW="44rem">
-          Founded in 2026 by two people who came at the same idea from opposite sides.
-        </Lead>
-      </Reveal>
-      <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 4, md: 6 }} mt={{ base: 10, md: 14 }}>
-        {founders.map((f) => (
-          <Reveal key={f.name}>
-            <Box h="100%" p={{ base: 6, md: 8 }} borderWidth="1px" borderColor="kk.line" borderRadius="16px" bg="kk.surface">
-              <Text fontFamily="display" fontWeight="700" textTransform="uppercase" letterSpacing="0.04em" fontSize={{ base: "xl", md: "2xl" }}>
-                {f.name}
-              </Text>
-              <Text mt={2} fontFamily="mono" fontSize="xs" letterSpacing="0.14em" textTransform="uppercase" color="kk.accent">
-                {f.role}
-              </Text>
-              <Text mt={5} color="kk.muted" lineHeight="1.65">
-                {f.line}
-              </Text>
-              <Link
-                href={f.linkedin}
-                isExternal
-                mt={5}
-                display="inline-flex"
-                alignItems="center"
-                gap={2}
-                fontFamily="mono"
-                fontSize="sm"
-                color="kk.fg"
-                _hover={{ color: "kk.accent" }}
-              >
-                <FaLinkedin aria-hidden size="18" />
-                LinkedIn
-              </Link>
-            </Box>
-          </Reveal>
-        ))}
-      </SimpleGrid>
-
-      <Text mt={{ base: 12, md: 16 }} fontFamily="mono" fontSize="xs" letterSpacing="0.06em" color="kk.muted" maxW="44rem">
+    <LabSection>
+      <Text fontFamily="mono" fontSize="xs" letterSpacing="0.06em" color="kk.muted" maxW="44rem">
         1. OpenAI,{" "}
         <Link href="https://openai.com/index/navier-stokes-solution" isExternal color="kk.accent">
           &ldquo;On the Navier-Stokes Millennium Prize Problem&rdquo;
