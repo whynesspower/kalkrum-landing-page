@@ -1,0 +1,14 @@
+variant	K	sets_found	set_fingerprint	same_sets_as_final	seconds	load1	LP_test_of_returned_sets	started
+v1_dual_bound_1e2	1	17	33c5bdbd0d36	yes	2.3618	20.86	pass	2026-10-21T02:21:44
+v1_dual_bound_1e2	2	128	aaa0dc16c582	yes	92.605	26.23	pass	2026-10-21T02:26:29
+v1_dual_bound_1e2	3	343	4ce7f544f6f1	no	611.7409	32.7	pass	2026-10-21T02:29:24
+v2_dual_bound_1e3_looser_tolerance	1	17	33c5bdbd0d36	yes	2.1281	21.76	pass	2026-10-21T04:08:16
+v2_dual_bound_1e3_looser_tolerance	2	129	b233d86f062e	no	76.3137	21.76	fail	2026-10-21T04:08:19
+v2_dual_bound_1e3_looser_tolerance	3	346	4a0054932092	no	477.6341	29.93	fail	2026-10-21T04:14:34
+v2_dual_bound_1e3_looser_tolerance	4	759	570b50a42d53	no	2682.965	29.11	fail	2026-10-21T04:22:33
+v3_dual_bound_1e3_tolerance_1e-9	2	128	aaa0dc16c582	yes	96.2863	30.44	pass	2026-10-21T06:40:56
+v3_dual_bound_1e3_tolerance_1e-9	3	351	fbd3cb101a52	yes	607.9774	30.08	pass	2026-10-21T06:42:33
+v3_dual_bound_1e3_tolerance_1e-9	4	747	0f5a148e1537	yes	2848.4295	29.1	pass	2026-10-21T06:52:43
+v3_repeat_at_load_38	1	17	33c5bdbd0d36	yes	3.1803	38.19	pass	2026-10-21T17:59:54
+v3_repeat_at_load_38	2	128	aaa0dc16c582	yes	95.3895	38.26	pass	2026-10-21T17:59:57
+v3_repeat_at_load_38	3	351	fbd3cb101a52	yes	583.9856	38.26	pass	2026-10-21T18:01:33

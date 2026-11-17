@@ -1,0 +1,330 @@
+/* ───────────────────────── Notes written in Markdown ─────────────────────────
+   A note from content/notes/*.md is set like a paper: Latin Modern for text and mathematics, one column,
+   hairline rules. Colours and spacing come from the tokens in globals.css. The numbered notes
+   (content/notes/*.ts) share this route and are styled in globals.css under "note-" classes, so every
+   class here begins with "paper". */
+
+.paper-head {
+  padding-bottom: clamp(40px, 6vw, 80px);
+}
+.paper-head .label a {
+  color: var(--ink-2);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--rule-strong);
+}
+.paper-head .label a:hover {
+  text-decoration-color: currentColor;
+}
+.paper-title {
+  margin-top: 18px;
+  max-width: 17em;
+}
+
+.paper-layout {
+  align-items: start;
+  padding-bottom: var(--section);
+}
+
+.paper-aside {
+  grid-column: span 3;
+  position: sticky;
+  top: calc(var(--nav-h) + 32px);
+  font-size: 14.5px;
+  color: var(--ink-2);
+}
+.paper-aside dl {
+  margin: 0;
+  border-top: 1px solid var(--rule-strong);
+}
+.paper-aside dl > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.paper-aside dt {
+  color: var(--ink-3);
+}
+.paper-aside dd {
+  margin: 0;
+  text-align: right;
+}
+.paper-aside nav {
+  margin-top: 36px;
+}
+.paper-aside nav ol {
+  border-top: 1px solid var(--rule-strong);
+}
+.paper-aside nav a {
+  display: block;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--rule);
+  transition: color 0.2s;
+}
+.paper-aside nav a:hover {
+  color: var(--ink);
+}
+
+.paper {
+  grid-column: 5 / span 7;
+  font-family: var(--serif);
+  font-size: clamp(1.14rem, 1.34vw, 1.27rem);
+  line-height: 1.55;
+  font-variant-numeric: lining-nums;
+}
+.paper p {
+  text-wrap: pretty;
+}
+.paper p + p {
+  margin-top: 0.95em;
+}
+.paper .lede {
+  font-size: 1.16em;
+  line-height: 1.44;
+  letter-spacing: -0.006em;
+}
+.paper h2 {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.12em;
+  line-height: 1.3;
+  color: var(--ink-3);
+  margin: 2.5em 0 0.7em;
+  scroll-margin-top: calc(var(--nav-h) + 24px);
+}
+.paper h3 {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 13.5px;
+  line-height: 1.4;
+  color: var(--ink-3);
+  margin: 2em 0 0.6em;
+  scroll-margin-top: calc(var(--nav-h) + 24px);
+}
+/* The serif has no bold cut, so a bold run is set in the sans. */
+.paper strong {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 0.82em;
+  letter-spacing: -0.004em;
+}
+.paper em {
+  font-style: italic;
+}
+.paper .math {
+  font-size: 1em;
+}
+
+/* KaTeX sets its own size for Times-like text. Next to Latin Modern it needs none. */
+.paper .katex {
+  font-size: 1em;
+}
+.paper-math {
+  margin: 1.25em 0;
+  padding: 2px 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.paper-math .katex-display {
+  margin: 0;
+}
+
+.paper .cite {
+  font-family: var(--sans);
+  font-size: 0.62em;
+  vertical-align: super;
+  line-height: 0;
+  color: var(--accent-ink);
+  margin-left: 1px;
+}
+.paper .cite a:hover {
+  text-decoration: underline;
+}
+
+.paper .statement {
+  margin: 1.6em 0;
+  padding: 18px 0 20px;
+  border-block: 1px solid var(--rule-strong);
+}
+.paper .statement p + p {
+  margin-top: 0.7em;
+}
+/* Consecutive statements share one rule. */
+.paper .statement + .statement {
+  margin-top: -1.6em;
+  border-top: 0;
+}
+
+.paper ul,
+.paper ol {
+  margin: 1em 0;
+  padding-left: 1.5em;
+}
+.paper li {
+  position: relative;
+  text-wrap: pretty;
+}
+.paper li + li {
+  margin-top: 0.4em;
+}
+.paper ul > li::before {
+  content: "–";
+  position: absolute;
+  left: -1.3em;
+  color: var(--ink-3);
+}
+.paper > ol {
+  counter-reset: item;
+}
+.paper > ol > li {
+  counter-increment: item;
+}
+.paper > ol > li::before {
+  content: counter(item) ".";
+  position: absolute;
+  left: -1.5em;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.paper-table {
+  margin: 1.8em 0;
+}
+.paper-table-scroll {
+  overflow-x: auto;
+}
+.paper-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--sans);
+  font-size: 14.5px;
+  line-height: 1.45;
+  font-variant-numeric: tabular-nums;
+}
+.paper-table th {
+  text-align: left;
+  font-weight: 500;
+  color: var(--ink-3);
+  padding: 9px 18px 9px 0;
+  border-bottom: 1px solid var(--rule-strong);
+  vertical-align: bottom;
+}
+.paper-table td {
+  padding: 9px 18px 9px 0;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+  color: var(--ink-2);
+}
+.paper-table th:last-child,
+.paper-table td:last-child {
+  padding-right: 0;
+}
+.paper-table .katex {
+  font-size: 1.1em;
+}
+.paper-table figcaption {
+  margin-top: 10px;
+  font-family: var(--sans);
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--ink-3);
+}
+.paper-table figcaption .katex {
+  font-size: 1.1em;
+}
+
+.paper-refs {
+  margin-top: 72px;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--sans);
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink-3);
+}
+.paper .paper-refs h2,
+.paper .paper-foot h2 {
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 13.5px;
+  color: var(--ink-3);
+  margin: 0 0 12px;
+}
+.paper .paper-refs ol {
+  margin: 0;
+  padding: 0;
+}
+.paper-refs li {
+  display: grid;
+  grid-template-columns: 2.4em minmax(0, 1fr);
+}
+.paper-refs li:target {
+  color: var(--ink);
+}
+.paper-refs .n {
+  font-variant-numeric: tabular-nums;
+}
+.paper-refs a {
+  color: var(--ink-2);
+  overflow-wrap: anywhere;
+}
+.paper-refs em {
+  font-style: italic;
+}
+.paper-refs .katex {
+  font-size: 1.1em;
+}
+
+.paper-foot {
+  margin-top: 40px;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--sans);
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink-3);
+}
+.paper .paper-foot ul {
+  margin: 0 0 28px;
+  padding: 0;
+}
+.paper .paper-foot ul > li::before {
+  content: none;
+}
+.paper-foot li {
+  color: var(--ink-2);
+}
+.paper-foot .math {
+  font-family: var(--serif);
+  font-size: 1.08em;
+}
+
+.paper-byline {
+  display: none;
+  margin-top: 18px;
+}
+@media print {
+  .paper-byline {
+    display: block;
+  }
+}
+@media (max-width: 1080px) {
+  .paper-aside {
+    display: none;
+  }
+  .paper-byline {
+    display: block;
+  }
+  .paper {
+    grid-column: 2 / span 10;
+  }
+}
+@media (max-width: 760px) {
+  .paper {
+    grid-column: 1 / -1;
+  }
+}

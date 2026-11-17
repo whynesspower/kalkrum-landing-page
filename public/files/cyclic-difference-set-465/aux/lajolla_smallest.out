@@ -1,0 +1,10 @@
+ds.json member dmgordo-difference-sets-c089b4d/ds.json entries 1085783 cyclic 753920
+parameter sets v<=465, 2<k<=v/2, n>1: listed (cyclic) 355, absent and BRC-excluded 233, absent and BRC-admissible 0 []
+statuses of listed: {'All': 40, 'No': 281, 'Yes': 33, 'Open': 1}
+open with v<=465: [(465, 145, 45)]
+listed but BRC-excluded (sanity): 0
+(419, 133, 42) {'status': 'No', 'comment': 'Leung, Ma, Schmidt'}
+open cyclic total 30100 ; with gcd(v,n)>1: 5488 ; first 5 by v: [(465, 145, 45), (910, 405, 180), (936, 375, 150), (963, 222, 51), (990, 345, 120)]
+first 5 open by v (any gcd): [(465, 145, 45), (469, 208, 92), (639, 232, 84), (703, 325, 150), (741, 185, 46)]
+first 6 open by k: [(1561, 105, 7), (2185, 105, 5), (1111, 111, 11), (465, 145, 45), (1387, 154, 17), (921, 161, 28)]
+first 6 open by n: [(1561, 105, 7), (465, 145, 45), (1111, 111, 11), (2185, 105, 5), (469, 208, 92), (921, 161, 28)]

@@ -1,0 +1,7 @@
+PASS  CW(120,36): 6 classes, weight 36 and zero autocorrelation at all 119 shifts: True; proper: True; pairwise inequivalent: True
+PASS  control: moving one support element of the first class destroys it
+PASS  CW(180,36): 12 classes, weight 36 and zero autocorrelation at all 179 shifts: True; proper: True; pairwise inequivalent: True
+PASS  control: moving one support element of the first class destroys it
+PASS  weight 4: 199 values of n (404 to 996), each -1 + x + x^m + x^(m+1) with n = 2m, valid and proper; failures: 0
+PASS  weight 16: n = 98, 196, 294, 392, 490, 588, 686, 784, 882, 980, each equal to (1 - X^(7m)) C(X^(2m)) + (1 + X^(7m)) X C(X^m), n = 14m, valid and proper; failures: 0
+ALL CHECKS PASSED
